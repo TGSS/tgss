@@ -48,25 +48,15 @@ class Visitingcards extends CI_Controller {
 //        $this->load->view('templates/left');
 //        $this->load->view('templates/footer');                
 //    }
-
-    public function get_data() {
-        //$data['items'] = $this->visitingcards_model->get_items();
-
-        $arr=array(
-            1,2,3
-        );
-        
-        echo json_encode($arr);exit();
-    }
     
-    public function index(){
+    public function select(){
         $this->load->helper('form');
         
         $data['card_quality']=$this->visitingcards_model->get_visitingcards_quality();
         $data['color']=$this->visitingcards_model->get_visitingcards_color();
         $data['quantity']=$this->visitingcards_model->get_visitingcards_quantity();
         
-        $data['temlate'] = "visitingcards/index";
+        $data['temlate'] = "visitingcards/select";
         $this->load->view('template', $data);
     }
     
