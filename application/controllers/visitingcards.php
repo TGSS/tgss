@@ -66,9 +66,8 @@ class Visitingcards extends CI_Controller {
         $data['color']=$this->visitingcards_model->get_visitingcards_color();
         $data['quantity']=$this->visitingcards_model->get_visitingcards_quantity();
         
-        $this->load->view('templates/header',$data);
-        $this->load->view('visitingcards/index',$data);
-        $this->load->view('templates/footer',$data);
+        $data['temlate'] = "visitingcards/index";
+        $this->load->view('template', $data);
     }
     
     public function get_total_price($card_quality,$color,$quantity){

@@ -1,3 +1,4 @@
+<link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo base_url(); ?>css/chosen.min.css" rel="stylesheet" type="text/css" />
 <style>
     /*** Form Start ***/
@@ -27,6 +28,7 @@
 </style>
 
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
+<script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                
 <script src="<?php echo base_url(); ?>js/chosen/chosen.proto.min.js" type="text/javascript"></script>
 
