@@ -28,13 +28,13 @@ class Visitingcards_model extends CI_Model {
 //        return $query->row_array();
 //    }
 
-    public function get_items($id = null) {
+    public function get_visitingcards($id = null) {
         if (!isset($id)) {
-            $query = $this->db->get('visitingcards');
+            $query = $this->db->query("SELECT * FROM visitingcards ORDER BY card_quality,color,quantity");
             return $query->result_array();
         }
 
-        $query = $this->db->get_where('items', array('id' => $id));
+        $query = $this->db->query("SELECT * FROM visitingcards WHERE id=" . $id);
         return $query->row_array();
     }
     

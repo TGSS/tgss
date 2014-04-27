@@ -2,8 +2,8 @@
 
 /*----font embedded -----*/
 @font-face {
-font-family: "Britannic";
-src:url("../font/BRITANIC.TTF") format("truetype"); /* non-IE */
+    font-family: "Britannic";
+    src:url("../font/BRITANIC.TTF") format("truetype"); /* non-IE */
 }
 
 body{margin:0 auto;padding:0;}
@@ -144,40 +144,3 @@ body{margin:0 auto;padding:0;}
 .faq_mes_top{width: 451px; height: 86px; background: url(../images/bg_faq_left_up.png) no-repeat;}
 .faq_mes_body{width: 451px; background: url(../images/bg_faq_left_mid.png) repeat-y;}
 .faq_mes_down{width: 451px; height: 12px; background: url(../images/bg_faq_left_down.png) no-repeat;}
-
-/*** "form" start ***/
-.tgss-page-heading{
-    /*
-    background-image: linear-gradient(to bottom, #D9EDF7 0px, #B9DEF0 100%);
-    background-repeat: repeat-x;
-    */
-    background-color:#67B6F4;
-    
-    /*
-    border-color: #9ACFEA;
-    */
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-    /*
-    border: 1px solid rgba(0, 0, 0, 0);
-    
-    */
-    border-radius: 4px;
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-weight:bold;
-    font-size: 16pt;
-    color:white;
-}
-
-.form-horizontal{
-    margin-bottom: 0px;
-}
-
-.form-horizontal .last-form-row{
-    margin-bottom: 0px;
-}
-/*** "form" end ***/

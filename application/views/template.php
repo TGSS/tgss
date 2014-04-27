@@ -11,7 +11,8 @@
         <title>TGSS Printing</title>
         <base href="<?php echo base_url(); ?>">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>jqtransformplugin/jqtransform.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/custom-style.css">
+        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>jqtransformplugin/jqtransform.css">-->
         <!--script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-1.7.1.js"></script-->
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
         <!--<script type="text/javascript" src="<?php echo base_url(); ?>jqtransformplugin/jquery.jqtransform.js"></script>-->

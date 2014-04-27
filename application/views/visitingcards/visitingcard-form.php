@@ -54,7 +54,7 @@ echo form_open('visitingcards/index', $attributes);
 
 <div class="form-group last-form-row">
     <div class="col-sm-offset-5 col-sm-7">
-        <button type="submit" id="submit" name="submit" class="btn btn-primary">Next</button>
+        <button type="submit" id="submit" name="submit" class="btn btn-primary col-sm-12">Next</button>
     </div>
 </div>
 

@@ -13,5 +13,7 @@
     <div class="col-sm-4">
         <?php $this->load->view("visitingcards/visitingcard-form"); ?>
     </div>
-    <div class="col-sm-5"></div>
+    <div class="col-sm-5">
+        <?php $this->load->view("visitingcards/table"); ?>
+    </div>
 </div>
