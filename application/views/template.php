@@ -16,6 +16,10 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
         <!--<script type="text/javascript" src="<?php echo base_url(); ?>jqtransformplugin/jquery.jqtransform.js"></script>-->
         <!--<script type="text/javascript" src="<?php echo base_url(); ?>jqtransformplugin/jquery.js"></script>-->
+        
+        <!-- echoing "base_url" from "PHP" to be used with "javascript" -->
+        <script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>	
+        
         <script type="text/javascript">
             $(document).ready(function(){
                 $("div#view_all_product_top").hide();

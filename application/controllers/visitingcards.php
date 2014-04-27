@@ -62,12 +62,25 @@ class Visitingcards extends CI_Controller {
     
     public function get_total_price($card_quality,$color,$quantity){
         
-        $data=$this->visitingcards_model->get_visitingcards_price($card_quality,$color,$quantity);
+        $data=$this->visitingcards_model->get_visitingcards_total_price($card_quality,$color,$quantity);
         $total=$data[0]['price']*$quantity;
         
         $result['price']=$data[0]['price'];
         $result['total']=$total;
-        echo json_encode($result);exit();
+        //echo json_encode($result);exit();
+        return responseSuccess($result);
+    }
+    
+    public function test(){
+        $data=array(
+            '1'=>'aaa',
+            '2'=>'bbb',
+            '3'=>'ccc',
+            );
+        //echo json_encode($data);exit();
+        //return responseSend($data);
+        return responseSuccess($data);
+        
     }
 }
 
