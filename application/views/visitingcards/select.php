@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo base_url(); ?>js/visitingcards/visitingcard.js"></script>
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">

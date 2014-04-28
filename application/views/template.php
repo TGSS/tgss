@@ -21,6 +21,9 @@
         <script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                
         <script src="<?php echo base_url(); ?>js/chosen/chosen.proto.min.js" type="text/javascript"></script>
+        <!-- echoing "base_url" from "PHP" to be used with "javascript" -->
+       <script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>
+
 
 
         <script type="text/javascript">
