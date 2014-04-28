@@ -10,12 +10,19 @@
         
         <title>TGSS Printing</title>
         <base href="<?php echo base_url(); ?>">
+        
+        
+
+        <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo base_url(); ?>css/chosen.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>jqtransformplugin/jqtransform.css">
-        <!--script type="text/javascript" src="<?php echo base_url(); ?>/js/jquery-1.7.1.js"></script-->
+
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
-        <!--<script type="text/javascript" src="<?php echo base_url(); ?>jqtransformplugin/jquery.jqtransform.js"></script>-->
-        <!--<script type="text/javascript" src="<?php echo base_url(); ?>jqtransformplugin/jquery.js"></script>-->
+        <script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                
+        <script src="<?php echo base_url(); ?>js/chosen/chosen.proto.min.js" type="text/javascript"></script>
+
+
         <script type="text/javascript">
             $(document).ready(function(){
                 $("div#view_all_product_top").hide();
@@ -27,11 +34,6 @@
                     $("div#view_all_product_topa").hide(500);
                 });
   
-            });
-        </script>
-        <script language="javascript">
-            $(function(){
-                //$('form').jqTransform({imgPath:'../../jqtransformplugin/img/'});
             });
         </script>
     </head>
@@ -70,7 +72,7 @@
                         <div class="body_header_left_right"></div>
                     </div>
                     <div class="body_header_right"><a href="#" class="basket">( 12 )Item</a></div>
-                    <div id="view_all_product_top">
+                    <!--div id="view_all_product_top">
                         <ul id="all_product_1">
                             <li><a href="Brochures">Brochures</a></li>
                             <li><a href="Flyers">Flyers</a></li>
@@ -129,7 +131,7 @@
                             </ul>
                         </ul>
                         <div id="clr"></div>
-                    </div>
+                    </div-->
                 </div>
                 <div id="wrapper_body">
                     <div class="body_wrapper_top"></div>

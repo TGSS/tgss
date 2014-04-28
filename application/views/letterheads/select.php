@@ -1,7 +1,7 @@
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">
-            <div class="tgss-product-heading">Visiting Cards</div>
+            <div class="tgss-product-heading">Letter Head</div>
             
             <div class="tgss-product-title">
                 <div class="tgss-product-title-left">Your Product:</div>
@@ -9,20 +9,9 @@
             </div>
 
             <?php
-            $attributes = array('class' => 'form-horizontal', 'id' => 'visitingcards', 'name' => 'visitingcards');
-            echo form_open('visitingcards/index', $attributes);
+            $attributes = array('class' => 'form-horizontal', 'id' => 'letterheads', 'name' => 'letterheads');
+            echo form_open('letterheads/index', $attributes);
             ?>
-
-            <div class="form-group">
-                <div class="col-sm-3 control-label">Card Quality :</div>
-                <div class="col-sm-9">
-                    <select id="card_quality" name="card_quality" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($card_quality as $key => $value) { ?>
-                            <option value="<?php echo $value['card_quality']; ?>"><?php echo $value['card_quality_display']; ?></option>
-                        <?php } ?>
-                    </select>    
-                </div>
-            </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Color :</div>
@@ -134,7 +123,7 @@
         var quantity=$('#quantity').val();
         
         $.ajax({
-            url: "<?php echo base_url(); ?>index.php/visitingcards/get_total_price/" + card_quality + "/" + color + "/"  + quantity,
+            url: "<?php echo base_url(); ?>index.php/letterheads/get_total_price/" + card_quality + "/" + color + "/"  + quantity,
             type: "POST",
             dataType: "json",
             cache:false,

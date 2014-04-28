@@ -1,12 +1,7 @@
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">
-            <div class="tgss-product-heading">Visiting Cards</div>
-            
-            <div class="tgss-product-title">
-                <div class="tgss-product-title-left">Your Product:</div>
-                <div class="tgss-product-title-right">Opening Ceremony Cards</div>
-            </div>
+            <div class="tgss-product-heading">User Login</div>
 
             <?php
             $attributes = array('class' => 'form-horizontal', 'id' => 'visitingcards', 'name' => 'visitingcards');
@@ -14,63 +9,25 @@
             ?>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Card Quality :</div>
+                <div class="col-sm-3 control-label">Email:</div>
                 <div class="col-sm-9">
-                    <select id="card_quality" name="card_quality" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($card_quality as $key => $value) { ?>
-                            <option value="<?php echo $value['card_quality']; ?>"><?php echo $value['card_quality_display']; ?></option>
-                        <?php } ?>
-                    </select>    
+                    <input class="form-control" type="email" name="surname" value="">   
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Color :</div>
+                <div class="col-sm-3 control-label">Password:</div>
                 <div class="col-sm-9">
-                    <select id="color" name="color" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($color as $key => $value) { ?>
-                            <option value="<?php echo $value['color']; ?>"><?php echo $value['color']; ?></option>
-                        <?php } ?>
-                    </select>   
+                    <input class="form-control" type="password" name="surname" value="">   
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Quantity :</div>
+                <div class="col-sm-3 control-label">
+                </div>
                 <div class="col-sm-9">
-                    <select id="quantity" name="quantity" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($quantity as $key => $value) { ?>
-                            <option value="<?php echo $value['quantity']; ?>"><?php echo $value['quantity']; ?></option>
-                        <?php } ?>
-                    </select> 
-                </div>
-            </div>
-
-            <!-- <div class="form-group">
-                <div class="col-sm-3 control-label">Price / Card</div>
-                <div class="col-sm-9">
-                    <p id="price_display" class="form-control-static">0</p>
-                    <input type="hidden" id="price" name="price" class="controls" value=""/>
-                </div>
-            </div> -->
-            
-            <div class="tgss-product-bottom">
-                <div class="tgss-product-price">
-                    <div class="form-group">
-                        <div class="col-sm-3 control-label">Total</div>
-                        <div class="col-sm-9">
-                            <p id="total_display" class="form-control-static">0</p>
-                            <input type="hidden" id="total" name="total" class="controls" value=""/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tgss-product-next">    
-                    <div class="form-group last-form-row">
-                        <div class="col-sm-offset-3 col-sm-10">
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary"></button>
-                        </div>
-                    </div>
+                    <input type="submit" name="" value="Login">
+                    <input type="reset" name="" value="Reset">
                 </div>
             </div>
 

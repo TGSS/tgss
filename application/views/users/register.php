@@ -1,76 +1,54 @@
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">
-            <div class="tgss-product-heading">Visiting Cards</div>
-            
-            <div class="tgss-product-title">
-                <div class="tgss-product-title-left">Your Product:</div>
-                <div class="tgss-product-title-right">Opening Ceremony Cards</div>
-            </div>
+            <div class="tgss-product-heading">User Register</div>
 
             <?php
             $attributes = array('class' => 'form-horizontal', 'id' => 'visitingcards', 'name' => 'visitingcards');
-            echo form_open('visitingcards/index', $attributes);
+            echo form_open('users/registersubmit', $attributes);
             ?>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Card Quality :</div>
+                <div class="col-sm-3 control-label">Email:</div>
                 <div class="col-sm-9">
-                    <select id="card_quality" name="card_quality" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($card_quality as $key => $value) { ?>
-                            <option value="<?php echo $value['card_quality']; ?>"><?php echo $value['card_quality_display']; ?></option>
-                        <?php } ?>
-                    </select>    
+                    <input class="form-control" type="email" name="email" value="<?php set_value('email') ?>">   
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Color :</div>
+                <div class="col-sm-3 control-label">Password :</div>
                 <div class="col-sm-9">
-                    <select id="color" name="color" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($color as $key => $value) { ?>
-                            <option value="<?php echo $value['color']; ?>"><?php echo $value['color']; ?></option>
-                        <?php } ?>
-                    </select>   
+                    <input class="form-control" type="password" name="password" value="<?php set_value('password') ?>">   
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Quantity :</div>
+                <div class="col-sm-3 control-label">Re-Password :</div>
                 <div class="col-sm-9">
-                    <select id="quantity" name="quantity" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($quantity as $key => $value) { ?>
-                            <option value="<?php echo $value['quantity']; ?>"><?php echo $value['quantity']; ?></option>
-                        <?php } ?>
-                    </select> 
+                    <input class="form-control" type="password" name="repassword" value="<?php set_value('repassword') ?>">   
                 </div>
             </div>
 
-            <!-- <div class="form-group">
-                <div class="col-sm-3 control-label">Price / Card</div>
+            <div class="form-group">
+                <div class="col-sm-3 control-label">Address :</div>
                 <div class="col-sm-9">
-                    <p id="price_display" class="form-control-static">0</p>
-                    <input type="hidden" id="price" name="price" class="controls" value=""/>
+                    <input class="form-control" type="text" name="address" value="<?php set_value('address') ?>">   
                 </div>
-            </div> -->
-            
-            <div class="tgss-product-bottom">
-                <div class="tgss-product-price">
-                    <div class="form-group">
-                        <div class="col-sm-3 control-label">Total</div>
-                        <div class="col-sm-9">
-                            <p id="total_display" class="form-control-static">0</p>
-                            <input type="hidden" id="total" name="total" class="controls" value=""/>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-                <div class="tgss-product-next">    
-                    <div class="form-group last-form-row">
-                        <div class="col-sm-offset-3 col-sm-10">
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary"></button>
-                        </div>
-                    </div>
+            <div class="form-group">
+                <div class="col-sm-3 control-label">Phone No. :</div>
+                <div class="col-sm-9">
+                    <input class="form-control" type="text" name="phno" value="<?php set_value('phno') ?>">   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-3 control-label">
+                </div>
+                <div class="col-sm-9">
+                    <input type="submit" name="" value="Register">
+                    <input type="reset" name="" value="Reset">
                 </div>
             </div>
 
