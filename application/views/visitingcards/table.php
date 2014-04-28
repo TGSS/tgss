@@ -23,5 +23,4 @@
             <?php } ?>
         </tbody>
     </table>
-    <br/>
 <?php } ?>
