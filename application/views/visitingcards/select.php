@@ -1,4 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>js/visitingcards/visitingcard.js"></script>
+
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">
@@ -9,12 +10,11 @@
                 <div class="tgss-product-title-right">Opening Ceremony Cards</div>
             </div>
 
-<div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-4">
-        <?php $this->load->view("visitingcards/visitingcard-form"); ?>
-    </div>
-    <div class="col-sm-5">
+            <?php $this->load->view("visitingcards/visitingcard-form"); ?>
+        </div>
+
+        <?php $this->load->view("templates/top-right"); ?>
+        
         <?php $this->load->view("visitingcards/table"); ?>
     </div>
 </div>

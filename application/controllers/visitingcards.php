@@ -68,24 +68,13 @@ class Visitingcards extends CI_Controller {
         $data=$this->visitingcards_model->get_visitingcards_total_price($card_quality,$color,$quantity);
         $total=$data[0]['price']*$quantity;
         
+        $result['card_id']=$data[0]['card_id'];
         $result['price']=$data[0]['price'];
         $result['total']=$total;
         //echo json_encode($result);exit();
         return responseSuccess($result);
     }
-    
-    public function test(){
-        $data=array(
-            '1'=>'aaa',
-            '2'=>'bbb',
-            '3'=>'ccc',
-            );
-        //echo json_encode($data);exit();
-        //return responseSend($data);
-        return responseSuccess($data);
-        
-    }
-    
+       
     public function generate_visiting_cards_table($card_quality,$color,$quantity){
         $tableData=array();
         //Selecting all visiting cards
@@ -107,43 +96,38 @@ class Visitingcards extends CI_Controller {
             }
         }
         //**********************************************************************************************************
-        //Building First Column
+        //Building Column
         foreach ($tableData as $key=>$value){                
             foreach ($color as $key2=>$value2){
                 $temp=array();
-                $temp[]=$value2['color'];
+                $temp[]=array('card_id'=>'','price'=>$value2['color']);
                 
-                $temp[]=$this->getPrice($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][1]);
-                $temp[]=$this->getPrice($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][2]);
-                $temp[]=$this->getPrice($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][3]);
-                $temp[]=$this->getPrice($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][4]);
+                $temp[]=$this->get_card_id_and_price($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][1]);
+                $temp[]=$this->get_card_id_and_price($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][2]);
+                $temp[]=$this->get_card_id_and_price($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][3]);
+                $temp[]=$this->get_card_id_and_price($visitingcardData, $key, $value2['color'], $tableData[$key]['header'][4]);
                 $tableData[$key]['data'][]=$temp;
             }
         }
-        //**********************************************************************************************************
-        //Building Other Columns
-        foreach ($tableData as $key=>$value){                
-            foreach($value['data'] as $key2=>$value2){
-                //var_dump($value2[0]);
-            }
-        }
-//        var_dump($tableData['AC']);
-//        exit();
-        //**********************************************************************************************************
+        //**********************************************************************************************************        
         return $tableData;
     }
     
-    private function getPrice($visitingcardData,$card_quality,$color,$quantity){
-        
+    private function get_card_id_and_price($visitingcardData,$card_quality,$color,$quantity){
+        $card_id='';
         $price=0.0;
         
         foreach ($visitingcardData as $key=>$value){
             if ($value['card_quality']==$card_quality && $value['color']==$color && $value['quantity']==$quantity){
+                $card_id=$value['card_id'];
                 $price=$value['price'];
             }
         }
         
-        return $price;
+        return array(
+            'card_id'=>$card_id,
+            'price'=>$price
+        );
     }
 }
 

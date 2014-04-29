@@ -54,7 +54,7 @@ class Visitingcards_model extends CI_Model {
     }
     
     public function get_visitingcards_total_price($card_quality,$color,$quantity){
-        $sql="SELECT price FROM visitingcards WHERE card_quality='" . $card_quality . "' " .
+        $sql="SELECT card_id,price FROM visitingcards WHERE card_quality='" . $card_quality . "' " .
                 "AND color='" . $color . "' " .
                 "AND quantity=" . $quantity;
         $query = $this->db->query($sql);

@@ -37,21 +37,29 @@
 
 /*** "card-table" start ***/
 .card-table-heading{
-    width:95% !important;
     font-size:12pt;
     font-weight: bold;
     text-align:center;
     background-color: #67B6F4;
-    border-top:solid 2px black;
+    /*border-top:solid 2px black;
     border-right:solid 2px black;
-    border-left:solid 2px black;
+    border-left:solid 2px black;*/
+    width:100%;
 }
 
 .card-table{
     font-size:8pt;
-    width:95% !important;
-    border:solid 2px black !important;
+    /*border:solid 2px black !important;*/
+    width:100%;
 }    
+
+.card-table th td,.card-table tr td{
+    color:black;
+}
+
+.card-table tr .selected{
+    background-color:red !important;
+}
 
 .card-table th{
     background-color:#67B6F4 !important;
@@ -67,6 +75,6 @@
 }
 
 .card-table > thead > tr > th, .card-table > thead > tr > td {
-    border-bottom:solid 2px black !important;
+    /*border-bottom:solid 2px black !important;*/
 }
 /*** "card-table" end ***/
