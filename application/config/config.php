@@ -14,11 +14,8 @@
 | path to your installation.
 |
 */
-<<<<<<< HEAD
 $config['base_url']	= 'http://local.tgss.com/';
-=======
-$config['base_url']	= '';
->>>>>>> wpst
+
 
 /*
 |--------------------------------------------------------------------------
