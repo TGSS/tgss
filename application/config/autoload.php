@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('tgss_calculation','Users_model');
+$autoload['model'] = array('tgss_calculation','users_model');
 
 
 /* End of file autoload.php */

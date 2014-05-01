@@ -4,12 +4,32 @@ class Users extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('users_model');
-        $this->load->library('session');
        
     }
 
     public function index(){
+        $session = $this->session->userdata('user');
+        if($session)
+        {
+            var_dump($session);
+            echo "<a style='text-align:center; width: 100%;' href='".site_url('users/logout')."'>Logout</a>";
+        }
+        else
+        {
+            echo "SESSION CLEAR";
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $result = $this->users_model->login();
+            if($result)
+            {
+                foreach ($result as $results) {
+                    $user = array('username'=>$results->username,'role'=>$results->role);
+                    $this->session->set_userdata('user', $user);    //Add user data to user_session array
+                    $this->session->set_flashdata('success_message','Login Success');
+                    redirect('tgss');    //redirect to home page
+                }
+            }
+        }
         $data['temlate'] = "users/login";
         $this->load->view('template', $data);
     }
@@ -47,47 +67,13 @@ class Users extends CI_Controller {
         }
         //return responseSuccess($_POST['username']);
     }
-    
-    public function registersubmit()
+
+    public function logout()
     {
-        $rules=array(
-                array(
-                    'field' => 'email',
-                    'label' => 'Email:',
-                    'rules' => 'required|valid_email|trim|xss_clean|strip_tags'
-                ),array(
-                    'field' => 'password',
-                    'label' => 'Password :',
-                    'rules' => 'required|min_length[8]|trim|xss_clean|strip_tags'
-                ),array(
-                    'field' => 'repassword',
-                    'label' => 'Re-Password :',
-                    'rules' => 'required|min_length[8]|matches[password]|trim|xss_clean|strip_tags'
-                ),array(
-                    'field' => 'address',
-                    'label' => 'Address :',
-                    'rules' => 'trim|xss_clean|strip_tags'
-                ),array(
-                    'field' => 'phno',
-                    'label' => 'Phone No. :',
-                    'rules' => 'trim|xss_clean|strip_tags'
-                ));
-                $this->form_validation->set_rules($rules);
+        $this->session->unset_userdata('user');
+        $this->session->set_flashdata('success_message','Logout Success');
+        redirect('users');    //redirect to login page
 
-            if ($this->form_validation->run() == FALSE)
-            {
-                $data['temlate'] = "users/register";
-                $this->load->view('template', $data);
-            }
-            else
-            {
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $address = $this->input->post('address');
-                $phno = $this->input->post('phno');
-
-                $this->Users_model->register($email,$password,$address,$phno);
-            }
     }
 
 }

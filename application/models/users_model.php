@@ -62,6 +62,24 @@ class Users_model extends CI_Model {
         return $query->result_array();
     }
 
+    public function login()
+    {
+        $user = array(
+                'username' => $this->input->post('username'),
+                'password' => $this->input->post('password')
+                );
+
+        $result = $this->db->get_where('users',$user);
+
+        if($result->num_rows() > 0){
+            return $result->result();
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
 }
 
 ?>
