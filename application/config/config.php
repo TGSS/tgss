@@ -15,11 +15,11 @@
 |
 */
 <<<<<<< HEAD
-$config['base_url']	= 'http://tgss.tgssprinting.com/';
+$config['base_url']	= 'http://tgss.tgssprinting.com/';sadfasdf
 =======
 $config['base_url']	= 'http://local.tgss.com/';
 >>>>>>> 651d9b774cdce7ac417e6fec09843a05f711735c
-
+sadfasdfas
 /*
 |--------------------------------------------------------------------------
 | Index File
