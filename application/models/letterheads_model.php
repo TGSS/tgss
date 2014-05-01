@@ -1,6 +1,6 @@
 <?php
 
-class Visitingcards_model extends CI_Model {
+class Letterheads_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
@@ -28,34 +28,33 @@ class Visitingcards_model extends CI_Model {
 //        return $query->row_array();
 //    }
 
-    public function get_visitingcards($id = null) {
+    public function get_items($id = null) {
         if (!isset($id)) {
-            $query = $this->db->query("SELECT * FROM visitingcards ORDER BY card_quality,color,quantity");
+            $query = $this->db->get('letterhead');
             return $query->result_array();
         }
 
-        $query = $this->db->query("SELECT * FROM visitingcards WHERE id=" . $id);
+        $query = $this->db->get_where('items', array('id' => $id));
         return $query->row_array();
     }
     
-    public function get_visitingcards_quality(){
-        $query = $this->db->query("SELECT DISTINCT card_quality,card_quality_display FROM visitingcards ORDER BY card_quality");
+    public function get_letterhead_quality(){
+        $query = $this->db->query("SELECT DISTINCT card_quality,card_quality_display FROM letterhead ORDER BY card_quality");
         return $query->result_array();
     }
 
-    public function get_visitingcards_color(){
-        $query = $this->db->query("SELECT DISTINCT color FROM visitingcards ORDER BY color");
+    public function get_letterhead_color(){
+        $query = $this->db->query("SELECT DISTINCT color FROM letterhead ORDER BY color");
         return $query->result_array();
     }
     
-    public function get_visitingcards_quantity(){
-        $query = $this->db->query("SELECT DISTINCT quantity FROM visitingcards ORDER BY quantity");
+    public function get_letterhead_quantity(){
+        $query = $this->db->query("SELECT DISTINCT quantity FROM letterhead ORDER BY quantity");
         return $query->result_array();
     }
     
-    public function get_visitingcards_total_price($card_quality,$color,$quantity){
-        $sql="SELECT card_id,price FROM visitingcards WHERE card_quality='" . $card_quality . "' " .
-                "AND color='" . $color . "' " .
+    public function get_letterhead_price($card_quality,$color,$quantity){
+        $sql="SELECT price FROM letterhead WHERE color='" . $color . "' " .
                 "AND quantity=" . $quantity;
         $query = $this->db->query($sql);
         return $query->result_array();

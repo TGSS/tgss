@@ -1,10 +1,11 @@
 <?php
 
-class Visitingcards extends CI_Controller {
+class Letterheads extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
         //$this->load->library('session');
+        $this->load->model('letterheads_model');
         $this->load->model('visitingcards_model');
     }
 
@@ -52,26 +53,22 @@ class Visitingcards extends CI_Controller {
     public function select(){
         $this->load->helper('form');
         
-        $data['card_quality']=$this->visitingcards_model->get_visitingcards_quality();
-        $data['color']=$this->visitingcards_model->get_visitingcards_color();
-        $data['quantity']=$this->visitingcards_model->get_visitingcards_quantity();
+        $data['color']=$this->letterheads_model->get_letterhead_color();
+        $data['quantity']=$this->letterheads_model->get_letterhead_quantity();
         
-        $data['temlate'] = "visitingcards/select";
+        $data['temlate'] = "letterheads/select";
         $this->load->view('template', $data);
     }
     
     public function get_total_price($card_quality,$color,$quantity){
         
-        $data=$this->visitingcards_model->get_visitingcards_total_price($card_quality,$color,$quantity);
+        $data=$this->letterheads_model->get_letterhead_price($card_quality,$color,$quantity);
         $total=$data[0]['price']*$quantity;
         
-        $result['card_id']=$data[0]['card_id'];
         $result['price']=$data[0]['price'];
         $result['total']=$total;
-        //echo json_encode($result);exit();
-        return responseSuccess($result);
+        echo json_encode($result);exit();
     }
-       
 }
 
 ?>

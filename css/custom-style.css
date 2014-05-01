@@ -35,38 +35,13 @@
 }
 /*** "form" end ***/
 
-/*** "card-table" start ***/
-.card-table-heading{
-    width:95% !important;
-    font-size:12pt;
-    font-weight: bold;
-    text-align:center;
-    background-color: #67B6F4;
-    border-top:solid 2px black;
-    border-right:solid 2px black;
-    border-left:solid 2px black;
+label.error{
+    color:red;
+    font-weight:normal !important;
+    font-size:10pt;
 }
 
-.card-table{
-    font-size:8pt;
-    width:95% !important;
-    border:solid 2px black !important;
+.tgss-alert {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
 }    
-
-.card-table th{
-    background-color:#67B6F4 !important;
-}
-
-.card-table .color-column{
-    background-color:#67B6F4 !important;
-    font-weight: bold;
-}
-
-.card-table > tbody > tr:nth-child(2n+1) > td, .card-table > tbody > tr:nth-child(2n+1) > th {
-    background-color: #C0C0C0;
-}
-
-.card-table > thead > tr > th, .card-table > thead > tr > td {
-    border-bottom:solid 2px black !important;
-}
-/*** "card-table" end ***/
