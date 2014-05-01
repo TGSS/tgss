@@ -4,22 +4,50 @@ class Users extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        //$this->load->library('session');
+        $this->load->model('users_model');
+        $this->load->library('session');
        
     }
 
-    public function index()
-    {
+    public function index(){
         $data['temlate'] = "users/login";
         $this->load->view('template', $data);
     }
 
-    public function register()
-    {
+    public function register(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data['countries']=$this->users_model->register();
+            $this->session->set_flashdata('success_message','Registration success. Please log in to continue.');
+            redirect('users/login');    //redirect to user login page
+        }
+        
+        $data['countries']=$this->users_model->get_country();
         $data['temlate'] = "users/register";
         $this->load->view('template', $data);
     }
 
+    public function login(){
+        $data['temlate'] = "users/login";
+        $this->load->view('template', $data);
+    }
+    
+    public function is_username_exist(){
+         
+        $username=  $this->input->post('username');
+        $user_data=$this->users_model->get_user_by_username($username);
+        
+        if (empty($user_data)){
+            return responseSuccess(array(
+                'is_username_exist'=>false
+            ));
+        }else{
+            return responseSuccess(array(
+                'is_username_exist'=>true
+            ));
+        }
+        //return responseSuccess($_POST['username']);
+    }
+    
     public function registersubmit()
     {
         $rules=array(

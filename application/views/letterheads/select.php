@@ -66,7 +66,7 @@
             <?php echo form_close(); ?>
         </div>
 
-        <?php $this->load->view("templates/top-right"); ?>
+        <?php $this->load->view("templates/why-choose-tgss"); ?>
     </div>
 </div>
 

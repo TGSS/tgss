@@ -7,11 +7,9 @@
         <meta name="gmapkey" content="" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        
+
         <title>TGSS Printing</title>
         <base href="<?php echo base_url(); ?>">
-        
-        
 
         <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="<?php echo base_url(); ?>css/chosen.min.css" rel="stylesheet" type="text/css" />
@@ -20,12 +18,11 @@
 
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
         <script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.validate.min.js"></script>
         <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                
         <script src="<?php echo base_url(); ?>js/chosen/chosen.proto.min.js" type="text/javascript"></script>
         <!-- echoing "base_url" from "PHP" to be used with "javascript" -->
-       <script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>
-
-
+        <script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>
 
         <script type="text/javascript">
             $(document).ready(function(){
@@ -138,7 +135,20 @@
                     </div-->
                 </div>
                 <div id="wrapper_body">
-                    <div class="body_wrapper_top"></div>
+                    <?php
+                    //Showing "Flash Message" if it is in "session"
+                    if ($this->session->flashdata('error_message')) {
+                        $this->load->view("templates/success-message");
+                    }elseif ($this->session->flashdata('warning_message')) {
+                        $this->load->view("templates/warning-message");
+                    }elseif ($this->session->flashdata('info_message')) {
+                        $this->load->view("templates/info-message");
+                    }elseif ($this->session->flashdata('success_message')) {
+                        $this->load->view("templates/success-message");
+                    }
+                    ?>
+                    <div class="body_wrapper_top">
+                    </div>
                     <div class="body_wrapper_body">
                         <!-- Template Content Start -->
                         <?php $this->load->view($temlate); ?>
