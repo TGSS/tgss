@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 function register_click(){
     if (validate_user_input()==false){
-        alert("Error");
+        show_error_message("Please fill in the required fields.");
         return false;
     }
     
@@ -32,7 +32,7 @@ function register_click(){
         success: function(result){ 
             if (result.success==true){
                 if (result.data.is_username_exist==true){
-                    alert("User name already existed.")
+                    show_error_message("User Name already existed.");
                     valid=false;
                 }else{
                     valid= true;
@@ -117,7 +117,7 @@ function validate_user_input(){
     
     if ($('#register').valid()){            
         return true;
-    }else{
+    }else{        
         return false;
     } 
 }

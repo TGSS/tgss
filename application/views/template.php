@@ -24,6 +24,9 @@
         <!-- echoing "base_url" from "PHP" to be used with "javascript" -->
         <script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>
 
+        <script type="text/javascript" src="js/noty/packaged/jquery.noty.packaged.min.js"></script>
+        <script type="text/javascript" src="js/tgss.noty.js"></script>
+        
         <script type="text/javascript">
             $(document).ready(function(){
                 $("div#view_all_product_top").hide();
