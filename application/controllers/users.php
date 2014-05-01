@@ -29,6 +29,11 @@ class Users extends CI_Controller {
                     redirect('tgss');    //redirect to home page
                 }
             }
+            else
+            {
+                $this->session->set_flashdata('error_message','Login Fail!! Please Try Again');
+                redirect('users');    //redirect to home page
+            }
         }
         $data['temlate'] = "users/login";
         $this->load->view('template', $data);

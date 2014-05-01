@@ -141,7 +141,7 @@
                     <?php
                     //Showing "Flash Message" if it is in "session"
                     if ($this->session->flashdata('error_message')) {
-                        $this->load->view("templates/success-message");
+                        $this->load->view("templates/error-message");
                     }elseif ($this->session->flashdata('warning_message')) {
                         $this->load->view("templates/warning-message");
                     }elseif ($this->session->flashdata('info_message')) {
