@@ -17,7 +17,7 @@ function register_click(){
         show_error_message("Please fill in the required fields.");
         return false;
     }
-    
+     
     var valid;
     
     $.ajax({
