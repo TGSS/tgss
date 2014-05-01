@@ -14,7 +14,11 @@
 | path to your installation.
 |
 */
+<<<<<<< HEAD
 $config['base_url']	= 'http://local.tgss.com/';
+=======
+$config['base_url']	= '';
+>>>>>>> wpst
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +228,7 @@ $config['cache_path'] = 'system/cache/';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'tgss';
 
 /*
 |--------------------------------------------------------------------------
