@@ -56,7 +56,7 @@ class Visitingcards extends CI_Controller {
         $data['color']=$this->visitingcards_model->get_visitingcards_color();
         $data['quantity']=$this->visitingcards_model->get_visitingcards_quantity();
         
-        $data['temlate'] = "visitingcards/select";
+        $data['template'] = "visitingcards/select";
         $this->load->view('template', $data);
     }
     

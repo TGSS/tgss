@@ -7,7 +7,7 @@ class Samples extends CI_Controller {
     }
 
     public function gallery(){
-        $data['temlate'] = "samples/gallery";
+        $data['template'] = "samples/gallery";
         $this->load->view('template', $data);
     }    
 }

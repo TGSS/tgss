@@ -35,7 +35,7 @@ class Users extends CI_Controller {
                 redirect('users');    //redirect to home page
             }
         }
-        $data['temlate'] = "users/login";
+        $data['template'] = "users/login";
         $this->load->view('template', $data);
     }
 
@@ -47,12 +47,12 @@ class Users extends CI_Controller {
         }
         
         $data['countries']=$this->users_model->get_country();
-        $data['temlate'] = "users/register";
+        $data['template'] = "users/register";
         $this->load->view('template', $data);
     }
 
     public function login(){
-        $data['temlate'] = "users/login";
+        $data['template'] = "users/login";
         $this->load->view('template', $data);
     }
     

@@ -56,7 +56,7 @@ class Letterheads extends CI_Controller {
         $data['color']=$this->letterheads_model->get_letterhead_color();
         $data['quantity']=$this->letterheads_model->get_letterhead_quantity();
         
-        $data['temlate'] = "letterheads/select";
+        $data['template'] = "letterheads/select";
         $this->load->view('template', $data);
     }
     
