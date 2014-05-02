@@ -13,8 +13,7 @@
             <?php $this->load->view("visitingcards/visitingcard-form"); ?>
         </div>
 
-        <?php $this->load->view("templates/top-right"); ?>
+        <?php $this->load->view("templates/why-choose-tgss"); ?>
         
-        <?php $this->load->view("visitingcards/table"); ?>
     </div>
 </div>

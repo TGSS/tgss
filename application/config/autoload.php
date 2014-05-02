@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','form_validation');
+$autoload['libraries'] = array('database','form_validation','session');
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('tgss_calculation','Users_model');
+$autoload['model'] = array('tgss_calculation','users_model');
 
 
 /* End of file autoload.php */
