@@ -14,13 +14,8 @@
 | path to your installation.
 |
 */
-<<<<<<< HEAD
 
 $config['base_url']	= 'http://tgss.tgssprinting.com/';
-=======
-$config['base_url']	= 'http://local.tgss.com/';
-
->>>>>>> 1a2b2d07acadfdb82d5356b3594f84f5e9380383
 
 /*
 |--------------------------------------------------------------------------
@@ -230,7 +225,7 @@ $config['cache_path'] = 'system/cache/';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'tgss';
+$config['encryption_key'] = 'asdfasfwer2354gadgasdf';
 
 /*
 |--------------------------------------------------------------------------
