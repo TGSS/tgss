@@ -1,2 +1,7 @@
-# Use PHP5.4 as default
-AddHandler application/x-httpd-php54 .php
+# Use PHP5 Single php.ini as default
+AddHandler application/x-httpd-php5s .php
+RewriteEngine on
+ RewriteCond $1 !^(index\.php|resources|robots\.txt)
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteRule ^(.*)$ index.php/$1 [L,QSA]
