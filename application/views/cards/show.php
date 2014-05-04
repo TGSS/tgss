@@ -10,8 +10,12 @@
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">
             <div class="tgss-product-heading">Cards</div>
+			<?php
+            	echo "card_id is " . $card_id;
 
-            
+                $cards = $this->session->userdata('card');
+                var_dump($cards);
+            ?>
         </div>        
     </div>
 </div>
