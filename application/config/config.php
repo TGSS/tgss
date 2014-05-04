@@ -14,13 +14,8 @@
 | path to your installation.
 |
 */
-<<<<<<< HEAD
 
-$config['base_url']	= 'http://tgss.tgssprinting.com/';
-=======
-$config['base_url']	= 'http://local.tgss.com/';
-
->>>>>>> 1a2b2d07acadfdb82d5356b3594f84f5e9380383
+$config['base_url']	= 'http://localhost/prj1/tgss/';
 
 /*
 |--------------------------------------------------------------------------

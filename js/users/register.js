@@ -1,11 +1,19 @@
 $(document).ready(function(){
-    $(".chosen-select").chosen({
+    $("#country").chosen({
         width: "300px"
     });
+
+    $("#timezone").chosen({
+        width: "100%"
+    });
     
-    //Auto Selecting "Myanmar"
+    //Auto Selecting "Myanmar" for "Country"
     $("#country").val("Myanmar");
     $("#country").trigger("chosen:updated");
+    
+    //Auto Selecting "Myanmar Time Zone""
+    $("#timezone").val(54);
+    $("#timezone").trigger("chosen:updated");
     
     $('#submit').click(function(){
         return register_click();

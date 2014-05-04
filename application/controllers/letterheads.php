@@ -67,7 +67,7 @@ class Letterheads extends CI_Controller {
         
         $result['price']=$data[0]['price'];
         $result['total']=$total;
-        echo json_encode($result);exit();
+        return $this->ajax_handler->responseSuccess($result);
     }
 }
 

@@ -25,3 +25,24 @@ function show_information_message(message){
 function show_alert_message(message){
     show_message(message,'alert');
 }
+
+$(document).ready(function(){
+    if ($('#notification-message').length>0) {
+        var message_type=$('#notification-message').data('message-type');
+        var message=$('#notification-message').html();
+        
+        if (message_type=='success'){
+            show_success_message(message);
+        }else if (message_type=='warning'){
+            show_warning_message(message);
+        }else if (message_type=='error'){
+            show_error_message(message);
+        }else if (message_type=='information'){
+            show_information_message(message);
+        }else {
+            show_alert_message(message);
+        }        
+    console.log("OK");
+    }else{console.log("NO");}
+    
+});
