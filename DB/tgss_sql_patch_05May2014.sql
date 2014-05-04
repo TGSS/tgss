@@ -114,3 +114,6 @@ ALTER TABLE `letterheads` CHANGE `card_id` `card_id` VARCHAR( 30 ) CHARACTER SET
 ALTER TABLE `letterheads` CHANGE `Color` `color` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
 ALTER TABLE `letterheads` CHANGE `Quantity` `quantity` INT( 11 ) NOT NULL ;
 ALTER TABLE `letterheads` CHANGE `Price` `price` DECIMAL( 10, 2 ) NOT NULL ;
+
+RENAME TABLE `tgss`.`visitingcard_orderdetails` TO `tgss`.`visitingcards_orderdetails` ;
+RENAME TABLE `tgss`.`letterhead_orderdetails` TO `tgss`.`letterheads_orderdetails` ;

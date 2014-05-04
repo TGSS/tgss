@@ -8,19 +8,16 @@ class Orders_model extends CI_Model {
         $this->load->database();
     }
 
-    public function save_order() {
+    public function save_order($user_id, $shoppingcart_data) {
 
-        //Function call to get "vistingcard" data to be ordered
-        $visitingcard_data=$this->get_visitingcards();
-        
         $this->db->trans_begin();
         //************************************************************************************************************************
         //"orders" table insert
         $order_data = array(
             'order_ref_no' => $this->get_new_order_ref_no(),
             'order_date' => time(), //saving "timestamp" for the "orders"
-            'user_id' => 1,
-            'total' => 300
+            'user_id' => $user_id,
+            'total' => $shoppingcart_data['total']
         );
 
         $continue = $this->db->insert('orders', $order_data);
@@ -29,7 +26,15 @@ class Orders_model extends CI_Model {
             $order_id = $this->db->insert_id();
         }
         //************************************************************************************************************************
-        
+        //save to "visitingcards_orderdetails" table
+        if ($continue) {
+            $continue=$this->insert_order_details($shoppingcart_data, $order_id, "visitingcards");
+        }
+        //************************************************************************************************************************
+        //save to "letterheads_orderdetails" table
+        if ($continue) {
+            $continue=$this->insert_order_details($shoppingcart_data, $order_id, "letterheads");
+        }       
         //************************************************************************************************************************
 //        if ($continue) {
 //            $user_id = $this->db->insert_id();
@@ -77,7 +82,33 @@ class Orders_model extends CI_Model {
 
         return $new_order_ref_no;
     }
+
+    private function insert_order_details($shoppingcart_data, $order_id, $cardtype) {
+        //If array doesn't have the card information, return "true" to keep the transaction going
+        if (!array_key_exists($cardtype, $shoppingcart_data['card_data'])) {
+            return true;
+        }
+
+        $continue = true;
+
+        foreach ($shoppingcart_data['card_data'][$cardtype] as $key => $value) {
+            $data = array(
+                'order_id' => $order_id,
+                'card_id' => $value['card_id'],
+                'quantity' => $value['quantity'],
+                'price' => $value['price'],
+                'total' => $value['total'],
+            );
+
+            $continue = $this->db->insert($cardtype . '_orderdetails', $data);
+
+            if ($continue == false) {
+                break;
+            }
+        }
         
+        return $continue;
+    }
 
 }
 

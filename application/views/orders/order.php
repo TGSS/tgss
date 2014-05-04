@@ -20,7 +20,7 @@
 
             <?php
             $attributes = array('class' => 'form-horizontal', 'id' => 'order', 'name' => 'order');
-            echo form_open('orders/order', $attributes);
+            echo form_open('orders/order_submit', $attributes);
             ?>
 
             <div class="tgss-product-price">
