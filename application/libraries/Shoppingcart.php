@@ -20,7 +20,8 @@ class Shoppingcart {
         
         $shoppingcart_data['visitingcards']=$this->get_card_data('visitingcards');
         $shoppingcart_data['letterheads']=$this->get_card_data('letterheads');
-        var_dump($shoppingcart_data);exit();
+        //var_dump($shoppingcart_data);exit();
+        return $shoppingcart_data;
     }
     
 //    public function get_total() {

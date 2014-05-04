@@ -9,11 +9,15 @@ class Cards extends CI_Controller {
     public function index()
     {
         $card_id = $this->input->post('card_id');
-        $vistingcard = array($card_id);
-        $card = array('vistingcard' => $vistingcard, 'letterheads' => $letterheads);
-        $this->session->set_userdata('card',$card);
-        $data['card_id'] = $card_id;
-        $data['temlate'] = "cards/show";
+        $shoppingcart = $this->session->userdata('shoppingcart');
+        array_push($shoppingcart['visitingcards'], array('card_id'=>$card_id));
+        $this->session->set_userdata('shoppingcart',$shoppingcart);
+    }
+
+    public function show()
+    {
+        $data['cart'] = $this->shoppingcart->get_shoppingcart();
+        $data['template'] = "cards/show";
         $this->load->view('template', $data);
     }
 }

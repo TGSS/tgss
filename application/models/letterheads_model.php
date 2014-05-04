@@ -30,7 +30,7 @@ class Letterheads_model extends CI_Model {
 
     public function get_items($id = null) {
         if (!isset($id)) {
-            $query = $this->db->get('letterhead');
+            $query = $this->db->get('letterheads');
             return $query->result_array();
         }
 
@@ -39,22 +39,29 @@ class Letterheads_model extends CI_Model {
     }
     
     public function get_letterhead_quality(){
-        $query = $this->db->query("SELECT DISTINCT card_quality,card_quality_display FROM letterhead ORDER BY card_quality");
+        $query = $this->db->query("SELECT DISTINCT card_quality,card_quality_display FROM letterheads ORDER BY card_quality");
         return $query->result_array();
     }
 
     public function get_letterhead_color(){
-        $query = $this->db->query("SELECT DISTINCT color FROM letterhead ORDER BY color");
+        $query = $this->db->query("SELECT DISTINCT color FROM letterheads ORDER BY color");
         return $query->result_array();
     }
     
     public function get_letterhead_quantity(){
-        $query = $this->db->query("SELECT DISTINCT quantity FROM letterhead ORDER BY quantity");
+        $query = $this->db->query("SELECT DISTINCT quantity FROM letterheads ORDER BY quantity");
         return $query->result_array();
     }
     
     public function get_letterhead_price($card_quality,$color,$quantity){
-        $sql="SELECT price FROM letterhead WHERE color='" . $color . "' " .
+        $sql="SELECT price FROM letterheads WHERE color='" . $color . "' " .
+                "AND quantity=" . $quantity;
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function get_letterheads_total_price($color,$quantity){
+        $sql="SELECT card_id,price FROM visitingcards WHERE  color='" . $color . "' " .
                 "AND quantity=" . $quantity;
         $query = $this->db->query($sql);
         return $query->result_array();
