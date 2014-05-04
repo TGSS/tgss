@@ -3,8 +3,7 @@
 class Users extends CI_Controller {
 
     public function __construct() {
-        parent::__construct();
-       
+        parent::__construct();       
     }
 
     public function index(){
@@ -35,7 +34,7 @@ class Users extends CI_Controller {
                 redirect('users');    //redirect to home page
             }
         }
-        $data['temlate'] = "users/login";
+        $data['template'] = "users/login";
         $this->load->view('template', $data);
     }
 
@@ -47,12 +46,13 @@ class Users extends CI_Controller {
         }
         
         $data['countries']=$this->users_model->get_country();
-        $data['temlate'] = "users/register";
+        $data['timezones']=$this->users_model->get_timezones();
+        $data['template'] = "users/register";
         $this->load->view('template', $data);
     }
 
     public function login(){
-        $data['temlate'] = "users/login";
+        $data['template'] = "users/login";
         $this->load->view('template', $data);
     }
     
@@ -62,11 +62,11 @@ class Users extends CI_Controller {
         $user_data=$this->users_model->get_user_by_username($username);
         
         if (empty($user_data)){
-            return responseSuccess(array(
+            return $this->ajax_handler->responseSuccess(array(
                 'is_username_exist'=>false
             ));
         }else{
-            return responseSuccess(array(
+            return $this->ajax_handler->responseSuccess(array(
                 'is_username_exist'=>true
             ));
         }

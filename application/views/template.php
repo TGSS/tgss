@@ -154,7 +154,7 @@
                     </div>
                     <div class="body_wrapper_body">
                         <!-- Template Content Start -->
-                        <?php $this->load->view($temlate); ?>
+                        <?php $this->load->view($template); ?>
                         <!-- Template Content End -->
                     </div>
                     <div class="body_wrapper_bottom"></div>

@@ -94,8 +94,14 @@
             dataType: "json",
             cache:false,
             success: function(result){ 
-                $('#price_display').html(result.price);
-                $('#total_display').html(result.total);
+                if (result.success==true){
+                    $('#price_display').html(result.data.price);
+                    $('#total_display').html(result.data.total);
+                }else{
+                    $('#price_display').html("");
+                    $('#total_display').html("");
+                }
+                
             },
             error: function(error){
                 console.log(error);
