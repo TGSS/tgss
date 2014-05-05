@@ -30,7 +30,7 @@
                     foreach ($cart as $carttype=>$cartvalue) {
                         foreach ($cartvalue as $data) {
                             echo "<tr>";
-                            echo "<td>" . $i . "</td>";
+                            echo "<td>" . $i . ".</td>";
                             if(isset($data['card_quality_display']))
                             {
                                 echo "<td>" . $carttype . " [ " . $data['card_quality_display'] . " ]</td>";

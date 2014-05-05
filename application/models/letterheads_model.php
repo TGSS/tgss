@@ -61,7 +61,7 @@ class Letterheads_model extends CI_Model {
     }
 
     public function get_letterheads_total_price($color,$quantity){
-        $sql="SELECT card_id,price FROM visitingcards WHERE  color='" . $color . "' " .
+        $sql="SELECT card_id,price FROM letterheads WHERE  color='" . $color . "' " .
                 "AND quantity=" . $quantity;
         $query = $this->db->query($sql);
         return $query->result_array();

@@ -20,6 +20,35 @@ class Cards extends CI_Controller {
         $data['template'] = "cards/show";
         $this->load->view('template', $data);
     }
+
+    public function visitingcards()
+    {
+        $card_id = $this->input->post('card_id');
+        $this->addcards('visitingcards',$card_id);
+    }
+
+    public function letterheads()
+    {
+        $card_id = $this->input->post('card_id');
+        $this->addcards('letterheads',$card_id);
+    }
+
+    public function addcards($type,$id)
+    {
+
+        $card = $this->session->userdata('shoppingcart');
+        $shopping_data = array(
+            'card_id' => $id
+        );
+        array_push($card[$type], $shopping_data);
+        $this->session->set_userdata('shoppingcart',$card);
+        $this->show();
+    }
+
+    public function clear()
+    {
+        $this->session->unset_userdata('shoppingcart');
+    }
 }
 
 ?>
