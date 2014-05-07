@@ -60,14 +60,15 @@ class Letterheads extends CI_Controller {
         $this->load->view('template', $data);
     }
     
-    public function get_total_price($card_quality,$color,$quantity){
+    public function get_total_price($color,$quantity){
         
-        $data=$this->letterheads_model->get_letterhead_price($card_quality,$color,$quantity);
+        $data=$this->letterheads_model->get_letterheads_total_price($color,$quantity);
         $total=$data[0]['price']*$quantity;
         
+        $result['card_id']=$data[0]['card_id'];
         $result['price']=$data[0]['price'];
         $result['total']=$total;
-        echo json_encode($result);exit();
+        return $this->ajax_handler->responseSuccess($result);
     }
 }
 

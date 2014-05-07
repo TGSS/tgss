@@ -5,6 +5,7 @@ class Visitingcards extends CI_Controller {
     public function __construct() {
         parent::__construct();
         //$this->load->library('session');
+        //$this->load->library('ajax_handler');
         $this->load->model('visitingcards_model');
     }
 
@@ -69,7 +70,7 @@ class Visitingcards extends CI_Controller {
         $result['price']=$data[0]['price'];
         $result['total']=$total;
         //echo json_encode($result);exit();
-        return responseSuccess($result);
+        return $this->ajax_handler->responseSuccess($result);
     }
        
 }

@@ -67,16 +67,16 @@
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">City</div>
+                <div class="col-sm-3 control-label">City :</div>
                 <div class="col-sm-4">
                     <input class="form-control" type="text" id="city" name="city" value="">   
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-sm-3 control-label">Country</div>
+                <div class="col-sm-3 control-label">Country :</div>
                 <div class="col-sm-4">
-                    <select id="country" name="country" class="form-controls calculation-item chosen-select">
+                    <select id="country" name="country" class="form-controls chosen-select">
                     <?php foreach ($countries as $key => $value) { ?>
                             <option value="<?php echo $value['country']; ?>"><?php echo $value['country']; ?></option>
                     <?php } ?>
@@ -84,6 +84,17 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="col-sm-3 control-label">Timezone :</div>
+                <div class="col-sm-8">
+                    <select id="timezone" name="timezone" class="form-controls chosen-select">
+                    <?php foreach ($timezones as $key => $value) { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                    <?php } ?>
+                    </select>    
+                </div>
+            </div>
+            
             <div class="form-group">
                 <div class="col-sm-3 control-label">Post Code:</div>
                 <div class="col-sm-4">

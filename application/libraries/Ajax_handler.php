@@ -1,7 +1,8 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 
-if ( ! function_exists('responseSend')){
-    function responseSend($arr = array(), $options = array()) {
+class Ajax_handler {
+
+    public function responseSend($arr = array(), $options = array()) {
 
         //Merge default settings
 //        $options = Hash::merge(array(
@@ -35,38 +36,33 @@ if ( ! function_exists('responseSend')){
         //$this->response->body($body);
         $CI->output->set_output($body);
     }
-}
 
-if ( ! function_exists('responseSuccess')){
-    function responseSuccess($msg = 'success') {
+    public function responseSuccess($msg = 'success') {
         if (is_array($msg)) {
-            responseSend(array_merge(array(
+            $this->responseSend(array_merge(array(
                         'success' => true
                             ), array(
                         'data' => $msg
                     )));
         } else if (is_bool($msg)) {
-            responseSend(array(
+            $this->responseSend(array(
                 'success' => $msg
             ));
         } else {
-            responseSend(array(
+            $this->responseSend(array(
                 'success' => true,
                 'msg' => $msg
             ));
         }
     }
-}
 
-if ( ! function_exists('responseFail')){
-    function responseFail($msg = 'failure', $code = 200) {
-        responseSend(array(
+    public function responseFail($msg = 'failure', $code = 200) {
+        $this->responseSend(array(
             'success' => false,
             'msg' => $msg
                 ), array(
             'code' => $code
         ));
     }
+    
 }
-        
-?>
