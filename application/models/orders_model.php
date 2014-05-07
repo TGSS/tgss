@@ -91,7 +91,7 @@ class Orders_model extends CI_Model {
 
         $continue = true;
 
-        foreach ($shoppingcart_data['card_data'][$cardtype] as $key => $value) {
+        foreach ($shoppingcart_data[$cardtype] as $key => $value) {
             $data = array(
                 'order_id' => $order_id,
                 'card_id' => $value['card_id'],

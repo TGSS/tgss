@@ -9,9 +9,8 @@ class Orders extends CI_Controller {
     }
 
     public function order(){
-        $shoppingcart_data=$this->shoppingcart->get_shoppingcart();
-                
-        $data['total']=$shoppingcart_data['total'];
+        //$shoppingcart_data=$this->shoppingcart->get_shoppingcart();        
+        $data['total']=$this->shoppingcart->get_total();
         $data['countries']=$this->users_model->get_country();
         $data['template'] = "orders/order";
         $this->load->view('template', $data);
