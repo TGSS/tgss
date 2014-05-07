@@ -2,7 +2,7 @@
 
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
-        <div class="body_wrapper_body_wrapper_top_left">
+        <div class="body_wrapper_body_wrapper_top_left" style="540px;">
             <div class="tgss-product-heading">Visiting Cards</div>
             
             <div class="tgss-product-title">
@@ -13,7 +13,11 @@
             <?php $this->load->view("visitingcards/visitingcard-form"); ?>
         </div>
 
-        <?php $this->load->view("templates/why-choose-tgss"); ?>
-        
+        <?php //$this->load->view("templates/why-choose-tgss"); ?>
+        <div class="body_wrapper_body_wrapper_top_right" style="background: none; margin-left: -10px;">
+            <?php $this->load->view("samples/gallery.php"); ?>
+            <div id="clr"></div>
+        </div>
+        <div id="clr"></div>
     </div>
 </div>

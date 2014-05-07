@@ -14,8 +14,13 @@
 | path to your installation.
 |
 */
+<<<<<<< HEAD
 
 $config['base_url']	= 'http://tgss.tgssprinting.com/';
+=======
+$config['base_url']	= 'http://local.tgss.com/';
+
+>>>>>>> staging
 
 /*
 |--------------------------------------------------------------------------

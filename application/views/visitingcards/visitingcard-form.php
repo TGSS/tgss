@@ -1,6 +1,6 @@
 <?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'visitingcards', 'name' => 'visitingcards');
-echo form_open('visitingcards/index', $attributes);
+echo form_open('cards/visitingcards', $attributes);
 ?>
 
 <div class="form-group">

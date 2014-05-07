@@ -3,43 +3,43 @@ class tgss extends CI_Controller {
 
 	public function index()
 	{
-		$data['temlate'] = "home";
+		$data['template'] = "home";
 		$this->load->view('template', $data);
 	}
 	
 	function configure_product()
 	{
-		$data['temlate'] = "configure_product";
+		$data['template'] = "configure_product";
 		$this->load->view('template', $data);
 	}
 	
 	function login_register()
 	{
-		$data['temlate'] = "login_register";
+		$data['template'] = "login_register";
 		$this->load->view('template', $data);
 	}
 
         function about_us()
         {
-                $data['temlate'] = "about_us";
+                $data['template'] = "about_us";
                 $this->load->view('template', $data);
         }
 
         function delivery()
         {
-                $data['temlate'] = "delivery";
+                $data['template'] = "delivery";
                 $this->load->view('template', $data);
         }
 
         function faq()
         {
-                $data['temlate'] = "faq";
+                $data['template'] = "faq";
                 $this->load->view('template', $data);
         }
 
         function VC()
         {
-                $data['temlate'] = "vc";
+                $data['template'] = "vc";
                 $this->load->view('template', $data);
         }
 
@@ -60,7 +60,7 @@ class tgss extends CI_Controller {
 
         function LH()
         {
-                $data['temlate'] = "lh";
+                $data['template'] = "lh";
                 $this->load->view('template', $data);
         }
 

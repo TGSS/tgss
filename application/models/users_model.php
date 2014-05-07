@@ -35,6 +35,7 @@ class Users_model extends CI_Model {
                 'address2' => $this->input->post('address2'),
                 'city' => $this->input->post('city'),
                 'country' => $this->input->post('country'),
+                'timezone' => $this->input->post('timezone'),
                 'postcode' => $this->input->post('postcode'),
                 'phoneno' => $this->input->post('phoneno'),
                 'mobileno' => $this->input->post('mobileno'),
@@ -54,6 +55,11 @@ class Users_model extends CI_Model {
 
     public function get_country() {
         $query = $this->db->query("SELECT * FROM countries ORDER BY `country`");
+        return $query->result_array();
+    }
+    
+    public function get_timezones() {
+        $query = $this->db->query("SELECT * FROM timezones ORDER BY `id`");
         return $query->result_array();
     }
     
