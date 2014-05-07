@@ -35,14 +35,21 @@ class Cards extends CI_Controller {
 
     public function addcards($type,$id)
     {
-
         $card = $this->session->userdata('shoppingcart');
-        $shopping_data = array(
-            'card_id' => $id
-        );
-        array_push($card[$type], $shopping_data);
-        $this->session->set_userdata('shoppingcart',$card);
-        $this->show();
+        if ($card) {
+            echo "Session Have";
+        }
+        else 
+        {
+            echo "Session Havn't";
+        }
+        var_dump($card); exit;
+        // $shopping_data = array(
+        //     'card_id' => $id
+        // );
+        // array_push($card[$type], $shopping_data);
+        // $this->session->set_userdata('shoppingcart',$card);
+        // $this->show();
     }
 
     public function clear()
