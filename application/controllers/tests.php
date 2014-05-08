@@ -7,12 +7,9 @@ class Tests extends CI_Controller {
         $this->load->library('shoppingcart');
     }
 
-    public function test01(){
-        $this->shoppingcart->get_shoppingcart();
-        //$data=$this->orders_model->save_order();
-        exit();
-    }
-   
+    public function test01() {
+//        SSP::test();
+    }   
 }
 
 ?>
