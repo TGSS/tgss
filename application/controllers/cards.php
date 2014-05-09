@@ -38,11 +38,34 @@ class Cards extends CI_Controller {
         $card = $this->session->userdata('shoppingcart');
         if ($card) {
             echo "Session Have";
+            if($card[$type])
+            {
+                echo $type . "Have"; //exit;
+                $shopping_data = array(
+                    'card_id' => $id
+                );
+                array_push($card[$type], $shopping_data);
+                $this->session->set_userdata('shoppingcart',$card);
+            }
+            else
+            {
+                echo $type . "Havn't"; //exit;
+                $card[$type][] = array(
+                    'card_id' => $id
+                );
+                //array_push($card, $shopping_data);
+                $this->session->set_userdata('shoppingcart',$card);
+            }
         }
         else 
         {
             echo "Session Havn't";
+            $shopping_data[$type][] = array(
+                'card_id' => $id
+            );
+            $this->session->set_userdata('shoppingcart',$shopping_data);
         }
+        $card = $this->session->userdata('shoppingcart');
         var_dump($card); exit;
         // $shopping_data = array(
         //     'card_id' => $id
@@ -55,6 +78,16 @@ class Cards extends CI_Controller {
     public function clear()
     {
         $this->session->unset_userdata('shoppingcart');
+        if(!$this->session->userdata('shoppingcart'))
+        {
+            echo "Session Cleared";
+            echo $this->session->userdata('shoppingcart');
+        }
+        else
+        {
+            echo "Session Can't Clear";
+            echo $this->session->userdata('shoppingcart');
+        }
     }
 }
 
