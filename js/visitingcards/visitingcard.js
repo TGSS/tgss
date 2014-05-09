@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".chosen-select").chosen({
-        width: "300px"
+        width: "250px"
     });
         
     get_total_price();
