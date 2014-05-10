@@ -48,8 +48,8 @@ body{margin:0 auto;padding:0;}
     float: left;
     .tgss-product-heading
     {
-        background:transparent url('../images/product_config_header_bg.jpg') left top no-repeat;
-        width: 544px;
+        background:transparent url('../images/product_config_header_bg.jpg') center no-repeat;
+        width: 100%;
         height: 57px;
         text-align: center;
         padding-top: 3px;
@@ -263,3 +263,95 @@ body{margin:0 auto;padding:0;}
     margin-bottom: 0px;
 }
 /*** "form" end ***/
+
+.item_left
+{
+    float: left;
+    padding: 10px 30px;
+}
+
+.item_right
+{
+    overflow: hidden;
+    zoom: 1;
+    padding: 0 30px;
+    border-left: 1px dotted #cec893;
+    .tgss-product-heading
+    {
+        //background:transparent url('../images/product_config_header_bg.jpg') center no-repeat;
+        width: 100%;
+        // height: 57px;
+        text-align: center;
+        padding-top: 3px;
+        font-family: Britannic;
+        font-size: 26px;
+        color: blue;
+    }
+    .tgss-product-title
+    {
+        background: url(../images/dotted_why_choose.png) bottom repeat-x; 
+        padding: 5px 0 15px 0;
+        margin-bottom: 20px;      
+        .tgss-product-title-left
+        {
+            float: left;
+            width: 30%;
+            text-align: right;
+            font-family: Britannic;
+            font-size: 18px;
+            color: #5e5e5e;
+            padding-top: 5px;
+        }
+        .tgss-product-title-right
+        {
+            overflow: hidden;
+            padding: 0 5px;
+            font-family: Britannic;
+            font-size: 24px;
+            color: #196aba;
+        }
+    }
+    .tgss-product-bottom
+    {
+        background: url(../images/dotted_why_choose.png) top repeat-x; 
+        padding-top: 20px;
+    }
+    .tgss-product-price
+    {
+        background:transparent url('../images/product_price.jpg') left top no-repeat;
+        width: 133px;
+        height: 86px;
+        float: left;
+        margin-left: 100px;
+        .control-label
+        {
+            display: none;
+        }
+        .form-control-static
+        {
+            width: 133px;
+            text-align: center;
+            font-family: Britannic;
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+            padding-top: 30px;
+        }
+    }
+    .tgss-product-next
+    {
+        overflow: hidden;
+        padding: 20px 0 0 20px;
+        .col-sm-offset-3
+        {
+            margin-left: 0px !important;
+        }
+        button
+        {
+            background:transparent url('../images/product_next_btn.png') left top no-repeat;
+            width: 89px;
+            height: 36px;
+            border: none;
+        }
+    }
+}

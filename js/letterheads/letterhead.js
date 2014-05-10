@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".chosen-select").chosen({
-        width: "250px"
+        width: "300px"
     });
         
     get_total_price();
@@ -16,7 +16,7 @@ function get_total_price(){
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: base_url + "index.php/visitingcards/get_total_price/" + card_quality + "/" + color + "/"  + quantity,
+        url: "index.php/letterheads/get_total_price/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,
