@@ -27,6 +27,7 @@
                         </div>
                     </div>
                 </div> -->
+        <input type="hidden" id="total" name="total" class="controls" value="<?php echo $total; ?>"/>
         <?php $this->load->view("orders/billing_form"); ?>
         <?php $this->load->view("orders/delivery_form"); ?>
         

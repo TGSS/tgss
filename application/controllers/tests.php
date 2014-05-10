@@ -8,7 +8,7 @@ class Tests extends CI_Controller {
     }
 
     public function test01() {
-//        SSP::test();
+        var_dump($this->db);
     }   
 }
 

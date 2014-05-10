@@ -1,15 +1,15 @@
 <div class="body_wrapper_body_wrapper_top_left">
-    <div class="tgss-product-heading">Order</div> 
+    <div class="tgss-product-heading">Billing</div> 
     
     <div class="form-group">
-        <div class="col-sm-3 control-label">First Name :</div>
+        <div class="col-sm-3 control-label">Billing First Name :</div>
         <div class="col-sm-7">
             <input class="form-control" type="text" id="billing_firstname" name="billing_firstname" value="">   
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-sm-3 control-label">Last Name :</div>
+        <div class="col-sm-3 control-label">Billing Last Name :</div>
         <div class="col-sm-7">
             <input class="form-control" type="text" id="billing_lastname" name="billing_lastname" value="">   
         </div>

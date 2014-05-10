@@ -4,6 +4,20 @@
     <div class="body_wrapper_body_wrapper_top_right_body">
 
         <div class="form-group">
+            <div class="col-sm-3 control-label">Delivery First Name :</div>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" id="delivery_firstname" name="delivery_firstname" value="">   
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-3 control-label">Delivery Last Name :</div>
+            <div class="col-sm-7">
+                <input class="form-control" type="text" id="delivery_lastname" name="delivery_lastname" value="">   
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-sm-3 control-label">Address Line 1:</div>
             <div class="col-sm-8">
                 <textarea class="form-control" id="delivery_address1" name="delivery_address1" rows="3"></textarea>        

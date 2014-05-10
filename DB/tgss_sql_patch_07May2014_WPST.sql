@@ -21,6 +21,8 @@ ROW_FORMAT=Compact
 CREATE TABLE `delivery_addresses` (
 `delivery_address_id`  int(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
 `order_id`  int(11) UNSIGNED NOT NULL ,
+`firstname`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
+`lastname`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `address1`  text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `address2`  text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
 `city`  varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,

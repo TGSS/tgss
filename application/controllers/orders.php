@@ -19,7 +19,8 @@ class Orders extends CI_Controller {
     public function order_submit(){
         $user_data=$this->session->userdata('user');
         $shoppingcart_data=$this->shoppingcart->get_shoppingcart();
-        $statusOK=$this->orders_model->save_order($user_data['user_id'],$shoppingcart_data);
+        $total=$this->shoppingcart->get_total();
+        $statusOK=$this->orders_model->save_order($user_data['user_id'],$shoppingcart_data,$total);
         
         if ($statusOK==true){
             $this->session->set_flashdata('success_message','Order is successfully made.');

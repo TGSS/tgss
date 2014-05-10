@@ -23,7 +23,15 @@ function order_click(){
 
 function validate_user_input(){
     $("#order").validate({
-        rules: {        
+        rules: {  
+            delivery_firstname: 
+            {
+                required: true
+            },
+            delivery_lastname: 
+            {
+                required: true
+            },
             delivery_address1: 
             {
                 required: true
@@ -64,12 +72,14 @@ function validate_user_input(){
         },
         //set messages to appear inline
         messages: 
-        {                       
-            delivery_address1: "Please delivery enter address.",
+        {        
+            delivery_firstname: "Please enter delivery first name.",
+            delivery_lastname: "Please enter delivery last name.",
+            delivery_address1: "Please enter delivery address.",
             delivery_city: "Please enter delivery city.",  
             delivery_postcode: "Please enter delivery postcode.",  
-            billing_firstname: "Please enter first name.",
-            billing_lastname: "Please enter last name.",
+            billing_firstname: "Please enter billing first name.",
+            billing_lastname: "Please enter billing last name.",
             billing_email: {
                 required:"Please enter email.",
                 email:"Please enter correct email address."
