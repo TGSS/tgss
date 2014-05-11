@@ -12,11 +12,15 @@
         <base href="<?php echo base_url(); ?>">
 
         <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/font-awesome.css">
+        <!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">-->
+        
         <link href="<?php echo base_url(); ?>css/chosen.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/custom-style.css">
 
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
+<!--        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.validate.min.js"></script>
         <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                

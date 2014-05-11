@@ -42,7 +42,5 @@ $(document).ready(function(){
         }else {
             show_alert_message(message);
         }        
-    console.log("OK");
-    }else{console.log("NO");}
-    
+    }    
 });
