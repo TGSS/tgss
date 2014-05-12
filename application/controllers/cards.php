@@ -23,8 +23,9 @@ class Cards extends CI_Controller {
 
     public function visitingcards()
     {
-        $card_id = $this->input->post('card_id');
-        $this->addcards('visitingcards',$card_id);
+        echo $_POST['card_quality'];
+        // $card_id = $this->input->post('card_id');
+        // $this->addcards('visitingcards',$card_id);
     }
 
     public function letterheads()
@@ -38,7 +39,7 @@ class Cards extends CI_Controller {
         $card = $this->session->userdata('shoppingcart');
         if ($card) {
             echo "Session Have";
-            if($card[$type])
+            if(isset($card[$type]))
             {
                 echo $type . "Have"; //exit;
                 $shopping_data = array(
@@ -88,6 +89,12 @@ class Cards extends CI_Controller {
             echo "Session Can't Clear";
             echo $this->session->userdata('shoppingcart');
         }
+    }
+
+    public function test()
+    {
+        $type = "Test asd";
+        echo $type;
     }
 }
 
