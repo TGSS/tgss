@@ -9,12 +9,12 @@ $(document).ready(function(){
         get_total_price();
     });
 
-    var card_quality = $('#card_quality_chosen a span').html();
-    $("#card_quality").change(function() {
-        card_quality = $('#card_quality_chosen a span').html();
-        $('#card_quality_hidden').val(card_quality);
+    var card_type = $('#card_type_chosen a span').html();
+    $("#card_type").change(function() {
+        card_type = $('#card_type_chosen a span').html();
+        $('#card_type_hidden').val(card_type);
     });
-    $('#card_quality_hidden').val(card_quality);
+    $('#card_type_hidden').val(card_type);
 
     var color = $('#color_chosen a span').html();
     $("#color").change(function() {
@@ -32,27 +32,24 @@ $(document).ready(function(){
 }); 
 
 function get_total_price(){
-    var card_quality=$('#card_quality').val();
+    var card_type=$('#card_type').val();
     var color=$('#color').val();
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: base_url + "index.php/visitingcards/get_total_price/" + card_quality + "/" + color + "/"  + quantity,
+        url: base_url + "index.php/visitingcards/get_total_price/" + card_type + "/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,
         success: function(result){ 
             if (result.success==true){
                 $('#card_id').val(result.data.card_id);
-                $('table tr td').removeClass("selected");
-                $('#' + result.data.card_id).addClass("selected");
                 $('#price_display').html(result.data.price);
                 $('#total_display').html(result.data.total);
                 $('#price').val(result.data.price);
                 $('#total_hidden').val(result.data.total);
             }else{
                 $('#card_id').val('');
-                $('table tr td').removeClass("selected");
                 $('#price_display').html(0);
                 $('#total_display').html(0);
                 $('#price').val(0);

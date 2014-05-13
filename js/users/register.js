@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#country").chosen({
-        width: "300px"
+        width: "100%"
     });
 
     $("#timezone").chosen({
@@ -91,10 +91,6 @@ function validate_user_input(){
             {
                 required: true
             },
-            postcode: 
-            {
-                required: true
-            },
             phoneno: 
             {
                 required: true
@@ -118,7 +114,6 @@ function validate_user_input(){
             },                        
             address1: "Please enter address.",
             city: "Please enter city.",  
-            postcode: "Please enter postcode.", 
             phoneno: "Please enter phone no.",              
         }
     });

@@ -53,7 +53,7 @@ class Visitingcards extends CI_Controller {
     public function select(){
         $this->load->helper('form');
         
-        $data['card_quality']=$this->visitingcards_model->get_visitingcards_quality();
+        $data['card_type']=$this->visitingcards_model->get_visitingcards_quality();
         $data['color']=$this->visitingcards_model->get_visitingcards_color();
         $data['quantity']=$this->visitingcards_model->get_visitingcards_quantity();
         
@@ -61,9 +61,9 @@ class Visitingcards extends CI_Controller {
         $this->load->view('template', $data);
     }
     
-    public function get_total_price($card_quality,$color,$quantity){
+    public function get_total_price($card_type,$color,$quantity){
         
-        $data=$this->visitingcards_model->get_visitingcards_total_price($card_quality,$color,$quantity);
+        $data=$this->visitingcards_model->get_visitingcards_total_price($card_type,$color,$quantity);
         $total=$data[0]['price']*$quantity;
         
         $result['card_id']=$data[0]['card_id'];

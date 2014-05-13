@@ -50,7 +50,7 @@
 									<ul id="all_product_1">
 										<li><a href="Brochures">Brochures</a></li>
 										<li><a href="Flyers">Flyers</a></li>
-										<li><a href="Letterheads">Letterheads</a></li>
+										<li><a href="<?php echo base_url();?>index.php/letterheads/select">Letterheads</a></li>
 										<li><a href="Envelops">Envelops</a></li>
 										<li><a href="Certificates">Certificates</a></li>
 										<li><a href="Compliment Slips">Compliment Slips</a></li>
@@ -94,7 +94,7 @@
 									<ul id="all_product_1">
 										<li><a href="Note Pads/ Desk Pads">Note Pads/ Desk Pads</a></li>
 										<ul id="all_product_2">
-											<li><a href="Greeting Cards">Greeting Cards</a></li>
+											<li><a href="<?php echo base_url();?>index.php/visitingcards/select">Greeting Cards</a></li>
 											<li><a href="Post Cards">Post Cards</a></li>
 											<li><a href="Invitation Cards">Invitation Cards</a></li>
 											<ul id="all_product_3">

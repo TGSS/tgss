@@ -30,7 +30,7 @@ class Visitingcards_model extends CI_Model {
 
     public function get_visitingcards($id = null) {
         if (!isset($id)) {
-            $query = $this->db->query("SELECT * FROM visitingcards ORDER BY card_quality,color,quantity");
+            $query = $this->db->query("SELECT * FROM visitingcards ORDER BY card_type,color,quantity");
             return $query->result_array();
         }
 
@@ -39,7 +39,7 @@ class Visitingcards_model extends CI_Model {
     }
     
     public function get_visitingcards_quality(){
-        $query = $this->db->query("SELECT DISTINCT card_quality,card_quality_display FROM visitingcards ORDER BY card_quality");
+        $query = $this->db->query("SELECT DISTINCT card_type,card_type_display FROM visitingcards ORDER BY card_type");
         return $query->result_array();
     }
 
@@ -53,8 +53,8 @@ class Visitingcards_model extends CI_Model {
         return $query->result_array();
     }
     
-    public function get_visitingcards_total_price($card_quality,$color,$quantity){
-        $sql="SELECT card_id,price FROM visitingcards WHERE card_quality='" . $card_quality . "' " .
+    public function get_visitingcards_total_price($card_type,$color,$quantity){
+        $sql="SELECT card_id,price FROM visitingcards WHERE card_type='" . $card_type . "' " .
                 "AND color='" . $color . "' " .
                 "AND quantity=" . $quantity;
         $query = $this->db->query($sql);

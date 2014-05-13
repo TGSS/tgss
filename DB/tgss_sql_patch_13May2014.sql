@@ -37,19 +37,7 @@ DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
 ROW_FORMAT=Compact
 ;
 
-CREATE TABLE `letterheads_orderdetails` (
-`id`  int(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
-`order_id`  int(11) UNSIGNED NOT NULL ,
-`card_id`  varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
-`quantity`  int(11) NOT NULL ,
-`price`  decimal(10,2) NOT NULL ,
-`total`  decimal(10,2) NOT NULL ,
-PRIMARY KEY (`id`)
-)
-ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
-ROW_FORMAT=Compact
-;
+DROP TABLE `v/c`;
 
 CREATE TABLE `orders` (
 `order_id`  int(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -64,22 +52,12 @@ DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
 ROW_FORMAT=Compact
 ;
 
-CREATE TABLE `visitingcards_orderdetails` (
-`id`  int(11) UNSIGNED NOT NULL AUTO_INCREMENT ,
-`order_id`  int(11) UNSIGNED NOT NULL ,
-`card_id`  varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ,
-`quantity`  int(11) NOT NULL ,
-`price`  decimal(10,2) NOT NULL ,
-`total`  decimal(10,2) NOT NULL ,
-PRIMARY KEY (`id`)
-)
-ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
-ROW_FORMAT=Compact
-;
+RENAME TABLE `tgss`.`letterhead_orderdetails` TO `tgss`.`letterheads_orderdetails` ;
 
-DROP TABLE IF EXISTS `letterhead_orderdetails`;
+RENAME TABLE `tgss`.`visitingcard_orderdetails` TO `tgss`.`visitingcards_orderdetails` ;
 
-DROP TABLE IF EXISTS `v/c`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `orders_view` AS select `orders`.`order_id` AS `order_id`,`orders`.`order_ref_no` AS `order_ref_no`,`orders`.`order_date` AS `order_date`,`orders`.`user_id` AS `user_id`,`users`.`username` AS `username`,`profiles`.`firstname` AS `firstname`,`profiles`.`lastname` AS `lastname`,`orders`.`total` AS `total` from ((`orders` join `users` on((`orders`.`user_id` = `users`.`user_id`))) join `profiles` on((`orders`.`user_id` = `profiles`.`user_id`))) order by `orders`.`order_date`;
 
-DROP TABLE IF EXISTS `visitingcard_orderdetails`;
+ALTER TABLE `visitingcards` CHANGE `card_quality` `card_type` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;
+
+ALTER TABLE `visitingcards` CHANGE `card_quality_display` `card_type_display` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL ;

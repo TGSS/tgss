@@ -19,35 +19,35 @@
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Email:</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="username" name="username" value="">   
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">First Name :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="firstname" name="firstname" value="">   
                 </div>
             </div>          
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Last Name :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="lastname" name="lastname" value="">   
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Password :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="password" id="password" name="password" value="">   
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Confirm-Password :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="password" id="confirm_password" name="confirm_password" value="">   
                 </div>
             </div>
@@ -68,14 +68,14 @@
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">City :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="city" name="city" value="">   
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Country :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <select id="country" name="country" class="form-controls chosen-select">
                     <?php foreach ($countries as $key => $value) { ?>
                             <option value="<?php echo $value['country']; ?>"><?php echo $value['country']; ?></option>
@@ -97,21 +97,21 @@
             
             <div class="form-group">
                 <div class="col-sm-3 control-label">Post Code:</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="postcode" name="postcode" value="">   
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Phone No :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="phoneno" name="phoneno" value="">   
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Mobile No :</div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
                     <input class="form-control" type="text" id="mobileno" name="mobileno" value="">   
                 </div>
             </div>

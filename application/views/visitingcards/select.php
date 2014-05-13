@@ -10,10 +10,10 @@
         <div class="item_right">
             <div class="tgss-product-heading">Visiting Cards</div>
             
-            <div class="tgss-product-title">
+<!--            <div class="tgss-product-title">
                 <div class="tgss-product-title-left">Your Product:</div>
                 <div class="tgss-product-title-right">Opening Ceremony Cards</div>
-            </div>
+            </div>-->
             <?php $this->load->view("visitingcards/visitingcard-form"); ?>
         </div>
         <div id="clr"></div>
