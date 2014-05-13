@@ -46,7 +46,7 @@ class SSP {
                 } else if ($column['db']=='order_id'){
                     //Modified to add link for "Action" Column
                     $order_id=$data[$i][$columns[$j]['db']];
-                    $custom_text='<a class="btn btn-primary" href="order-details.php?' . $order_id . '"><i class="fa fa-ellipsis-h"></i></button>';
+                    $custom_text='<a class="btn btn-primary" href="' . base_url() . 'index.php/orders/details/' . $order_id . '"><i class="fa fa-ellipsis-h"></i></button>';
                     $row[$column['dt']]=$custom_text;
                 }else {
                     $row[$column['dt']] = $data[$i][$columns[$j]['db']];

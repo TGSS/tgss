@@ -9,7 +9,7 @@ class Orders_model extends CI_Model {
     }
 
     public function get_order_by_order_id($order_id){
-        $query = $this->db->query("SELECT * FROM `orders` WHERE order_id=" . $order_id);
+        $query = $this->db->query("SELECT * FROM `orders_view` WHERE order_id=" . $order_id);
         return $query->row_array();
     }
     
@@ -100,7 +100,7 @@ class Orders_model extends CI_Model {
 
     private function insert_order_details($shoppingcart_data, $order_id, $cardtype) {
         //If array doesn't have the card information, return "true" to keep the transaction going
-        if (!array_key_exists($cardtype, $shoppingcart_data['card_data'])) {
+        if (!array_key_exists($cardtype, $shoppingcart_data)) {
             return true;
         }
 

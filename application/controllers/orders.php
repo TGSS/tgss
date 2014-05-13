@@ -8,6 +8,7 @@ class Orders extends CI_Controller {
         parent::__construct();
         $this->load->library('shoppingcart');        
         $this->load->model('orders_model');
+        $this->load->model('orderdetails_model');
     }
 
     public function order() {
@@ -39,7 +40,10 @@ class Orders extends CI_Controller {
     }
 
     public function details($order_id) {
-        $data['order']=$this->orders_model->get_order_by_order_id($order_id);                
+        $data['orders']=$this->orders_model->get_order_by_order_id($order_id);    
+        $data['visitingcards_orderdetails']=$this->orderdetails_model->get_visitingcards_by_order_id($order_id);
+        //$data['letterheads_orderdetails']=$this->orderdetails_model->get_letterheads_by_order_id($order_id);
+        
         $data['template'] = "orders/order-details";
         $this->load->view('template', $data);
     }
