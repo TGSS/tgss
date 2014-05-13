@@ -16,6 +16,10 @@
         <div class="body_wrapper_body_wrapper_top_left">
             <div class="tgss-product-heading">Cards</div>
 
+            <?php
+                //echo "<pre>"; print_r($cart);
+            ?>
+
             <table width="100%" style="margin-top: 20px;">
                 <tr>
                     <td width="10%;">Qty</td>
@@ -24,22 +28,25 @@
                     <td width="10%;">Price</td>
                 </tr>
                 <?php
-                    $shoppingcart = $this->session->userdata('shoppingcart');
-                    $i = 1;
-                    $nettotal = 0;
-                    foreach ($cart as $carttype=>$cartvalue) {
+                    foreach ($cart as $cart_type => $cart_data) {
                         echo "<tr>";
-                        echo "<td colspan=4>" . $carttype . "</td>";
+                            echo "<td colspan=4>" . $cart_type ."</td>";
                         echo "</tr>";
-                        foreach ($cartvalue as $data) {
-                            echo "<tr>";
-                            echo "<td>" . $data['quantity'] . "</td>";
-                            echo "<td>" . $data['card_quality_display'] . "</td>";
-                            echo "<td>EDIT / DELETE</td>";
-                            echo "<td>" . $data['total'] . "</td>";
-                            $i++;
+                        foreach ($cart_data as $cart_data_index => $cart_datas) {
+                            $table = "<tr>";
+                            $table .= "<td>" . $cart_datas['quantity'] . "</td>";
+                            $table .= "<td>";
+                            //$table .= foreach($cart_datas['card_data'] as $cart_desc){$cart_desc;};
+                            foreach($cart_datas['card_data'] as $key=>$val){ 
+                                $table .= $val . "<br>";
+                            };
+                            $table .= "</td>";
+                            $table .= "<td>Edit / Delete</td>";
+                            $table .= "<td>" . $cart_datas['total'] . "</td>";
+                            $table .= "</tr>";
+
+                            echo $table;
                         }
-                        $nettotal += $data['total'];
                     }
                 ?>
             </table>

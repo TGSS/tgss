@@ -26,8 +26,10 @@
             </div>
 
             <input type="hidden" id="price" name="price" class="controls" value=""/>
-            <input type="hidden" id="total" name="total" class="controls" value=""/>
+            <input type="hidden" id="total_hidden" name="total_hidden" class="controls" value=""/>
             <input type="hidden" id="card_id" name="card_id" class="controls" value=""/>
+            <input type="hidden" id="color_hidden" name="color_hidden" class="controls" value=""/>
+            <input type="hidden" id="quantity_hidden" name="quantity_hidden" class="controls" value=""/>
             
             <div class="tgss-product-bottom">
                 <div class="tgss-product-price">
