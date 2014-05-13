@@ -8,6 +8,11 @@ class Orders_model extends CI_Model {
         $this->load->database();
     }
 
+    public function get_order_by_order_id($order_id){
+        $query = $this->db->query("SELECT * FROM `orders` WHERE order_id=" . $order_id);
+        return $query->row_array();
+    }
+    
     public function save_order($user_id, $shoppingcart_data,$total) {
 
         $this->db->trans_begin();

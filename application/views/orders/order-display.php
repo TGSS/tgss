@@ -45,7 +45,7 @@
     }
 
     .chosen-container-single .chosen-single div b {
-        background-position-y: 6px;
+        background-position-y: 6px !important;
     }
 </style>
 
@@ -99,8 +99,10 @@
                             <div class="col-sm-3">
                                 <select id="searchby" name="searchby" class="form-control chosen-select">
                                     <option value="order_ref_no">Order Ref No</option>
-                                    <!--                        <option value="username">User Name</option>
-                                                            <option value="total">Total</option>-->
+                                    <option value="username">User Name</option>
+                                    <option value="firstname">First Name</option>
+                                    <option value="lastname">Last Name</option>
+                                                            <!-- <option value="total">Total</option>-->
                                 </select>
                             </div>
                             <div class="col-sm-3">
@@ -129,7 +131,9 @@
                     <tr>
                         <th>Order Ref No</th>
                         <th>Date</th>
-                        <th>User</th>
+                        <th>User Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Total</th>
                         <th>Action</th>
                     </tr>
@@ -138,7 +142,9 @@
                     <tr>
                         <th>Order Ref No</th>
                         <th>Date</th>
-                        <th>User</th>
+                        <th>User Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Total</th>
                         <th>Action</th>
                     </tr>

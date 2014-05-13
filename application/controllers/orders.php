@@ -38,9 +38,15 @@ class Orders extends CI_Controller {
         $this->load->view('template', $data);
     }
 
+    public function details($order_id) {
+        $data['order']=$this->orders_model->get_order_by_order_id($order_id);                
+        $data['template'] = "orders/order-details";
+        $this->load->view('template', $data);
+    }
+    
     public function load_table_data() {
         // DB table to use
-        $table = 'orders';
+        $table = 'orders_view';
 
         // Table's primary key
         $primaryKey = 'order_id';
@@ -60,23 +66,25 @@ class Orders extends CI_Controller {
                     return gmdate('d-M-Y', $d + $timezone_offset_in_milliseconds);
                 }
             ),
-            array('db' => 'user_id', 'dt' => 2),
+            array('db' => 'username', 'dt' => 2),
+            array('db' => 'firstname', 'dt' => 3),
+            array('db' => 'lastname', 'dt' => 4),
             array(
                 'db' => 'total',
-                'dt' => 3,
+                'dt' => 5,
                 'formatter' => function( $d, $row ) {
                     return number_format($d);
                 }
             ),
-            array('db' => 'order_id', 'dt' => 4),
+            array('db' => 'order_id', 'dt' => 6),
         );
-
+            
         // SQL server connection information
         $sql_details = array(
-            'user' => 'root',
-            'pass' => '',
-            'db' => 'tgss',
-            'host' => 'localhost'
+            'user' =>$this->db->username,
+            'pass' => $this->db->password,
+            'db' => $this->db->database,
+            'host' => $this->db->hostname
         );
 
 

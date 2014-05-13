@@ -14,7 +14,7 @@ class Samples extends CI_Controller {
     
     public function set_session(){
         $user_data=array(
-            'user_id'=>1,
+            'user_id'=>25,
             'username'=>'a@gmail.com'
         );
         

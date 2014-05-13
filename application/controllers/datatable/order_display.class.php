@@ -43,7 +43,7 @@ class SSP {
                 // Is there a formatter?
                 if (isset($column['formatter'])) {
                     $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
-                } else if ($column['dt']==4){
+                } else if ($column['db']=='order_id'){
                     //Modified to add link for "Action" Column
                     $order_id=$data[$i][$columns[$j]['db']];
                     $custom_text='<a class="btn btn-primary" href="order-details.php?' . $order_id . '"><i class="fa fa-ellipsis-h"></i></button>';
@@ -170,15 +170,22 @@ class SSP {
 
         //****************************************************************************************************************
         if (isset($_POST['customfilter'])) {
-            $columnSearch[] = "`" . $_POST['searchby'] . "` LIKE " . $_POST['searchkey'];
+            if ($_POST['searchby']=='order_ref_no'){
+                $columnSearch[] = "`" . $_POST['searchby'] . "` LIKE " . $_POST['searchkey'];
+            }else{
+                $columnSearch[] = "`" . $_POST['searchby'] . "` LIKE '%" . $_POST['searchkey'] . "%'";
+            }
+            
         }
 
         if (isset($_POST['datefilter'])) {
             $from_date=$_POST['from_date'];
+            $from_date.=" 00:00:00";
             $from_date_TS=SSP::getGMT_TS($from_date);
             $from_date_TS-=(6.5*3600);
             
             $to_date=$_POST['to_date'];
+            $to_date.=" 23:59:59";
             $to_date_TS=SSP::getGMT_TS($to_date);
             $to_date_TS-=(6.5*3600);
             $columnSearch[] = "`order_date` >=" . $from_date_TS . " AND `order_date` <=" . $to_date_TS;
@@ -399,7 +406,6 @@ class SSP {
         if ($stringValue == null) {
             $TS = time();
         } else {
-            $stringValue.=" 00:00:00";
             $TS = strtotime($stringValue . ' UTC');
             //$TS=time();
         }
