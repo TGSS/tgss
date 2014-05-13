@@ -15,55 +15,41 @@
     <div class="body_wrapper_body_wrapper_top">
         <div class="body_wrapper_body_wrapper_top_left">
             <div class="tgss-product-heading">Cards</div>
-			<table width="100%" style="margin-top: 20px;">
+
+            <?php
+                //echo "<pre>"; print_r($cart);
+            ?>
+
+            <table width="100%" style="margin-top: 20px;">
                 <tr>
-                    <td width="1%">No.</td>
-                    <td width="59%">card_quality_display</td>
-                    <td width="10%">color</td>
-                    <td width="10%">quantity</td>
-                    <td width="20%" class="last">total</td>
+                    <td width="10%;">Qty</td>
+                    <td width="30%">Product Description</td>
+                    <td width="50%">Uploaded Design</td>
+                    <td width="10%;">Price</td>
                 </tr>
                 <?php
-                    $shoppingcart = $this->session->userdata('shoppingcart');
-                    $i = 1;
-                    $nettotal = 0;
-                    foreach ($cart as $carttype=>$cartvalue) {
-                        foreach ($cartvalue as $data) {
-                            echo "<tr>";
-                            echo "<td>" . $i . ".</td>";
-                            if(isset($data['card_quality_display']))
-                            {
-                                echo "<td>" . $carttype . " [ " . $data['card_quality_display'] . " ]</td>";
-                            }
-                            else
-                            {
-                                echo "<td>" . $carttype . "</td>";
-                            }
-                            echo "<td>" . $data['color'] . "</td>";
-                            echo "<td>" . $data['quantity'] . "</td>";
-                            echo "<td>" . $data['total'] . "</td>";
-                            echo "<tr>";
-                            $i++;
+                    foreach ($cart as $cart_type => $cart_data) {
+                        echo "<tr>";
+                            echo "<td colspan=4>" . $cart_type ."</td>";
+                        echo "</tr>";
+                        foreach ($cart_data as $cart_data_index => $cart_datas) {
+                            $table = "<tr>";
+                            $table .= "<td>" . $cart_datas['quantity'] . "</td>";
+                            $table .= "<td>";
+                            //$table .= foreach($cart_datas['card_data'] as $cart_desc){$cart_desc;};
+                            foreach($cart_datas['card_data'] as $key=>$val){ 
+                                $table .= $val . "<br>";
+                            };
+                            $table .= "</td>";
+                            $table .= "<td>Edit / Delete</td>";
+                            $table .= "<td>" . $cart_datas['total'] . "</td>";
+                            $table .= "</tr>";
+
+                            echo $table;
                         }
-                        $nettotal += $data['total'];
                     }
                 ?>
-                <!--tr style="background: #fffdf2;">
-                    <td>1.</td>
-                    <td>Art Card</td>
-                    <td>1C</td>
-                    <td>600</td>
-                    <td class="last">7800.00</td>
-                </tr>
-                <tr style="background: #f1f8ff;">
-                    <td>1.</td>
-                    <td>Art Card</td>
-                    <td>1C</td>
-                    <td>600</td>
-                    <td class="last">7800.00</td>
-                </tr-->       
             </table>
-            <?php echo $nettotal; ?>
         </div>        
     </div>
 </div>
