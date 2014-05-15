@@ -38,8 +38,8 @@
     margin-top:6px;
 }
 
-.form-horizontal input{
-    padding:0px !important;
+.form-horizontal input.form-control{
+    padding:0px 12px !important;
     height:28px;
 }
 

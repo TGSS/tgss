@@ -12,6 +12,17 @@ class Samples extends CI_Controller {
         $this->load->view('template', $data);
     }    
     
+    public function get_session(){
+        var_dump($this->session->userdata('shoppingcart'));
+        var_dump($this->shoppingcart->get_total());
+        exit();
+    }
+    
+    public function clear_session(){
+        $this->session->unset_userdata('user');
+        $this->session->unset_userdata('shoppingcart');
+    }
+    
     public function set_session(){
         $user_data=array(
             'user_id'=>25,

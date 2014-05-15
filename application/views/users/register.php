@@ -55,16 +55,16 @@
             <div class="form-group">
                 <div class="col-sm-3 control-label">Address Line 1:</div>
                 <div class="col-sm-8">
-                    <input class="form-control" type="text" id="address1" name="address1" value="">   
+                    <textarea class="form-control" id="address1" name="address1" rows="3"></textarea>        
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">Address Line 2:</div>
                 <div class="col-sm-8">
-                    <input class="form-control" type="text" id="address2" name="address2" value="">   
+                    <textarea class="form-control" id="address2" name="address2" rows="3"></textarea>        
                 </div>
-            </div>
+            </div>                        
 
             <div class="form-group">
                 <div class="col-sm-3 control-label">City :</div>
@@ -77,9 +77,9 @@
                 <div class="col-sm-3 control-label">Country :</div>
                 <div class="col-sm-8">
                     <select id="country" name="country" class="form-controls chosen-select">
-                    <?php foreach ($countries as $key => $value) { ?>
+                        <?php foreach ($countries as $key => $value) { ?>
                             <option value="<?php echo $value['country']; ?>"><?php echo $value['country']; ?></option>
-                    <?php } ?>
+                        <?php } ?>
                     </select>    
                 </div>
             </div>
@@ -88,13 +88,13 @@
                 <div class="col-sm-3 control-label">Timezone :</div>
                 <div class="col-sm-8">
                     <select id="timezone" name="timezone" class="form-controls chosen-select">
-                    <?php foreach ($timezones as $key => $value) { ?>
+                        <?php foreach ($timezones as $key => $value) { ?>
                             <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
-                    <?php } ?>
+                        <?php } ?>
                     </select>    
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="col-sm-3 control-label">Post Code:</div>
                 <div class="col-sm-8">
