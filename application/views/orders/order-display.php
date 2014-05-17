@@ -89,16 +89,6 @@
                                     <input type="checkbox" id="chk_datefilter" name="chk_datefilter" value="">
                                 </label>
                             </div>
-                            <script type="text/javascript">
-                                $(function () {
-                                    $('#from_date').datetimepicker({
-                                        pickTime: false
-                                    });
-                                    $('#to_date').datetimepicker({
-                                        pickTime: false
-                                    });
-                                });
-                            </script>
                         </div>
                     </div>
                     <div class="col-sm-12">
@@ -161,9 +151,3 @@
         <div id="clr"></div>
     </div>
 </div>
-
-
-
-<script>
-    
-</script>

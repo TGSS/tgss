@@ -25,6 +25,8 @@ $(document).ready(function() {
             }
         }
     } );
+    
+    table.fnSort( [ [1,'desc'], [0,'asc']  ] );
         
     // Event listener to the two range filtering inputs to redraw on input
     $('#btn-search').click( function() {
@@ -47,8 +49,15 @@ $(document).ready(function() {
     $(".chosen-select").chosen({
         width: "220px"
     });
-        
-            
+
+                              
+    $('#from_date').datetimepicker({
+        pickTime: false
+    });
+    $('#to_date').datetimepicker({
+        pickTime: false
+    });
+                                        
     $('#from_date').data("DateTimePicker").setDate(moment().subtract('days', 1).format('D-MMM-YYYY'));
     $('#to_date').data("DateTimePicker").setDate(moment().add('days', 30).format('D-MMM-YYYY'));       
 } );
