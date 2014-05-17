@@ -5,7 +5,6 @@
     <table id="visitingcards_orderdetails" class="table table-striped">
     <thead>
         <tr>
-            <th>Card ID</th>
             <th>Description</th>
             <th>Color</th>
             <th>Quantity</th>
@@ -16,8 +15,7 @@
     <tbody>
         <?php foreach ($visitingcards_orderdetails as $key => $value) { ?>
             <tr>
-                <td><?php echo $value['card_id']; ?></td>
-                <td><?php echo $value['card_quality_display']; ?></td>
+                <td><?php echo $value['card_type_display']; ?></td>
                 <td><?php echo $value['color']; ?></td>
                 <td><?php echo $value['quantity']; ?></td>
                 <td><?php echo $value['price']; ?></td>

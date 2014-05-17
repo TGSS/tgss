@@ -1,7 +1,5 @@
 <?php
 
-include_once 'datatable/order_display.class.php';
-
 class Orders extends CI_Controller {
 
     public function __construct() {
@@ -42,13 +40,14 @@ class Orders extends CI_Controller {
     public function details($order_id) {
         $data['orders']=$this->orders_model->get_order_by_order_id($order_id);    
         $data['visitingcards_orderdetails']=$this->orderdetails_model->get_visitingcards_by_order_id($order_id);
-        //$data['letterheads_orderdetails']=$this->orderdetails_model->get_letterheads_by_order_id($order_id);
+        $data['letterheads_orderdetails']=$this->orderdetails_model->get_letterheads_by_order_id($order_id);
         
         $data['template'] = "orders/order-details";
         $this->load->view('template', $data);
     }
     
-    public function load_table_data() {
+    public function load_order_table_data() {
+        include_once 'datatable/order_display.class.php';
         // DB table to use
         $table = 'orders_view';
 
@@ -66,7 +65,6 @@ class Orders extends CI_Controller {
                 'dt' => 1,
                 'formatter' => function( $d, $row ) {
                     $timezone_offset_in_milliseconds = 6.5 * 3600;
-                    //$timezone_offset_in_milliseconds=0;
                     return gmdate('d-M-Y', $d + $timezone_offset_in_milliseconds);
                 }
             ),

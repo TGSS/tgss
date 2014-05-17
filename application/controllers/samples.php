@@ -19,7 +19,7 @@ class Samples extends CI_Controller {
     }
     
     public function clear_session(){
-        $this->session->unset_userdata('user');
+        //$this->session->unset_userdata('user');
         $this->session->unset_userdata('shoppingcart');
     }
     

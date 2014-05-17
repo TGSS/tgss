@@ -24,17 +24,16 @@ class Cards extends CI_Controller {
 
     public function visitingcards()
     {
-        $card_quality_hidden = $this->input->post('card_quality_hidden');
+        $card_type_hidden = $this->input->post('card_type_hidden');
         $color_hidden = $this->input->post('color_hidden');
-        $card_data = array($card_quality_hidden,$color_hidden,);
+        $card_data = array($card_type_hidden,$color_hidden,);
 
         $quantity = $this->input->post('quantity_hidden');
-
+        $price=$this->input->post('price_hidden');
         $total = $this->input->post('total_hidden');
-
         $card_id = $this->input->post('card_id');
 
-        $this->addcards('visitingcards',$card_id, $quantity, $card_data, $total);
+        $this->addcards('visitingcards',$card_id, $quantity, $price,$card_data, $total);
     }
 
     public function letterheads()
@@ -43,14 +42,14 @@ class Cards extends CI_Controller {
         $card_data = array($color_hidden);
 
         $quantity = $this->input->post('quantity_hidden'); 
-
+        $price=$this->input->post('price_hidden');
         $total = $this->input->post('total_hidden');       
 
         $card_id = $this->input->post('card_id');
-        $this->addcards('letterheads',$card_id, $quantity, $card_data, $total);
+        $this->addcards('letterheads',$card_id, $quantity,$price, $card_data, $total);
     }
 
-    public function addcards($type,$card_id, $quantity, $card_data, $total)
+    public function addcards($type,$card_id, $quantity, $price,$card_data, $total)
     {
         $card = $this->session->userdata('shoppingcart');
         if ($card) {
@@ -61,6 +60,7 @@ class Cards extends CI_Controller {
                 $shopping_data = array(
                     'card_id' => $card_id,
                     'quantity' => $quantity,
+                    'price' => $price,
                     'card_data' => $card_data,
                     'total' => $total
                 );
@@ -73,6 +73,7 @@ class Cards extends CI_Controller {
                 $card[$type][] = array(
                     'card_id' => $card_id,
                     'quantity' => $quantity,
+                    'price' => $price,
                     'card_data' => $card_data,
                     'total' => $total
                 );
@@ -86,13 +87,14 @@ class Cards extends CI_Controller {
             $shopping_data[$type][] = array(
                 'card_id' => $card_id,
                 'quantity' => $quantity,
+                'price' => $price,
                 'card_data' => $card_data,
                 'total' => $total
             );
             $this->session->set_userdata('shoppingcart',$shopping_data);
         }
         $card = $this->session->userdata('shoppingcart');
-        redirect('cards/show');
+        redirect('shoppingcart');
     }
 
     public function clear()

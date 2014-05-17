@@ -23,7 +23,7 @@ class Orderdetails_model extends CI_Model {
 
     public function get_letterheads_by_order_id($order_id){
         $sql="SELECT " .
-                "`letterheads_orderdetails`.*,`letterheads`.`card_type_display`,`visitingcards`.`color` " .
+                "`letterheads_orderdetails`.*,`letterheads`.`card_type_display`,`letterheads`.`color` " .
             "FROM `letterheads_orderdetails` " .
             "INNER JOIN `letterheads` " .
             "ON `letterheads_orderdetails`.`card_id`=`letterheads`.`card_id` " .

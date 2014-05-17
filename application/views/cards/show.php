@@ -50,7 +50,7 @@
                     }
                 ?>
             </table>
-            <a href="<?php echo base_url();?>index.php/orders/order" class="btn btn-primary">Order</a>
+            <a href="<?php echo base_url();?>orders" class="btn btn-primary">Order</a>
             <a href="#" class="btn btn-danger">Clear Shopping Cart</a>
         </div>        
     </div>

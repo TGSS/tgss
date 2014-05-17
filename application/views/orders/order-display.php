@@ -4,6 +4,7 @@
 <script src="<?php echo base_url(); ?>js/datatable/jquery.dataTables.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>js/moment.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>js/orders/order-display.js" type="text/javascript"></script>
 
 <style>
     .dataTables_wrapper{
@@ -37,15 +38,21 @@
 
     #searchkey{
         width:220px !important;
+        height:30px !important;
+        margin-top: 6px;
     }
 
     .chosen-container-single .chosen-single{
         padding: 4px 0 0 8px !important;
-        height: 33px !important;
+        height: 30px !important;
     }
 
     .chosen-container-single .chosen-single div b {
         background-position-y: 6px !important;
+    }
+    
+    #from_date_value,#to_date_value{
+        height:30px;
     }
 </style>
 
@@ -158,75 +165,5 @@
 
 
 <script>
-    var table;
-    /* Custom filtering function which will search data in column four between two values */
-    $.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var min = $('#min').val() * 1;
-        var max = $('#max').val() * 1;
-        var age = parseFloat( data[3] ) || 0; // use data for the age column
- 
-        if ( ( min == '' && max == '' ) ||
-            ( min == '' && age <= max ) ||
-            ( min <= age && '' == max ) ||
-            ( min <= age && age <= max ) )
-        {
-            return true;
-        }
-        return false;
-    }
-);
- 
-    $(document).ready(function() {
-        //table= $('#order-display').DataTable();
-     
-        table=$('#order-display').dataTable( {
-            "processing": true,
-            "serverSide": true,
-            "searching" : false,
-            "bLengthChange": false,
-            "ajax": {
-                "url":"<?php echo base_url(); ?>index.php/orders/load_table_data",
-                "type":"POST",
-                "data":function(d){
-                    if ($('#chk_customfilter').prop('checked')){
-                        d.customfilter=true;
-                        d.searchby=$('#searchby').val();
-                        d.searchkey=$('#searchkey').val();
-                    }   
-                    if ($('#chk_datefilter').prop('checked')){
-                        d.datefilter=true;
-                        d.from_date=$('#from_date_value').val();
-                        d.to_date=$('#to_date_value').val();
-                    } 
-                }
-            }
-        } );
-        
-        // Event listener to the two range filtering inputs to redraw on input
-        $('#btn-search').click( function() {
-            //table.draw();
-            table.fnDraw();
-            return false;
-        } );
-        
-        $('#btn-show-all').click( function() {
-            //Removing "filters"
-            $('#chk_customfilter').attr('checked', false); 
-            $('#chk_datefilter').attr('checked', false); 
-            $('#from_date').data("DateTimePicker").setDate(moment().subtract('days', 1).format('D-MMM-YYYY'));
-            $('#to_date').data("DateTimePicker").setDate(moment().add('days', 30).format('D-MMM-YYYY'));       
-            $('#searchkey').val("");
-            table.fnDraw();
-            return false;
-        } );
-        
-        $(".chosen-select").chosen({
-            width: "220px"
-        });
-        
-            
-        $('#from_date').data("DateTimePicker").setDate(moment().subtract('days', 1).format('D-MMM-YYYY'));
-        $('#to_date').data("DateTimePicker").setDate(moment().add('days', 30).format('D-MMM-YYYY'));       
-    } );
+    
 </script>

@@ -37,7 +37,7 @@ function get_total_price(){
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: base_url + "index.php/visitingcards/get_total_price/" + card_type + "/" + color + "/"  + quantity,
+        url: base_url + "visitingcards/get_total_price/" + card_type + "/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,
@@ -46,13 +46,13 @@ function get_total_price(){
                 $('#card_id').val(result.data.card_id);
                 $('#price_display').html(result.data.price);
                 $('#total_display').html(result.data.total);
-                $('#price').val(result.data.price);
+                $('#price_hidden').val(result.data.price);
                 $('#total_hidden').val(result.data.total);
             }else{
                 $('#card_id').val('');
                 $('#price_display').html(0);
                 $('#total_display').html(0);
-                $('#price').val(0);
+                $('#price_hidden').val(0);
                 $('#total_hidden').val(0);
             }
                 
