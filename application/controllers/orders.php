@@ -47,7 +47,9 @@ class Orders extends CI_Controller {
     }
     
     public function details($order_id) {
-        $data['orders']=$this->orders_model->get_order_by_order_id($order_id);    
+        $data['orders']=$this->orders_model->get_order_by_order_id($order_id);   
+        $data['billing_addresses']=$this->orderdetails_model->get_billing_address_by_order_id($order_id);   
+        $data['delivery_addresses']=$this->orderdetails_model->get_delivery_address_by_order_id($order_id);   
         $data['visitingcards_orderdetails']=$this->orderdetails_model->get_visitingcards_by_order_id($order_id);
         $data['letterheads_orderdetails']=$this->orderdetails_model->get_letterheads_by_order_id($order_id);
         

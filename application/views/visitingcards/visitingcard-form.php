@@ -4,7 +4,7 @@ echo form_open('cards/visitingcards', $attributes);
 ?>
 
 <div class="form-group">
-    <div class="col-sm-4 control-label">Card Quality</div>
+    <div class="col-sm-4 control-label">Card Quality :</div>
     <div class="col-sm-8">
         <select id="card_type" name="card_type" class="form-controls calculation-item chosen-select">
             <?php foreach ($card_type as $key => $value) { ?>
@@ -15,7 +15,7 @@ echo form_open('cards/visitingcards', $attributes);
 </div>
 
 <div class="form-group">
-    <div class="col-sm-4 control-label">Color</div>
+    <div class="col-sm-4 control-label">Color :</div>
     <div class="col-sm-8">
         <select id="color" name="color" class="form-controls calculation-item chosen-select">
             <?php foreach ($color as $key => $value) { ?>
@@ -26,7 +26,7 @@ echo form_open('cards/visitingcards', $attributes);
 </div>
 
 <div class="form-group">
-    <div class="col-sm-4 control-label">Quantity</div>
+    <div class="col-sm-4 control-label">Quantity :</div>
     <div class="col-sm-8">
         <select id="quantity" name="quantity" class="form-controls calculation-item chosen-select">
             <?php foreach ($quantity as $key => $value) { ?>
@@ -37,7 +37,7 @@ echo form_open('cards/visitingcards', $attributes);
 </div>
 
 <div class="form-group">
-    <label class="col-sm-4 control-label">Price/Card</label>
+    <label class="col-sm-4 control-label">Price/Card :</label>
     <div class="col-sm-8">
         <p class="form-control-static" id="price_display"></p>
     </div>

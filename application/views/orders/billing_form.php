@@ -62,15 +62,15 @@
 
 
 <div class="form-group">
-    <div class="col-sm-3 control-label">Phone No :</div>
-    <div class="col-sm-8">
+    <div class="col-sm-4 control-label">Phone No :</div>
+    <div class="col-sm-7">
         <input class="form-control" type="text" id="billing_phoneno" name="billing_phoneno" value="">   
     </div>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-3 control-label">Mobile No :</div>
-    <div class="col-sm-8">
+    <div class="col-sm-4 control-label">Mobile No :</div>
+    <div class="col-sm-7">
         <input class="form-control" type="text" id="billing_mobileno" name="billing_mobileno" value="">   
     </div>
 </div>
