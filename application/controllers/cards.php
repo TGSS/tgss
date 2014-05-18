@@ -112,10 +112,23 @@ class Cards extends CI_Controller {
         }
     }
 
-    public function test()
+    public function cart_delete($card_id)
     {
-        $type = "Test asd";
-        echo $type;
+        $cart = $this->session->userdata('shoppingcart');
+        //echo "<pre>"; print_r($cart);
+        foreach($cart as $key1=>$value1)
+        {
+            foreach($value1 as $key2=>$value2)
+            {
+                if($value2['card_id'] == $card_id)
+                {
+                    //echo $key2;
+                    unset( $cart[$key1][$key2] );
+                    $this->session->set_userdata('shoppingcart', $cart);
+                }
+            }
+        }
+        redirect('cards/show');
     }
 }
 

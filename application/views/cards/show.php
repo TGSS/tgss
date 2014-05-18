@@ -20,14 +20,15 @@
                 //echo "<pre>"; print_r($cart);
             ?>
 
-            <table width="100%" style="margin-top: 20px;">
+            <table width="100%" style="margin-top: 20px;" class="table table-striped">
                 <tr>
-                    <td width="10%;">Qty</td>
-                    <td width="30%">Product Description</td>
-                    <td width="50%">Uploaded Design</td>
-                    <td width="10%;">Price</td>
+                    <th width="10%;">Qty</th>
+                    <th width="30%">Product Description</th>
+                    <th width="50%">Uploaded Design</th>
+                    <th width="10%;">Price</th>
                 </tr>
                 <?php
+                    $net_total = 0;
                     foreach ($cart as $cart_type => $cart_data) {
                         echo "<tr>";
                             echo "<td colspan=4>" . $cart_type ."</td>";
@@ -41,14 +42,18 @@
                                 $table .= $val . "<br>";
                             };
                             $table .= "</td>";
-                            $table .= "<td>Edit / Delete</td>";
+                            $table .= "<td style='text-align: center;'><a href='index.php/cards/cart_delete/$cart_datas[card_id]'>Delete</a></td>";
                             $table .= "<td>" . $cart_datas['total'] . "</td>";
                             $table .= "</tr>";
 
                             echo $table;
+                            $net_total += $cart_datas['total'];
                         }
                     }
                 ?>
+                <tr>
+                    <td colspan="4" style="text-align: right; padding-right: 50px;">Net Total : <?php echo $net_total; ?></td>
+                </tr>
             </table>
             <a href="<?php echo base_url();?>orders" class="btn btn-primary">Order</a>
             <a href="#" class="btn btn-danger">Clear Shopping Cart</a>
