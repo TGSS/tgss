@@ -42,7 +42,7 @@
                                 $table .= $val . "<br>";
                             };
                             $table .= "</td>";
-                            $table .= "<td style='text-align: center;'><a href='".site_url('cards/cart_delete/$cart_datas['card_id']')."'>Delete</a></td>";
+                            $table .= "<td style='text-align: center;'><a href='index.php/cards/cart_delete/$cart_datas[card_id]'>Delete</a></td>";
                             $table .= "<td>" . $cart_datas['total'] . "</td>";
                             $table .= "</tr>";
 
