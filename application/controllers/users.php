@@ -76,6 +76,7 @@ class Users extends CI_Controller {
     public function logout()
     {
         $this->session->unset_userdata('user');
+        $this->shoppingcart->clear_shoppingcart();
         $this->session->set_flashdata('success_message','Logout Success');
         redirect('users');    //redirect to login page
 

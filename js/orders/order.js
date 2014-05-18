@@ -10,6 +10,14 @@ $(document).ready(function(){
     $('#submit').click(function(){
         return order_click();
     });
+    
+    $('#different_delivery_address').change(function(){
+        if ($(this).prop('checked')){
+            $('#delivery-form-wrapper').show(1000);
+        }else{
+            $('#delivery-form-wrapper').hide(1000);
+        }
+    });
 });
 
 function order_click(){
@@ -23,27 +31,7 @@ function order_click(){
 
 function validate_user_input(){
     $("#order").validate({
-        rules: {  
-            delivery_firstname: 
-            {
-                required: true
-            },
-            delivery_lastname: 
-            {
-                required: true
-            },
-            delivery_address1: 
-            {
-                required: true
-            },
-            delivery_city: 
-            {
-                required: true
-            },
-            delivery_postcode: 
-            {
-                required: true
-            },    
+        rules: {      
             billing_firstname: 
             {
                 required: true
@@ -64,20 +52,14 @@ function validate_user_input(){
             billing_city: 
             {
                 required: true
-            },
-            billing_postcode: 
-            {
-                required: true
             },   
+            billing_phoneno:{
+                required: true
+            }
         },
         //set messages to appear inline
         messages: 
-        {        
-            delivery_firstname: "Please enter delivery first name.",
-            delivery_lastname: "Please enter delivery last name.",
-            delivery_address1: "Please enter delivery address.",
-            delivery_city: "Please enter delivery city.",  
-            delivery_postcode: "Please enter delivery postcode.",  
+        {         
             billing_firstname: "Please enter billing first name.",
             billing_lastname: "Please enter billing last name.",
             billing_email: {
@@ -85,10 +67,43 @@ function validate_user_input(){
                 email:"Please enter correct email address."
             },
             billing_address1: "Please enter billing address.",
-            billing_city: "Please enter billing city.",  
-            billing_postcode: "Please enter billing postcode.", 
+            billing_city: "Please enter billing city.", 
+            billing_phoneno: "Please enter billing phone no."
         }
     });
+    
+    if ($('#different-delivery-address').prop('checked')){
+        $( "#delivery_firstname" ).rules( "add", {
+            required: true,
+            messages: {
+                required: "Please enter delivery first name."
+            }
+        });
+        $( "#delivery_lastname" ).rules( "add", {
+            required: true,
+            messages: {
+                required: "Please enter delivery last name."
+            }
+        });
+        $( "#delivery_address1" ).rules( "add", {
+            required: true,
+            messages: {
+                required: "Please enter delivery address."
+            }
+        });
+        $( "#delivery_city" ).rules( "add", {
+            required: true,
+            messages: {
+                required: "Please enter delivery city."
+            }
+        });
+        $( "#delivery_phoneno" ).rules( "add", {
+            required: true,
+            messages: {
+                required: "Please enter delivery phone no."
+            }
+        });
+    }
     
     if ($('#order').valid()){            
         return true;

@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Visiting Card</div>
+    <div class="panel-heading"><b>Visiting Card</b></div>
 
     <table id="visitingcards_orderdetails" class="table table-striped">
     <thead>

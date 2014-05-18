@@ -28,10 +28,38 @@
                     </div>
                 </div> -->
         <input type="hidden" id="total" name="total" class="controls" value="<?php echo $total; ?>"/>
-        <?php $this->load->view("orders/billing_form"); ?>
-        <?php $this->load->view("orders/delivery_form"); ?>
-        
-        <div id="clr"></div>
+
+        <div class="body_wrapper_body_wrapper_top_left">
+            <div id="billing-form-wrapper">
+                <?php $this->load->view("orders/billing_form"); ?>
+            </div>         
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="different_delivery_address" name="different_delivery_address" unchecked>Different Delivery Address
+                </label>
+            </div>
+            <div id="delivery-form-wrapper" style="display:none;">
+                <?php $this->load->view("orders/delivery_form"); ?>
+            </div>            
+            <div id="clr"></div>
+
+            <div class="tgss-product-bottom">
+                <div class="">    
+                    <div class="form-group last-form-row">
+                        <div class="col-sm-offset-3 col-sm-10">
+                            <button type="submit" id="submit" name="delivery_submit" class="btn btn-primary">Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <?php echo form_close(); ?>
+
+        <div class="body_wrapper_body_wrapper_top_right">   
+            <?php $this->load->view("templates/why-choose-tgss"); ?>
+        </div>
+
+        <div id="clr"></div>
     </div>
 </div>

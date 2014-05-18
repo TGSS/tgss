@@ -25,7 +25,8 @@ class Orders extends CI_Controller {
 
         if ($statusOK == true) {
             $this->session->set_flashdata('success_message', 'Order is successfully made.');
-            redirect('tgss/index');    //redirect to user login page
+            $this->shoppingcart->clear_shoppingcart();
+            redirect('my-order-display');    //redirect to user login page
         } else {
             $this->session->set_flashdata('error_message', 'Error occured when making order. Please try again later.');
             redirect('orders/order');
@@ -33,10 +34,18 @@ class Orders extends CI_Controller {
     }
 
     public function display() {
-        $data['template'] = "orders/order-display";
+        $data['template'] = "orders/order-display";        
         $this->load->view('template', $data);
     }
 
+    public function my_order_display() {
+        $user_data=$this->tgss_security->get_user_data();
+        
+        $data['template'] = "orders/my-order-display";
+        $data['user_id']=$user_data['user_id'];
+        $this->load->view('template', $data);
+    }
+    
     public function details($order_id) {
         $data['orders']=$this->orders_model->get_order_by_order_id($order_id);    
         $data['visitingcards_orderdetails']=$this->orderdetails_model->get_visitingcards_by_order_id($order_id);
@@ -100,6 +109,56 @@ class Orders extends CI_Controller {
         );
     }
 
+    public function load_my_order_table_data() {
+        include_once 'datatable/my_order_display.class.php';
+        // DB table to use
+        $table = 'orders_view';
+
+        // Table's primary key
+        $primaryKey = 'order_id';
+
+        // Array of database columns which should be read and sent back to DataTables.
+        // The `db` parameter represents the column name in the database, while the `dt`
+        // parameter represents the DataTables column identifier. In this case simple
+        // indexes
+        $columns = array(
+            array('db' => 'order_ref_no', 'dt' => 0),
+            array(
+                'db' => 'order_date',
+                'dt' => 1,
+                'formatter' => function( $d, $row ) {
+                    $timezone_offset_in_milliseconds = 6.5 * 3600;
+                    return gmdate('d-M-Y', $d + $timezone_offset_in_milliseconds);
+                }
+            ),
+            array(
+                'db' => 'total',
+                'dt' => 2,
+                'formatter' => function( $d, $row ) {
+                    return number_format($d);
+                }
+            ),
+            array('db' => 'order_id', 'dt' => 3),
+        );
+            
+        // SQL server connection information
+        $sql_details = array(
+            'user' =>$this->db->username,
+            'pass' => $this->db->password,
+            'db' => $this->db->database,
+            'host' => $this->db->hostname
+        );
+
+
+        /*         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         * If you just want to use the basic configuration for DataTables with PHP
+         * server-side, there is no need to edit below this line.
+         */
+
+        echo json_encode(
+                SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
+        );
+    }    
 }
 
 ?>

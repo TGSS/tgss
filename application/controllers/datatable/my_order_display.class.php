@@ -205,8 +205,12 @@ class SSP {
                     $where . ' AND ' . implode(' AND ', $columnSearch);
         }
 
+        $user_filter="`user_id`=" . $_POST['user_id'] . " ";
+        
         if ($where !== '') {
-            $where = 'WHERE ' . $where;
+            $where = 'WHERE ' . $where . ' AND ' . $user_filter;
+        }else{
+            $where = 'WHERE ' . $user_filter;
         }
 
         return $where;

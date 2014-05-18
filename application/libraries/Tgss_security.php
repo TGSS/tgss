@@ -8,6 +8,11 @@ class Tgss_security {
         $this->CI = & get_instance();
     }
     
+    public function get_user_data(){
+        $user_data=$this->CI->session->userdata('user');
+        return $user_data;
+    }
+    
     public function is_logged_in(){
         $user_data=$this->CI->session->userdata('user');
         
@@ -18,7 +23,7 @@ class Tgss_security {
         }
     }
     
-    public function is_admin(){
+    public function is_admin_logged_in(){
         if ($this->is_logged_in()==false){
             return false;
         }
@@ -32,7 +37,7 @@ class Tgss_security {
         }
     }    
     
-    public function is_customer(){
+    public function is_customer_logged_in(){
         if ($this->is_logged_in()==false){
             return false;
         }

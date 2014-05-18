@@ -51,6 +51,7 @@ $route['letterheads']="letterheads/select";
 //**************************************************************************************************************************
 $route['orders']="orders/order";
 $route['order-display']="orders/display";
+$route['my-order-display']="orders/my_order_display";
 $route['orderdetails/(:num)']="orders/details/$1";
 $route['shoppingcart']="cards/show";
 //**************************************************************************************************************************

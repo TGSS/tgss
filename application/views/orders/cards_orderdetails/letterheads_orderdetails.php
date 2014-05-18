@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">Letter Heads</div>
+    <div class="panel-heading"><b>Letter Heads</b></div>
 
     <table id="letterheads_orderdetails" class="table table-striped">
     <thead>

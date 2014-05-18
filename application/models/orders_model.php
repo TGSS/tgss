@@ -8,12 +8,12 @@ class Orders_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get_order_by_order_id($order_id){
+    public function get_order_by_order_id($order_id) {
         $query = $this->db->query("SELECT * FROM `orders_view` WHERE order_id=" . $order_id);
         return $query->row_array();
     }
-    
-    public function save_order($user_id, $shoppingcart_data,$total) {
+
+    public function save_order($user_id, $shoppingcart_data, $total) {
 
         $this->db->trans_begin();
         //************************************************************************************************************************
@@ -144,19 +144,40 @@ class Orders_model extends CI_Model {
     }
 
     private function insert_delivery_address($order_id) {
-        $data = array(
-            'order_id' => $order_id,            
-            'address1' => $this->input->post('delivery_address1'),
-            'address2' => $this->input->post('delivery_address2'),
-            'city' => $this->input->post('delivery_city'),
-            'country' => $this->input->post('delivery_country'),
-            'postcode' => $this->input->post('delivery_postcode'),
-            'phoneno' => $this->input->post('delivery_phoneno'),
-            'mobileno' => $this->input->post('delivery_mobileno'),
-        );
+
+        $data = array();
+
+        if (isset($_POST['different_delivery_address'])) {
+            $data = array(
+                'order_id' => $order_id,
+                'firstname' => $this->input->post('delivery_firstname'),
+                'lastname' => $this->input->post('delivery_lastname'),
+                'address1' => $this->input->post('delivery_address1'),
+                'address2' => $this->input->post('delivery_address2'),
+                'city' => $this->input->post('delivery_city'),
+                'country' => $this->input->post('delivery_country'),
+                'postcode' => $this->input->post('delivery_postcode'),
+                'phoneno' => $this->input->post('delivery_phoneno'),
+                'mobileno' => $this->input->post('delivery_mobileno'),
+            );
+        } else {
+            $data = array(
+                'order_id' => $order_id,
+                'firstname' => $this->input->post('billing_firstname'),
+                'lastname' => $this->input->post('billing_lastname'),
+                'address1' => $this->input->post('billing_address1'),
+                'address2' => $this->input->post('billing_address2'),
+                'city' => $this->input->post('billing_city'),
+                'country' => $this->input->post('billing_country'),
+                'postcode' => $this->input->post('billing_postcode'),
+                'phoneno' => $this->input->post('billing_phoneno'),
+                'mobileno' => $this->input->post('billing_mobileno'),
+            );
+        }
 
         return $this->db->insert('delivery_addresses', $data);
     }
+
 }
 
 ?>

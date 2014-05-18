@@ -10,9 +10,11 @@ $(document).ready(function() {
         "bLengthChange": false,
         "aaSorting": [[1,'desc'],[0,'asc']],
         "ajax": {
-            "url":base_url + "orders/load_order_table_data",
+            "url":base_url + "orders/load_my_order_table_data",
             "type":"POST",
             "data":function(d){
+                d.user_id=$("#user_id").val();
+                
                 if ($('#chk_customfilter').prop('checked')){
                     d.customfilter=true;
                     d.searchby=$('#searchby').val();
@@ -24,9 +26,10 @@ $(document).ready(function() {
                     d.to_date=$('#to_date_value').val();
                 } 
             }            
-        }
+        },
+        
     } );
-           
+        
     // Event listener to the two range filtering inputs to redraw on input
     $('#btn-search').click( function() {
         //table.draw();

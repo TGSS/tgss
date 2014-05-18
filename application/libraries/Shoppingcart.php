@@ -33,6 +33,9 @@ class Shoppingcart {
         return $total;
     }
     
+    public function clear_shoppingcart(){
+        $this->CI->session->unset_userdata('shoppingcart');
+    }
     /**
      * Function to provide complete card information to be ordered
      * Initially, the data are in the session.

@@ -4,7 +4,7 @@
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="item_left">
-            <?php $this->load->view("samples/gallery.php"); ?>
+            <?php $this->load->view("visitingcards/visitingcard-gallery.php"); ?>
             <div id="clr"></div>
         </div>
         <div class="item_right">
