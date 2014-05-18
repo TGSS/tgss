@@ -7,8 +7,8 @@ class Tests extends CI_Controller {
     }
 
     public function test01() {
-        var_dump($this->db);
-    }   
+        var_dump($this->tgss_security->is_admin());
+    }    
 }
 
 ?>

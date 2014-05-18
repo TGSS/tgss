@@ -55,6 +55,8 @@
                     <td colspan="4" style="text-align: right; padding-right: 50px;">Net Total : <?php echo $net_total; ?></td>
                 </tr>
             </table>
+            <a href="<?php echo base_url();?>orders" class="btn btn-primary">Order</a>
+            <a href="#" class="btn btn-danger">Clear Shopping Cart</a>
         </div>        
     </div>
 </div>

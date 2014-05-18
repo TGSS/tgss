@@ -6,7 +6,7 @@
 
         <?php $this->load->view("templates/why-choose-tgss"); ?>
 
-        <div class="table-wrapper">
+        <div class="table-wrapper clearfix">
             <?php $this->load->view("orders/order-details-table"); ?>
         </div>
                 

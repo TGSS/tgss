@@ -30,7 +30,7 @@ function get_total_price(){
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: "index.php/letterheads/get_total_price/" + color + "/"  + quantity,
+        url: base_url + "letterheads/get_total_price/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,
@@ -41,14 +41,14 @@ function get_total_price(){
                 $('#' + result.data.card_id).addClass("selected");
                 $('#price_display').html(result.data.price);
                 $('#total_display').html(result.data.total);
-                $('#price').val(result.data.price);
+                $('#price_hidden').val(result.data.price);
                 $('#total_hidden').val(result.data.total);
             }else{
                 $('#card_id').val('');
                 $('table tr td').removeClass("selected");
                 $('#price_display').html(0);
                 $('#total_display').html(0);
-                $('#price').val(0);
+                $('#price_hidden').val(0);
                 $('#total_hidden').val(0);
             }
                 
