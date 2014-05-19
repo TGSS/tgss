@@ -8,26 +8,14 @@ $(document).ready(function(){
     $('.calculation-item').change(function(){
         get_total_price();
     });
-
-    var card_type = $('#card_type_chosen a span').html();
-    $("#card_type").change(function() {
-        card_type = $('#card_type_chosen a span').html();
-        $('#card_type_hidden').val(card_type);
-    });
+    
+    var card_type=$("#card_type option:selected").text();    
     $('#card_type_hidden').val(card_type);
 
-    var color = $('#color_chosen a span').html();
-    $("#color").change(function() {
-        color = $('#color_chosen a span').html();
-        $('#color_hidden').val(color);
-    });
+    var color = $('#color option:selected').text();    
     $('#color_hidden').val(color);
 
-    var quantity = $('#quantity_chosen a span').html();
-    $("#quantity").change(function() {
-        quantity = $('#quantity_chosen a span').html();
-        $('#quantity_hidden').val(quantity);
-    });
+    var quantity = $('#quantity option:selected').text();    
     $('#quantity_hidden').val(quantity);
 }); 
 

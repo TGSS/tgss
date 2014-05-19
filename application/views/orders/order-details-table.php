@@ -1,7 +1,29 @@
-<?php if (!empty($visitingcards_orderdetails)) { 
-    $this->load->view("orders/cards_orderdetails/visitingcards_orderdetails",$visitingcards_orderdetails);
-} ?>
+<?php foreach ($orderdetails as $cardtype=>$carddata){ ?>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><b><?php echo $carddata['title']; ?></b></div>
 
-<?php if (!empty($letterheads_orderdetails)) { 
-    $this->load->view("orders/cards_orderdetails/letterheads_orderdetails",$letterheads_orderdetails);
-} ?>
+        <table id="<?php echo $cardtype; ?>_orderdetails" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Color</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($carddata['data'] as $key => $value) { ?>
+                <tr>
+                    <td><?php echo $value['card_type_display']; ?></td>
+                    <td><?php echo $value['color']; ?></td>
+                    <td><?php echo $value['quantity']; ?></td>
+                    <td><?php echo $value['price']; ?></td>
+                    <td><?php echo $value['total']; ?></td>
+                </tr>
+            <?php } ?>            
+        </tbody>
+    </table>
+    </div>
+<?php } ?>
