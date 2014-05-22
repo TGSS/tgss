@@ -3,17 +3,16 @@ $(document).ready(function(){
         width: "100%"
     });
 
-    $("#timezone").chosen({
+    $("#timezone_id").chosen({
         width: "100%"
     });
-    
-    //Auto Selecting "Myanmar" for "Country"
-    $("#country").val("Myanmar");
-    $("#country").trigger("chosen:updated");
-    
-    //Auto Selecting "Myanmar Time Zone""
-    $("#timezone").val(54);
-    $("#timezone").trigger("chosen:updated");
+//    //Auto Selecting "Myanmar" for "Country"
+//    $("#country").val("Myanmar");
+//    $("#country").trigger("chosen:updated");
+//    
+//    //Auto Selecting "Myanmar Time Zone""
+//    $("#timezone").val(54);
+//    $("#timezone").trigger("chosen:updated");
     
     $('#submit').click(function(){
         return register_click();
@@ -33,6 +32,7 @@ function register_click(){
         type: "POST",
         dataType: "json",
         data: {
+                user_id:$('#user_id').val(),
                 username:$('#username').val()
             },
         cache:false,
