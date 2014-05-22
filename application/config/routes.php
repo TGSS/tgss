@@ -40,11 +40,13 @@
 
 $route['default_controller'] = "tgss";
 $route['404_override'] = '';
-
+//**************************************************************************************************************************
+$route['index']="tgss/index";
 //**************************************************************************************************************************
 $route['login']="users/login";
 $route['logout']="users/logout";
 $route['register']="users/register";
+$route['account']="users/edit_profile";
 //**************************************************************************************************************************
 $route['visitingcards']="visitingcards/select";
 $route['letterheads']="letterheads/select";
