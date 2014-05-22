@@ -9,18 +9,10 @@ $(document).ready(function(){
         get_total_price();
     });
 
-    var color = $('#color_chosen a span').html();
-    $("#color").change(function() {
-        color = $('#color_chosen a span').html();
-        $('#color_hidden').val(color);
-    });
+    var color = $('#color option:selected').text();
     $('#color_hidden').val(color);
 
-    var quantity = $('#quantity_chosen a span').html();
-    $("#quantity").change(function() {
-        quantity = $('#quantity_chosen a span').html();
-        $('#quantity_hidden').val(quantity);
-    });
+    var quantity = $('#quantity option:selected').text();    
     $('#quantity_hidden').val(quantity);
 }); 
 
