@@ -10,7 +10,7 @@ $(document).ready(function() {
         "bLengthChange": false,
         "aaSorting": [[1,'desc'],[0,'asc']],
         "ajax": {
-            "url":base_url + "orders/load_my_order_table_data",
+            "url":base_url + "index.php/orders/load_my_order_table_data",
             "type":"POST",
             "data":function(d){
                 d.user_id=$("#user_id").val();

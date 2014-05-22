@@ -10,7 +10,7 @@ $(document).ready(function() {
         "bLengthChange": false,
         "aaSorting": [[1,'desc'],[0,'asc']],
         "ajax": {
-            "url":base_url + "orders/load_order_table_data",
+            "url":base_url + "index.php/orders/load_order_table_data",
             "type":"POST",
             "data":function(d){
                 if ($('#chk_customfilter').prop('checked')){
@@ -59,4 +59,4 @@ $(document).ready(function() {
                                         
     $('#from_date').data("DateTimePicker").setDate(moment().subtract('days', 1).format('D-MMM-YYYY'));
     $('#to_date').data("DateTimePicker").setDate(moment().add('days', 30).format('D-MMM-YYYY'));       
-} );
+} );  
