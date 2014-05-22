@@ -52,7 +52,16 @@
                 </div>
                 <div class="header_body_top_right">
                     <div class="hotline"><img src="<?php echo base_url(); ?>/images/hotline.png" /></div>
-                    <div class="login_register"><a href="<?php echo site_url(); ?>/tgss/login_register"><img src="<?php echo base_url(); ?>/images/btn_reg_log.png" /></a></div>
+                    <div class="login_register">
+                        <a href="<?php echo site_url(); ?>/tgss/login_register">
+                            <img src="<?php echo base_url(); ?>/images/register.png" />
+                        </a>
+                    </div>
+                    <div class="login_register">
+                        <a href="<?php echo site_url(); ?>/tgss/login_register">
+                            <img src="<?php echo base_url(); ?>/images/login.png" />
+                        </a>
+                    </div>
                 </div>
                 <div class="logo">
                     <img src="<?php echo base_url(); ?>/images/logo.png" />
