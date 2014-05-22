@@ -53,15 +53,32 @@
                 <div class="header_body_top_right">
                     <div class="hotline"><img src="<?php echo base_url(); ?>/images/hotline.png" /></div>
                     <div class="login_register">
-                        <a href="<?php echo site_url(); ?>/tgss/login_register">
+                        <a href="<?php echo site_url('users/register'); ?>">
                             <img src="<?php echo base_url(); ?>/images/register.png" />
                         </a>
                     </div>
-                    <div class="login_register">
-                        <a href="<?php echo site_url(); ?>/tgss/login_register">
-                            <img src="<?php echo base_url(); ?>/images/login.png" />
-                        </a>
-                    </div>
+                    <?php
+                        if($this->tgss_security->get_user_data())
+                        {
+                    ?>
+                            <div class="login_login">
+                                <a href="<?php echo site_url('users/logout'); ?>">
+                                    <img src="<?php echo base_url(); ?>/images/logout.png" />
+                                </a>
+                            </div>
+                    <?php
+                        }
+                        else
+                        {
+                    ?>
+                            <div class="login_login">
+                                <a href="<?php echo site_url('users'); ?>">
+                                    <img src="<?php echo base_url(); ?>/images/login.png" />
+                                </a>
+                            </div>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <div class="logo">
                     <img src="<?php echo base_url(); ?>/images/logo.png" />
