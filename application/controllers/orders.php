@@ -8,14 +8,14 @@ class Orders extends CI_Controller {
         $this->load->model('orders_model');
         $this->load->model('orderdetails_model');
         $user_data = $this->session->userdata('user');
-        if($user_data)
-        {
-            echo "Have";
-        }
-        else
-        {
-            echo "Havn't";
-        }
+//        if($user_data)
+//        {
+//            echo "Have";
+//        }
+//        else
+//        {
+//            echo "Havn't";
+//        }
     }
 
     public function order() {

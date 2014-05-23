@@ -22,7 +22,7 @@ function get_total_price(){
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: base_url + "letterheads/get_total_price/" + color + "/"  + quantity,
+        url: base_url + "index.php/letterheads/get_total_price/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,

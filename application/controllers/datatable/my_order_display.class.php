@@ -238,7 +238,7 @@ class SSP {
         $limit = SSP::limit($request, $columns);
         $order = SSP::order($request, $columns);
         $where = SSP::filter($request, $columns, $bindings);
-//print_r($where);die();
+
         // Main query to actually get the data
         $sql = "SELECT SQL_CALC_FOUND_ROWS `" . implode("`, `", SSP::pluck($columns, 'db')) . "`
 			 FROM `$table`
@@ -246,8 +246,6 @@ class SSP {
 			 $order
 			 $limit";
 
-//        print_r($sql);
-//        exit();
         $data = SSP::sql_exec($db, $bindings, $sql);
 
 

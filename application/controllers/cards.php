@@ -53,7 +53,7 @@ class Cards extends CI_Controller {
     {
         $card = $this->session->userdata('shoppingcart');
         if ($card) {
-            echo "Session Have";
+            //echo "Session Have";
             if(isset($card[$type]))
             {
                 //echo $type . "Have"; //exit;
