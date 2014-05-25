@@ -7,13 +7,13 @@ class Users extends CI_Controller {
     }
 
     public function index() {
-        $session = $this->session->userdata('user');
-        if ($session) {
-            var_dump($session);
-            echo "<a style='text-align:center; width: 100%;' href='" . site_url('users/logout') . "'>Logout</a>";
-        } else {
-            echo "SESSION CLEAR";
-        }
+        // $session = $this->session->userdata('user');
+        // if ($session) {
+            // var_dump($session);
+            // echo "<a style='text-align:center; width: 100%;' href='" . site_url('users/logout') . "'>Logout</a>";
+        // } else {
+            // echo "SESSION CLEAR";
+        // }
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result = $this->users_model->login();
             if ($result) {
