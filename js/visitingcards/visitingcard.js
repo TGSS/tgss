@@ -25,7 +25,7 @@ function get_total_price(){
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: base_url + "visitingcards/get_total_price/" + card_type + "/" + color + "/"  + quantity,
+        url: base_url + "index.php/visitingcards/get_total_price/" + card_type + "/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,
