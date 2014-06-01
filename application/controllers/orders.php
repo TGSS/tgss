@@ -278,7 +278,7 @@ class Orders extends CI_Controller {
 
         // ---------------------------------------------------------
         // set font
-        $pdf->SetFont('helvetica', '', 12);
+        $pdf->SetFont('times', '', 12);
 
         // add a page
         $pdf->AddPage();
