@@ -4,21 +4,192 @@ class Orders extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('shoppingcart');
+        $this->load->library('shoppingcart');        
         $this->load->model('orders_model');
+        $this->load->model('orderdetails_model');
+        $user_data = $this->session->userdata('user');
+//        if($user_data)
+//        {
+//            echo "Have";
+//        }
+//        else
+//        {
+//            echo "Havn't";
+//        }
     }
 
-    public function order(){
-        $data['total']=$this->shoppingcart->get_total();
-        $data['countries']=$this->users_model->get_country();
+    public function order() {
+        //$shoppingcart_data=$this->shoppingcart->get_shoppingcart();        
+        $data['total'] = $this->shoppingcart->get_total();
+        $data['countries'] = $this->users_model->get_country();
         $data['template'] = "orders/order";
         $this->load->view('template', $data);
     }
-    
-    public function order_sumbit(){
-        
+
+    public function order_submit() {
+        $user_data = $this->session->userdata('user');
+        $shoppingcart_data = $this->shoppingcart->get_shoppingcart();
+        $total = $this->shoppingcart->get_total();
+        $statusOK = $this->orders_model->save_order($user_data['user_id'], $shoppingcart_data, $total);
+
+        if ($statusOK == true) {
+            $this->session->set_flashdata('success_message', 'Order is successfully made.');
+            $this->shoppingcart->clear_shoppingcart();
+            redirect('my-order-display');    //redirect to user login page
+        } else {
+            $this->session->set_flashdata('error_message', 'Error occured when making order. Please try again later.');
+            redirect('orders/order');
+        }
     }
-       
+
+    public function display() {
+        $data['template'] = "orders/order-display";        
+        $this->load->view('template', $data);
+    }
+
+    public function my_order_display() {
+        $user_data=$this->tgss_security->get_user_data();
+        
+        $data['template'] = "orders/my-order-display";
+        $data['user_id']=$user_data['user_id'];
+        $this->load->view('template', $data);
+    }
+    
+    public function details($order_id) {
+        $data['orders']=$this->orders_model->get_order_by_order_id($order_id);   
+        $data['billing_addresses']=$this->orderdetails_model->get_billing_address_by_order_id($order_id);   
+        $data['delivery_addresses']=$this->orderdetails_model->get_delivery_address_by_order_id($order_id);  
+                                
+        $orderdetails=array();        
+        //*********************************************************************************************************************
+        $visitingcards_orderdetails=$this->orderdetails_model->get_visitingcards_by_order_id($order_id);
+        
+        if (!empty($visitingcards_orderdetails)){
+            $orderdetails['visitingcards']=array(
+                'title'=>'Visiting Cards',
+                'data'=>$visitingcards_orderdetails
+            );
+        }
+        //*********************************************************************************************************************        
+        $letterheads_orderdetails=$this->orderdetails_model->get_letterheads_by_order_id($order_id);
+        
+        if (!empty($letterheads_orderdetails)){
+            $orderdetails['letterheads']=array(
+                'title'=>'Letterheads',
+                'data'=>$letterheads_orderdetails
+            );
+        }
+        //*********************************************************************************************************************
+        $data['orderdetails']=$orderdetails;
+        
+        $data['template'] = "orders/order-details";
+        $this->load->view('template', $data);
+    }
+    
+    public function load_order_table_data() {
+        include_once 'datatable/order_display.class.php';
+        // DB table to use
+        $table = 'orders_view';
+
+        // Table's primary key
+        $primaryKey = 'order_id';
+
+        // Array of database columns which should be read and sent back to DataTables.
+        // The `db` parameter represents the column name in the database, while the `dt`
+        // parameter represents the DataTables column identifier. In this case simple
+        // indexes
+        $columns = array(
+            array('db' => 'order_ref_no', 'dt' => 0),
+            array(
+                'db' => 'order_date',
+                'dt' => 1,
+                'formatter' => function( $d, $row ) {
+                    $timezone_offset_in_milliseconds = 6.5 * 3600;
+                    return gmdate('d-M-Y', $d + $timezone_offset_in_milliseconds);
+                }
+            ),
+            array('db' => 'username', 'dt' => 2),
+            array('db' => 'firstname', 'dt' => 3),
+            array('db' => 'lastname', 'dt' => 4),
+            array(
+                'db' => 'total',
+                'dt' => 5,
+                'formatter' => function( $d, $row ) {
+                    return number_format($d);
+                }
+            ),
+            array('db' => 'order_id', 'dt' => 6),
+        );
+            
+        // SQL server connection information
+        $sql_details = array(
+            'user' =>$this->db->username,
+            'pass' => $this->db->password,
+            'db' => $this->db->database,
+            'host' => $this->db->hostname
+        );
+
+
+        /*         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         * If you just want to use the basic configuration for DataTables with PHP
+         * server-side, there is no need to edit below this line.
+         */
+
+        echo json_encode(
+                SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
+        );
+    }
+
+    public function load_my_order_table_data() {
+        include_once 'datatable/my_order_display.class.php';
+        // DB table to use
+        $table = 'orders_view';
+
+        // Table's primary key
+        $primaryKey = 'order_id';
+
+        // Array of database columns which should be read and sent back to DataTables.
+        // The `db` parameter represents the column name in the database, while the `dt`
+        // parameter represents the DataTables column identifier. In this case simple
+        // indexes
+        $columns = array(
+            array('db' => 'order_ref_no', 'dt' => 0),
+            array(
+                'db' => 'order_date',
+                'dt' => 1,
+                'formatter' => function( $d, $row ) {
+                    $timezone_offset_in_milliseconds = 6.5 * 3600;
+                    return gmdate('d-M-Y', $d + $timezone_offset_in_milliseconds);
+                }
+            ),
+            array(
+                'db' => 'total',
+                'dt' => 2,
+                'formatter' => function( $d, $row ) {
+                    return number_format($d);
+                }
+            ),
+            array('db' => 'order_id', 'dt' => 3),
+        );
+            
+        // SQL server connection information
+        $sql_details = array(
+            'user' =>$this->db->username,
+            'pass' => $this->db->password,
+            'db' => $this->db->database,
+            'host' => $this->db->hostname
+        );
+
+
+        /*         * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+         * If you just want to use the basic configuration for DataTables with PHP
+         * server-side, there is no need to edit below this line.
+         */
+
+        echo json_encode(
+                SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
+        );
+    }    
 }
 
 ?>

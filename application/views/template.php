@@ -12,11 +12,15 @@
         <base href="<?php echo base_url(); ?>">
 
         <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/font-awesome.css">
+        <!--<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">-->
+        
         <link href="<?php echo base_url(); ?>css/chosen.min.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/custom-style.css">
 
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>
+<!--        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.9.1.min.js"></script>-->
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.10.2.min.js"></script>
         <script src="<?php echo base_url(); ?>js/bootstrap.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.validate.min.js"></script>
         <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                
@@ -48,7 +52,33 @@
                 </div>
                 <div class="header_body_top_right">
                     <div class="hotline"><img src="<?php echo base_url(); ?>/images/hotline.png" /></div>
-                    <div class="login_register"><a href="<?php echo site_url(); ?>/tgss/login_register"><img src="<?php echo base_url(); ?>/images/btn_reg_log.png" /></a></div>
+                    <div class="login_register">
+                        <a href="<?php echo site_url('users/register'); ?>">
+                            <img src="<?php echo base_url(); ?>/images/register.png" />
+                        </a>
+                    </div>
+                    <?php
+                        if($this->tgss_security->get_user_data())
+                        {
+                    ?>
+                            <div class="login_login">
+                                <a href="<?php echo site_url('users/logout'); ?>">
+                                    <img src="<?php echo base_url(); ?>/images/logout.png" />
+                                </a>
+                            </div>
+                    <?php
+                        }
+                        else
+                        {
+                    ?>
+                            <div class="login_login">
+                                <a href="<?php echo site_url('users'); ?>">
+                                    <img src="<?php echo base_url(); ?>/images/login.png" />
+                                </a>
+                            </div>
+                    <?php
+                        }
+                    ?>
                 </div>
                 <div class="logo">
                     <img src="<?php echo base_url(); ?>/images/logo.png" />
@@ -75,7 +105,7 @@
                         </div>
                         <div class="body_header_left_right"></div>
                     </div>
-                    <div class="body_header_right"><a href="#" class="basket">( 12 )Item</a></div>
+                    <div class="body_header_right"><a href="#" class="basket">( <?php echo $this->shoppingcart->number_shoppingcart(); ?> )Item</a></div>
                     <!--div id="view_all_product_top">
                         <ul id="all_product_1">
                             <li><a href="Brochures">Brochures</a></li>

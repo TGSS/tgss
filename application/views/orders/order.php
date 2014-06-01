@@ -5,87 +5,61 @@
         margin-left:247px !important;
         margin-top:20px;
         margin-bottom:20px;
-    }
+    }       
 
-    .body_wrapper_body_wrapper_top_left {
-        float: none;
-        width: 100%;
-    }        
+    .body_wrapper_body_wrapper_top_right{
+        height:auto !important;
+    }
 </style>
 
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
-        <div class="body_wrapper_body_wrapper_top_left">
-            <div class="tgss-product-heading">Order</div>
-
-            <?php
-            $attributes = array('class' => 'form-horizontal', 'id' => 'order', 'name' => 'order');
-            echo form_open('orders/order', $attributes);
-            ?>
-
-            <div class="tgss-product-price">
-                <div class="form-group">
-                    <div class="col-sm-3 control-label">Total</div>
-                    <div class="col-sm-8">
-                        <p id="total_display" class="form-control-static"><?php echo $total; ?></p>
-                        <input type="hidden" id="total" name="total" class="controls" value="<?php echo $total; ?>"/>
+        <?php
+        $attributes = array('class' => 'form-horizontal', 'id' => 'order', 'name' => 'order');
+        echo form_open('orders/order_submit', $attributes);
+        ?>
+        <!--        <div class="tgss-product-price">
+                    <div class="form-group">
+                        <div class="col-sm-3 control-label">Total</div>
+                        <div class="col-sm-8">
+                            <p id="total_display" class="form-control-static"><?php echo $total; ?></p>
+                            <input type="hidden" id="total" name="total" class="controls" value="<?php echo $total; ?>"/>
+                        </div>
                     </div>
-                </div>
+                </div> -->
+        <input type="hidden" id="total" name="total" class="controls" value="<?php echo $total; ?>"/>
+
+        <div class="body_wrapper_body_wrapper_top_left">
+            <div id="billing-form-wrapper">
+                <?php $this->load->view("orders/billing_form"); ?>
+            </div>         
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="different_delivery_address" name="different_delivery_address" unchecked>Different Delivery Address
+                </label>
+            </div>
+            <div id="delivery-form-wrapper" style="display:none;">
+                <?php $this->load->view("orders/delivery_form"); ?>
             </div>            
-
             <div id="clr"></div>
-            
-            <div class="form-group">
-                <div class="col-sm-3 control-label">Address Line 1:</div>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="address1" name="address1" value="">   
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-3 control-label">Address Line 2:</div>
-                <div class="col-sm-8">
-                    <input class="form-control" type="text" id="address2" name="address2" value="">   
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-3 control-label">City :</div>
-                <div class="col-sm-4">
-                    <input class="form-control" type="text" id="city" name="city" value="">   
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-3 control-label">Country :</div>
-                <div class="col-sm-4">
-                    <select id="country" name="country" class="form-controls calculation-item chosen-select">
-                        <?php foreach ($countries as $key => $value) { ?>
-                            <option value="<?php echo $value['country']; ?>"><?php echo $value['country']; ?></option>
-                        <?php } ?>
-                    </select>    
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-sm-3 control-label">Post Code:</div>
-                <div class="col-sm-4">
-                    <input class="form-control" type="text" id="postcode" name="postcode" value="">   
-                </div>
-            </div>
 
             <div class="tgss-product-bottom">
                 <div class="">    
                     <div class="form-group last-form-row">
                         <div class="col-sm-offset-3 col-sm-10">
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary">Order</button>
+                            <button type="submit" id="submit" name="delivery_submit" class="btn btn-primary">Order</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <?php echo form_close(); ?>
-        </div>   
-        <?php //$this->load->view("templates/why-choose-tgss"); ?>
+        <?php echo form_close(); ?>
+
+        <div class="body_wrapper_body_wrapper_top_right">   
+            <?php $this->load->view("templates/why-choose-tgss"); ?>
+        </div>
+
+        <div id="clr"></div>
     </div>
 </div>

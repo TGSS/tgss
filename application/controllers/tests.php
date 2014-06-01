@@ -6,12 +6,9 @@ class Tests extends CI_Controller {
         parent::__construct();
     }
 
-    public function test01(){
-        $this->shoppingcart->get_shoppingcart();
-        //$data=$this->orders_model->save_order();
-        exit();
-    }
-   
+    public function test01() {
+        var_dump($this->tgss_security->is_admin());
+    }    
 }
 
 ?>

@@ -8,15 +8,21 @@ $(document).ready(function(){
     $('.calculation-item').change(function(){
         get_total_price();
     });
+
+    var color = $('#color option:selected').text();
+    $('#color_hidden').val(color);
+
+    var quantity = $('#quantity option:selected').text();    
+    $('#quantity_hidden').val(quantity);
 }); 
 
 function get_total_price(){
-    var card_quality=$('#card_quality').val();
+    var card_quality=$('#scard_quality').val();
     var color=$('#color').val();
     var quantity=$('#quantity').val();
         
     $.ajax({
-        url: "index.php/letterheads/get_total_price/" + color + "/"  + quantity,
+        url: base_url + "index.php/letterheads/get_total_price/" + color + "/"  + quantity,
         type: "POST",
         dataType: "json",
         cache:false,
@@ -27,15 +33,15 @@ function get_total_price(){
                 $('#' + result.data.card_id).addClass("selected");
                 $('#price_display').html(result.data.price);
                 $('#total_display').html(result.data.total);
-                $('#price').val(result.data.price);
-                $('#total').val(result.data.total);
+                $('#price_hidden').val(result.data.price);
+                $('#total_hidden').val(result.data.total);
             }else{
                 $('#card_id').val('');
                 $('table tr td').removeClass("selected");
                 $('#price_display').html(0);
                 $('#total_display').html(0);
-                $('#price').val(0);
-                $('#total').val(0);
+                $('#price_hidden').val(0);
+                $('#total_hidden').val(0);
             }
                 
         },

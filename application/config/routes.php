@@ -40,7 +40,23 @@
 
 $route['default_controller'] = "tgss";
 $route['404_override'] = '';
-
+//**************************************************************************************************************************
+//$route['index']="tgss/index";
+//**************************************************************************************************************************
+$route['login']="users/login";
+$route['logout']="users/logout";
+$route['register']="users/register";
+$route['account']="users/edit_profile";
+//**************************************************************************************************************************
+$route['visitingcards']="visitingcards/select";
+$route['letterheads']="letterheads/select";
+//**************************************************************************************************************************
+$route['orders']="orders/order";
+$route['order-display']="orders/display";
+$route['my-order-display']="orders/my_order_display";
+$route['orderdetails/(:num)']="orders/details/$1";
+$route['shoppingcart']="cards/show";
+//**************************************************************************************************************************
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

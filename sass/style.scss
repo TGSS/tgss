@@ -12,10 +12,11 @@ body{margin:0 auto;padding:0;}
 /*----header section -----*/
 #header{height:170px; width:100%; background: url(../images/bg_header.jpg); margin:0 auto; padding:0;}
 #header_body{margin:0 auto; width:980px; height: 100%; background: url(../images/cloud.png)}
-.header_body_top_left{width: 570px; float: left; height: 36px;}
-.header_body_top_right{width: 400px; height: 36px; float: left; margin-top: 10px;}
+// .header_body_top_left{width: 570px; float: left; height: 36px;}
+.header_body_top_right{height: 36px; float: right; margin-top: 10px;}
 .hotline{float: left;}
 .login_register{float: left; margin-left: 10px; padding-top: 10px;}
+.login_login{float: left; margin-left: 2px; padding-top: 10px;}
 .logo{height: 143px; position: absolute; margin-top: 10px;}
 #view_all_product_top{width: 768px; height: 203px; background: url(../images/bg_viewallproducts_transparent.png) repeat-x; position: absolute; margin-top:41px; margin-left: 26px; padding: 0 10px 0 10px;}
 

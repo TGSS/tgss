@@ -1,19 +1,18 @@
 $(document).ready(function(){
     $("#country").chosen({
-        width: "300px"
-    });
-
-    $("#timezone").chosen({
         width: "100%"
     });
-    
-    //Auto Selecting "Myanmar" for "Country"
-    $("#country").val("Myanmar");
-    $("#country").trigger("chosen:updated");
-    
-    //Auto Selecting "Myanmar Time Zone""
-    $("#timezone").val(54);
-    $("#timezone").trigger("chosen:updated");
+
+    $("#timezone_id").chosen({
+        width: "100%"
+    });
+//    //Auto Selecting "Myanmar" for "Country"
+//    $("#country").val("Myanmar");
+//    $("#country").trigger("chosen:updated");
+//    
+//    //Auto Selecting "Myanmar Time Zone""
+//    $("#timezone").val(54);
+//    $("#timezone").trigger("chosen:updated");
     
     $('#submit').click(function(){
         return register_click();
@@ -33,6 +32,7 @@ function register_click(){
         type: "POST",
         dataType: "json",
         data: {
+                user_id:$('#user_id').val(),
                 username:$('#username').val()
             },
         cache:false,
@@ -91,10 +91,6 @@ function validate_user_input(){
             {
                 required: true
             },
-            postcode: 
-            {
-                required: true
-            },
             phoneno: 
             {
                 required: true
@@ -118,7 +114,6 @@ function validate_user_input(){
             },                        
             address1: "Please enter address.",
             city: "Please enter city.",  
-            postcode: "Please enter postcode.", 
             phoneno: "Please enter phone no.",              
         }
     });
