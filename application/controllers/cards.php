@@ -99,17 +99,7 @@ class Cards extends CI_Controller {
 
     public function clear()
     {
-        $this->session->unset_userdata('shoppingcart');
-        if(!$this->session->userdata('shoppingcart'))
-        {
-            echo "Session Cleared";
-            echo $this->session->userdata('shoppingcart');
-        }
-        else
-        {
-            echo "Session Can't Clear";
-            echo $this->session->userdata('shoppingcart');
-        }
+        $this->shoppingcart->clear_shoppingcart();
     }
 
     public function cart_delete($card_id)

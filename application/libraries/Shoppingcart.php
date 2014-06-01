@@ -36,6 +36,22 @@ class Shoppingcart {
     public function clear_shoppingcart(){
         $this->CI->session->unset_userdata('shoppingcart');
     }
+	
+	public function number_shoppingcart() {
+		$shoppingcart=$this->CI->session->userdata('shoppingcart');
+		//var_dump($shoppingcart);
+        $num = 0;
+
+		if($shoppingcart) {
+	        foreach ($shoppingcart as $card_key=>$card_value){
+	            foreach ($card_value as $key=>$value){
+	                $num += count($key);
+	            }
+	        }
+		}
+		
+		return $num;
+	}
     /**
      * Function to provide complete card information to be ordered
      * Initially, the data are in the session.
