@@ -116,6 +116,17 @@ class Users_model extends CI_Model {
             return FALSE;
         }
     }
+    
+    public function get_profile_by_user_id($user_id){
+        $sql="SELECT profiles.*,`timezones`.* ".
+                "FROM `profiles` " .
+                "INNER JOIN `timezones` " .
+                "ON " .
+                "`profiles`.`timezone_id`=`timezones`.`id` " .
+                "WHERE `profiles`.`user_id`=" . $user_id;
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
 
 }
 

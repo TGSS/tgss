@@ -25,6 +25,8 @@ $(document).ready(function() {
                     d.from_date=$('#from_date_value').val();
                     d.to_date=$('#to_date_value').val();
                 } 
+                
+                d.timezone_offset=$('#timezone_offset').val();
             }            
         },
         
