@@ -100,6 +100,7 @@ class Cards extends CI_Controller {
     public function clear()
     {
         $this->shoppingcart->clear_shoppingcart();
+		redirect('tgss');
     }
 
     public function cart_delete($card_id)

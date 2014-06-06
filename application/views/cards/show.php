@@ -55,8 +55,39 @@
                     <td colspan="4" style="text-align: right; padding-right: 50px;">Net Total : <?php echo $net_total; ?></td>
                 </tr>
             </table>
+            <?php foreach ($cart as $cart_type => $cart_data) { ?>
+            	<div class="panel panel-default">
+            		<div class="panel-heading"><b><?php echo $cart_type; ?></b></div>
+            		<table id="<?php echo $cart_type; ?>_orderdetails" class="table table-striped">
+            			<thead>
+            				<tr>
+			                    <th width="10%;">Qty</th>
+			                    <th width="30%">Product Description</th>
+			                    <th width="50%">Uploaded Design</th>
+			                    <th width="10%;">Price</th>
+			                </tr>
+            			</thead>
+            			<tbody>
+            				<tr>
+	            				<?php foreach ($cart_data as $cart_data_index => $cart_datas) { 
+	            					$table .= "<td>" . $cart_datas['quantity'] . "</td>";
+		                            $table .= "<td>";
+		                            //$table .= foreach($cart_datas['card_data'] as $cart_desc){$cart_desc;};
+		                            foreach($cart_datas['card_data'] as $key=>$val){ 
+		                                $table .= $val . "<br>";
+		                            };
+		                            $table .= "</td>";
+		                            $table .= "<td style='text-align: center;'><a href='index.php/cards/cart_delete/$cart_datas[card_id]'>Delete</a></td>";
+		                            $table .= "<td>" . $cart_datas['total'] . "</td>";	
+									
+	            				}echo $table; ?>
+            				</tr>
+            			</tbody>
+            		</table>
+            	</div>
+            <?php } ?>
             <a href="<?php echo base_url();?>index.php/orders" class="btn btn-primary">Order</a>
-            <a href="#" class="btn btn-danger">Clear Shopping Cart</a>
+            <a href="<?php echo site_url('cards/clear'); ?>" class="btn btn-danger">Clear Shopping Cart</a>
         </div>        
     </div>
 </div>

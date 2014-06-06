@@ -105,7 +105,7 @@
                         </div>
                         <div class="body_header_left_right"></div>
                     </div>
-                    <div class="body_header_right"><a href="#" class="basket">( <?php echo $this->shoppingcart->number_shoppingcart(); ?> )Item</a></div>
+                    <div class="body_header_right"><a href="<?php if($this->shoppingcart->number_shoppingcart() == 0) { echo ""; } else { echo site_url('shoppingcart'); } ?>" class="basket">( <?php echo $this->shoppingcart->number_shoppingcart(); ?> )Item</a></div>
                     <!--div id="view_all_product_top">
                         <ul id="all_product_1">
                             <li><a href="Brochures">Brochures</a></li>
@@ -239,6 +239,6 @@
                     <div id="clr"></div>
                 </div>
             </div>
-        </div>   
+        </div>
     </body>
 </html>
