@@ -12,7 +12,7 @@
                 <li><a href="#" id="delivery-addresses" class="pill-element">Delivery Address</a></li>
             </ul>
 
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="orders/print_order_detail_report/<?php echo $order_id; ?>" method="post">
                 <div id="contanct-info-wrapper">
                     <?php $this->load->view("orders/order_details/order-details-display"); ?>
                 </div>
@@ -21,12 +21,14 @@
                 </div>
                 <div id="delivery-addresses-wrapper" style="display:none;">
                     <?php $this->load->view("orders/order_details/delivery-addresses-display"); ?>
-                </div>                                                  
+                </div>      
+                <button type="submit" class="btn btn-info btn-block" id="btn-search">Print</button>  
             </form>
         </div>
 
         <?php $this->load->view("templates/why-choose-tgss"); ?>
 
+        <br/>
         <div class="table-wrapper clearfix">
             <?php $this->load->view("orders/order-details-table"); ?>
         </div>
