@@ -34,6 +34,9 @@ class SSP {
     static function data_output($columns, $data) {
         $out = array();
 
+        $timzone_offset=(float)$_POST['timezone_offset'];
+        $timezone_offfset_in_millisecond=$timzone_offset*3600;
+        
         for ($i = 0, $ien = count($data); $i < $ien; $i++) {
             $row = array();
 
@@ -42,7 +45,12 @@ class SSP {
 
                 // Is there a formatter?
                 if (isset($column['formatter'])) {
-                    $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
+                    if ($column['db']=='order_date'){
+                        $column_value=(int)$data[$i][$column['db']] + $timezone_offfset_in_millisecond;
+                        $row[$column['dt']] = $column['formatter']($column_value, $data[$i]);
+                    }else{
+                        $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
+                    }
                 } else if ($column['db']=='order_id'){
                     //Modified to add link for "Action" Column
                     $order_id=$data[$i][$columns[$j]['db']];

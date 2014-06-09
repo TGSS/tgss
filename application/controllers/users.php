@@ -126,8 +126,7 @@ class Users extends CI_Controller {
         $this->shoppingcart->clear_shoppingcart();
         $this->session->set_flashdata('success_message', 'Logout Success');
         redirect('users');    //redirect to login page
-    }
-
+    }   
 }
 
 ?>

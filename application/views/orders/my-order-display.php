@@ -57,20 +57,21 @@
 </style>
 
 <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
+<input type="hidden" id="timezone_offset" name="timezone_offset" value="<?php echo $timezone_offset; ?>" />
 
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
         <div class="item_right">
             <div class="tgss-product-heading">Order Display</div>
 
-            <form id="order-search-form" class="form-horizontal search-form" role="form">
+            <form id="order-search-form" class="form-horizontal search-form" role="form" action="orders/print_order_report" method="post" >
                 <div class="form-group">   
                     <div class="col-sm-12">            
                         <div class="row">
                             <div class='col-sm-3'>
                                 <div class="form-group">
                                     <div class='input-group date' id='from_date' data-date-format="DD-MMM-YYYY">
-                                        <input type='text' class="form-control" id="from_date_value"/>
+                                        <input type='text' class="form-control" id="from_date_value" name="from_date_value"/>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
@@ -79,7 +80,7 @@
                             <div class='col-sm-3'>
                                 <div class="form-group">
                                     <div class='input-group date' id='to_date' data-date-format="DD-MMM-YYYY">
-                                        <input type='text' class="form-control" id="to_date_value"/>
+                                        <input type='text' class="form-control" id="to_date_value" name="to_date_value"/>
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     </div>
@@ -115,7 +116,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
-                        <button type="submit" class="btn btn-primary" id="btn-search">Search</button>
+                        <button type="submit" class="btn btn-primary" id="btn-search">Search</button>                        
+                        <button type="submit" class="btn btn-info" id="btn-print" name="btn-print">Print</button>
                         <button type="submit" class="btn btn-default" id="btn-show-all">Show All</button>
                     </div>
                 </div>

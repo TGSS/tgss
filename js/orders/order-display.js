@@ -23,13 +23,14 @@ $(document).ready(function() {
                     d.from_date=$('#from_date_value').val();
                     d.to_date=$('#to_date_value').val();
                 } 
+                d.timezone_offset=$('#timezone_offset').val();
             }            
         }
     } );
            
     // Event listener to the two range filtering inputs to redraw on input
     $('#btn-search').click( function() {
-        //table.draw();
+        //Reload the table
         table.fnDraw();
         return false;
     } );

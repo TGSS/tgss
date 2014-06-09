@@ -34,16 +34,25 @@ class SSP {
     static function data_output($columns, $data) {
         $out = array();
 
+        $timzone_offset=(float)$_POST['timezone_offset'];
+        $timezone_offfset_in_millisecond=$timzone_offset*3600;
+        
+        //print_r($columns)
         for ($i = 0, $ien = count($data); $i < $ien; $i++) {
             $row = array();
 
             for ($j = 0, $jen = count($columns); $j < $jen; $j++) {
                 $column = $columns[$j];
-
+                
                 // Is there a formatter?
                 if (isset($column['formatter'])) {
-                    $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
-                } else if ($column['db']=='order_id'){
+                    if ($column['db']=='order_date'){
+                        $column_value=(int)$data[$i][$column['db']] + $timezone_offfset_in_millisecond;
+                        $row[$column['dt']] = $column['formatter']($column_value, $data[$i]);
+                    }else{
+                        $row[$column['dt']] = $column['formatter']($data[$i][$column['db']], $data[$i]);
+                    }                    
+                }else if ($column['db']=='order_id'){    
                     //Modified to add link for "Action" Column
                     $order_id=$data[$i][$columns[$j]['db']];
                     $custom_text='<a class="btn btn-primary" href="' . base_url() . 'orderdetails/' . $order_id . '"><i class="fa fa-ellipsis-h"></i></button>';
@@ -178,16 +187,19 @@ class SSP {
             
         }
 
+        $timzone_offset=(float)$_POST['timezone_offset'];
+        $timezone_offfset_in_millisecond=$timzone_offset*3600;
+        
         if (isset($_POST['datefilter'])) {
             $from_date=$_POST['from_date'];
             $from_date.=" 00:00:00";
             $from_date_TS=SSP::getGMT_TS($from_date);
-            $from_date_TS-=(6.5*3600);
+            $from_date_TS-=$timezone_offfset_in_millisecond;
             
             $to_date=$_POST['to_date'];
             $to_date.=" 23:59:59";
             $to_date_TS=SSP::getGMT_TS($to_date);
-            $to_date_TS-=(6.5*3600);
+            $to_date_TS-=$timezone_offfset_in_millisecond;
             $columnSearch[] = "`order_date` >=" . $from_date_TS . " AND `order_date` <=" . $to_date_TS;
         }
         //****************************************************************************************************************
