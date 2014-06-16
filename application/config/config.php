@@ -14,13 +14,8 @@
 | path to your installation.
 |
 */
-<<<<<<< HEAD
 
-$config['base_url']	= 'http://tgss.tgssprinting.com/';
-=======
-$config['base_url']	= 'http://local.tgss.com/';
-
->>>>>>> staging
+$config['base_url']	= 'http://tgss.invento-dev.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +58,7 @@ $config['uri_protocol']	= 'AUTO';
 | http://codeigniter.com/user_guide/general/urls.html
 */
 
-$config['url_suffix'] = 'tgss';
+$config['url_suffix'] = '';
 
 /*
 |--------------------------------------------------------------------------

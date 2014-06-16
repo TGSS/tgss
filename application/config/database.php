@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'tgssprin_tgss';
-$db['default']['password'] = 'Tg$$P3IntinG';
-$db['default']['database'] = 'tgssprin_tgss';
+$db['default']['username'] = 'inventod_tgss';
+$db['default']['password'] = '$n0WL@YAdminPhP';
+$db['default']['database'] = 'inventod_tgss';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
