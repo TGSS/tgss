@@ -34,3 +34,9 @@
         <p class="form-control-static"><?php echo $orders['total']; ?></p>
     </div>
 </div>
+<div class="form-group">
+    <label class="col-sm-3 control-label">Payment Status :</label>
+    <div class="col-sm-9">
+        <p class="form-control-static"><?php echo $paymentData['paymentStatusText']; ?></p>
+    </div>
+</div>

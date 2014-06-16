@@ -12,7 +12,7 @@
                 <li><a href="#" id="delivery-addresses" class="pill-element">Delivery Address</a></li>
             </ul>
 
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="orders/print_order_detail_report/<?php echo $order_id; ?>" method="post">
                 <div id="contanct-info-wrapper">
                     <?php $this->load->view("orders/order_details/order-details-display"); ?>
                 </div>
@@ -21,12 +21,30 @@
                 </div>
                 <div id="delivery-addresses-wrapper" style="display:none;">
                     <?php $this->load->view("orders/order_details/delivery-addresses-display"); ?>
-                </div>                                                  
+                </div>      
+
+                <button type="submit" class="btn btn-info pull-left" id="btn-search" style="width:49%;">Print</button>                
+                <a href="orders/my_order_display" class="btn btn-default pull-right" id="btn-return" style="width:49%;">View My Orders</a>                 
             </form>
+
+            <div class="clearfix" style="margin-bottom:5px;"></div>
+            <?php
+            //If Payment is not completed yet, we display the "Make Payment" button
+            if ($paymentData['paymentStatus'] != 2) {
+            ?>
+                <form class="form-horizontal" role="form" action="make-payment" method="post"> 
+                    <input type="hidden" id="order_id" name="order_id" value="<?php echo $order_id; ?>" />
+                    <input type="hidden" id="total" name="total" value="<?php echo $orders['total']; ?>" />
+                    <button type="submit" class="btn btn-primary btn-block" id="btn-make-payment">Make Payment</button> 
+                </form>
+            <?php } ?>
         </div>
+
+
 
         <?php $this->load->view("templates/why-choose-tgss"); ?>
 
+        <br/>
         <div class="table-wrapper clearfix">
             <?php $this->load->view("orders/order-details-table"); ?>
         </div>

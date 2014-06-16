@@ -13,6 +13,14 @@ class Orders_model extends CI_Model {
         return $query->row_array();
     }
 
+    /**
+     * 
+     * return "$result"
+     * $result=array(
+            'status'=>boolean,
+            'order_id'=>string
+        );
+     */
     public function save_order($user_id, $shoppingcart_data, $total) {
 
         $this->db->trans_begin();
@@ -70,13 +78,20 @@ class Orders_model extends CI_Model {
 //            $continue = $this->db->insert('profiles', $profileData);
 //        }
 
+        $result=array(
+            'status'=>false,
+            'order_id'=>null
+        );
+        
         if ($continue) {
             $this->db->trans_commit();
-            return true;
+            $result['status']=true;
+            $result['order_id']=$order_id;
         } else {
-            $this->db->trans_rollback();
-            return false;
+            $this->db->trans_rollback();            
         }
+        
+        return $result;
     }
 
     public function get_new_order_ref_no() {
@@ -178,6 +193,53 @@ class Orders_model extends CI_Model {
         return $this->db->insert('delivery_addresses', $data);
     }
 
+    /**
+     * 
+     * @param type $is_date_filter_apply - boolean to decide whether to apply the date filter or not
+     * @param type $is_custom_filter_apply - boolean to decide whether to apply custom filter or not (custom filter such as first name, last name)
+     * @param type $from_date
+     * @param type $to_date
+     * @param type $search_by
+     * @param type $search_key
+     */
+    public function search($is_date_filter_apply,$is_custom_filter_apply,$from_date=null,$to_date=null,$search_by=null,$search_key=null){
+        //***************************************************************************************************************************************************************
+        //Constructing "WHERE" statement
+        $where='';
+        
+        //$is_date_filter_apply=false;
+        
+        if ($is_date_filter_apply){
+            $where = " (order_date>=" . $from_date . " AND order_date<=" . $to_date . ") ";
+        }
+        
+        //print_r($where . "<br/>");
+        
+        if ($is_custom_filter_apply){
+            if ($where!=''){
+                $where.=" AND ";
+            }
+            
+            $where .= $search_by . " LIKE '%" . $search_key . "%'";
+        }
+        
+        //print_r($where . "<br/>");
+        
+        if ($where!=''){
+            $where = "WHERE " . $where;
+        }
+        
+        //print_r($where . "<br/>");exit();
+        //***************************************************************************************************************************************************************
+        $order=" ORDER BY order_date ASC";
+        
+        $sql="SELECT * FROM orders_view " .
+                $where .
+                $order;
+        
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 }
 
 ?>
