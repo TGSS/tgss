@@ -13,6 +13,14 @@ class Orders_model extends CI_Model {
         return $query->row_array();
     }
 
+    /**
+     * 
+     * return "$result"
+     * $result=array(
+            'status'=>boolean,
+            'order_id'=>string
+        );
+     */
     public function save_order($user_id, $shoppingcart_data, $total) {
 
         $this->db->trans_begin();
@@ -70,13 +78,20 @@ class Orders_model extends CI_Model {
 //            $continue = $this->db->insert('profiles', $profileData);
 //        }
 
+        $result=array(
+            'status'=>false,
+            'order_id'=>null
+        );
+        
         if ($continue) {
             $this->db->trans_commit();
-            return true;
+            $result['status']=true;
+            $result['order_id']=$order_id;
         } else {
-            $this->db->trans_rollback();
-            return false;
+            $this->db->trans_rollback();            
         }
+        
+        return $result;
     }
 
     public function get_new_order_ref_no() {

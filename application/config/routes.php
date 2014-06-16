@@ -57,6 +57,11 @@ $route['my-order-display']="orders/my_order_display";
 $route['orderdetails/(:num)']="orders/details/$1";
 $route['shoppingcart']="cards/show";
 //**************************************************************************************************************************
+$route['make-payment']="payments/makePayment";
+$route['paypal-success']="payments/paypalSuccess";
+$route['paypal-cancel']="payments/paypalCancel";
+$route['paypal-error']="payments/paypalError";
+//**************************************************************************************************************************
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

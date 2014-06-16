@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -29,7 +28,7 @@ class Datetime_component {
         } else {
             if ($timezone_offset == null) {
                 //Set "timezoneoffset" with "default" value
-                $timezone_offset=DEFAULT_TIMEZONE_OFFSET;              
+                $timezone_offset=ENV_DEFAULT_TIMEZONE_OFFSET;              
             }
             
             $timezoneOffset_in_seconds = $this->timezone_offset_to_seconds($timezone_offset);

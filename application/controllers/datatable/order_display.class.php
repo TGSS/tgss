@@ -187,15 +187,9 @@ class SSP {
         }
 
         if (isset($_POST['datefilter'])) {
-            $from_date=$_POST['from_date'];
-            $from_date.=" 00:00:00";
-            $from_date_TS=SSP::getGMT_TS($from_date);
-            $from_date_TS-=(6.5*3600);
+            $from_date_TS=$_POST['from_date_TS'];            
+            $to_date_TS=$_POST['to_date_TS'];
             
-            $to_date=$_POST['to_date'];
-            $to_date.=" 23:59:59";
-            $to_date_TS=SSP::getGMT_TS($to_date);
-            $to_date_TS-=(6.5*3600);
             $columnSearch[] = "`order_date` >=" . $from_date_TS . " AND `order_date` <=" . $to_date_TS;
         }
         //****************************************************************************************************************
@@ -404,21 +398,5 @@ class SSP {
 
         return $out;
     }
-    
-        /**
-     * 
-     * Function to get the "Timestamp" of the given datetime
-     * 
-     */
-    static function getGMT_TS($stringValue = null) {
-        if ($stringValue == null) {
-            $TS = time();
-        } else {
-            $TS = strtotime($stringValue . ' UTC');
-            //$TS=time();
-        }
-        return $TS;
-    }
-
 }
 
