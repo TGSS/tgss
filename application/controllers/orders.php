@@ -10,6 +10,7 @@ class Orders extends CI_Controller {
         $this->load->library('user_component');
         $this->load->model('orders_model');
         $this->load->model('orderdetails_model');
+        $this->load->model('payments_model');
     }
 
     public function order() {
@@ -24,12 +25,12 @@ class Orders extends CI_Controller {
         $user_data = $this->session->userdata('user');
         $shoppingcart_data = $this->shoppingcart->get_shoppingcart();
         $total = $this->shoppingcart->get_total();
-        $statusOK = $this->orders_model->save_order($user_data['user_id'], $shoppingcart_data, $total);
+        $result = $this->orders_model->save_order($user_data['user_id'], $shoppingcart_data, $total);
 
-        if ($statusOK == true) {
+        if ($result['status'] == true) {
             $this->session->set_flashdata('success_message', 'Order is successfully made.');
             $this->shoppingcart->clear_shoppingcart();
-            redirect('my-order-display');    //redirect to user login page
+            redirect('orders/details/' . $result['order_id']);    //redirect to user login page
         } else {
             $this->session->set_flashdata('error_message', 'Error occured when making order. Please try again later.');
             redirect('orders/order');
@@ -108,13 +109,15 @@ class Orders extends CI_Controller {
         $data['order_id'] = $order_id;
 
         $order_data = $this->get_complete_order_data($order_id);
+        $paymentData=$this->payments_model->get_payment_status($order_id);    
 
         $data['orders'] = $order_data['orders'];
         $data['billing_addresses'] = $order_data['billing_addresses'];
         $data['delivery_addresses'] = $order_data['delivery_addresses'];
         $data['orderdetails'] = $order_data['orderdetails'];
+        $data['paymentData']=$paymentData;   
 
-        $data['template'] = "orders/order-details";
+        $data['template'] = "orders/order-details";                                       
         $this->load->view('template', $data);
     }
 
@@ -166,6 +169,25 @@ class Orders extends CI_Controller {
          * server-side, there is no need to edit below this line.
          */
 
+        $timzone_offset=(float)$_POST['timezone_offset'];
+        $timezone_offset_in_second=$this->datetime_component->timezone_offset_to_seconds($timzone_offset);
+
+        if (isset($_POST['datefilter'])) {
+            $from_date=$_POST['from_date'];
+            $from_date.=" 00:00:00";
+            $from_date_TS=$this->datetime_component->get_gmt_ts($from_date);
+            $from_date_TS-=$timezone_offset_in_second;
+            
+            $to_date=$_POST['to_date'];
+            $to_date.=" 23:59:59";
+            $to_date_TS=$this->datetime_component->get_gmt_ts($to_date);
+            $to_date_TS-=$timezone_offset_in_second;
+            
+            $_POST['from_date_TS']=$from_date_TS;
+            $_POST['to_date_TS']=$to_date_TS;
+        }
+        
+        
         echo json_encode(
                 SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
         );
@@ -215,7 +237,24 @@ class Orders extends CI_Controller {
          * If you just want to use the basic configuration for DataTables with PHP
          * server-side, there is no need to edit below this line.
          */
+        $timzone_offset=(float)$_POST['timezone_offset'];
+        $timezone_offset_in_second=$this->datetime_component->timezone_offset_to_seconds($timzone_offset);
 
+        if (isset($_POST['datefilter'])) {
+            $from_date=$_POST['from_date'];
+            $from_date.=" 00:00:00";
+            $from_date_TS=$this->datetime_component->get_gmt_ts($from_date);
+            $from_date_TS-=$timezone_offset_in_second;
+            
+            $to_date=$_POST['to_date'];
+            $to_date.=" 23:59:59";
+            $to_date_TS=$this->datetime_component->get_gmt_ts($to_date);
+            $to_date_TS-=$timezone_offset_in_second;
+            
+            $_POST['from_date_TS']=$from_date_TS;
+            $_POST['to_date_TS']=$to_date_TS;
+        }
+        
         echo json_encode(
                 SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
         );

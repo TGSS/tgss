@@ -36,12 +36,5 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
-
-//*****************************************************************************************************************************************************
-//custom "constant"
-
-//default timezone offset, that is Myanmar timezone offset
- define('DEFAULT_TIMEZONE_OFFSET',6.5);
-//*****************************************************************************************************************************************************
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
