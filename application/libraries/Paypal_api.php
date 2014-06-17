@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-require 'paypal/vendor/autoload.php';
+require ('paypal/vendor/autoload.php');
 
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Address;
