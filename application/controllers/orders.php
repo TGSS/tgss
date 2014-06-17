@@ -138,9 +138,9 @@ class Orders extends CI_Controller {
             array(
                 'db' => 'order_date',
                 'dt' => 1,
-                // 'formatter' => function( $d, $row ) {
-                //     return gmdate('d-M-Y H:i A', $d);
-                // }
+                'formatter' => function( $d, $row ) {
+                    return gmdate('d-M-Y H:i A', $d);
+                }
             ),
             array('db' => 'username', 'dt' => 2),
             array('db' => 'firstname', 'dt' => 3),
@@ -148,9 +148,9 @@ class Orders extends CI_Controller {
             array(
                 'db' => 'total',
                 'dt' => 5,
-                // 'formatter' => function( $d, $row ) {
-                //     return number_format($d);
-                // }
+                'formatter' => function( $d, $row ) {
+                    return number_format($d);
+                }
             ),
             array('db' => 'order_id', 'dt' => 6),
         );
@@ -210,16 +210,16 @@ class Orders extends CI_Controller {
             array(
                 'db' => 'order_date',
                 'dt' => 1,
-                // 'formatter' => function( $d, $row ) {
-                //     return gmdate('d-M-Y H:i A', $d);
-                // }
+                'formatter' => function( $d, $row ) {
+                    return gmdate('d-M-Y H:i A', $d);
+                }
             ),
             array(
                 'db' => 'total',
                 'dt' => 2,
-                // 'formatter' => function( $d, $row ) {
-                //     return number_format($d);
-                // }
+                'formatter' => function( $d, $row ) {
+                    return number_format($d);
+                }
             ),
             array('db' => 'order_id', 'dt' => 3),
         );
