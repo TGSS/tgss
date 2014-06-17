@@ -17,6 +17,8 @@ use PayPal\Api\FundingInstrument;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use PayPal\Rest\ApiContext;
+use PayPal\Api\Item;
+use PayPal\Api\ItemList;
 
 class Paypal_api {
 
@@ -66,7 +68,7 @@ class Paypal_api {
         return $apiContext;
     }
 
-    public function makePayPalPayment($total, $currency, $paymentDescription) {
+    public function makePayPalPayment($total, $currency, $paymentDescription,$orderSummary=null) {
         $payer = new Payer();
         $payer->setPayment_method("paypal");
 
@@ -77,6 +79,10 @@ class Paypal_api {
         $transaction = new Transaction();
         $transaction->setDescription($paymentDescription);
         $transaction->setAmount($amount);
+
+        if ($orderSummary!=null){
+            $transaction->setItemList($orderSummary);
+        }               
 
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturn_url(base_url() . 'paypal-success');

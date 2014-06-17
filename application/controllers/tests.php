@@ -4,7 +4,7 @@ class Tests extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->library('PaypalRest');
+        $this->load->library('order_component');
     }
 
     public function test01() {
@@ -15,7 +15,7 @@ class Tests extends CI_Controller {
     }
 
     public function test02() {
-        redirect('https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-22J87495L70228255');
+        $this->order_component->getItemListForPaypal(18);
     }
 
 }
