@@ -20,7 +20,7 @@ class Tests extends CI_Controller {
 
     public function test03()
     {
-        echo php_info();
+        echo phpinfo();
     }
 
 }
