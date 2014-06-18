@@ -22,6 +22,11 @@ class Tests extends CI_Controller {
 	{
 		$this->load->view('test/upload');
 	}
+	
+	public function upload_help()
+	{
+		include_once 'upload';
+	}
 
 }
 
