@@ -25,7 +25,7 @@ class Tests extends CI_Controller {
 	
 	public function upload_help()
 	{
-		include_once 'upload';
+		include_once 'upload/index.php';
 	}
 
 }

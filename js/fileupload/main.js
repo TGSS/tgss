@@ -18,7 +18,7 @@ $(function () {
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: 'http://local/test.com/server/php/'
+        url: '//local.tgss.com/index.php/tests/upload_help'
     });
 
     // Enable iframe cross-domain access via redirect option:
