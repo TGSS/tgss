@@ -8,6 +8,7 @@ class Orders extends CI_Controller {
         $this->load->library('shoppingcart');
         $this->load->library('datetime_component');
         $this->load->library('user_component');
+        $this->load->library('order_component');
         $this->load->model('orders_model');
         $this->load->model('orderdetails_model');
         $this->load->model('payments_model');
@@ -57,58 +58,12 @@ class Orders extends CI_Controller {
         $data['timezone_offset'] = $user_timezone_offset;
 
         $this->load->view('template', $data);
-    }
-
-    /**
-     * 
-     * Function to return "order" and "order details" data
-     * @param type $order_id
-     */
-    private function get_complete_order_data($order_id) {
-
-        //********************************************************************************************************************* 
-        $orders = $this->orders_model->get_order_by_order_id($order_id);
-        $billing_addresses = $this->orderdetails_model->get_billing_address_by_order_id($order_id);
-        $delivery_addresses = $this->orderdetails_model->get_delivery_address_by_order_id($order_id);
-        //********************************************************************************************************************* 
-        //Formatting "Timestamp" to "Human Date Time"
-        $user_timezone_offset = $this->user_component->get_timezone_offset();
-        $orders['order_date_formatted'] = $this->datetime_component->get_datetime_for_UI_from_timestamp($orders['order_date'], $user_timezone_offset, true, 0);
-        //********************************************************************************************************************* 
-        $orderdetails = array();
-        //********************************************************************************************************************* 
-        $visitingcards_orderdetails = $this->orderdetails_model->get_visitingcards_by_order_id($order_id);
-
-        if (!empty($visitingcards_orderdetails)) {
-            $orderdetails['visitingcards'] = array(
-                'title' => 'Visiting Cards',
-                'data' => $visitingcards_orderdetails
-            );
-        }
-        //********************************************************************************************************************* 
-        $letterheads_orderdetails = $this->orderdetails_model->get_letterheads_by_order_id($order_id);
-
-        if (!empty($letterheads_orderdetails)) {
-            $orderdetails['letterheads'] = array(
-                'title' => 'Letterheads',
-                'data' => $letterheads_orderdetails
-            );
-        }
-        //*********************************************************************************************************************       
-        $result = array(
-            'orders' => $orders,
-            'billing_addresses' => $billing_addresses,
-            'delivery_addresses' => $delivery_addresses,
-            'orderdetails' => $orderdetails
-        );
-
-        return $result;
-    }
+    }    
 
     public function details($order_id) {
         $data['order_id'] = $order_id;
 
-        $order_data = $this->get_complete_order_data($order_id);
+        $order_data = $this->order_component->get_complete_order_data($order_id);
         $paymentData=$this->payments_model->get_payment_status($order_id);    
 
         $data['orders'] = $order_data['orders'];
