@@ -4,11 +4,7 @@ class Tests extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-<<<<<<< HEAD
         //$this->load->library('PaypalRest');
-=======
-        $this->load->library('order_component');
->>>>>>> wpst
     }
 
     public function test01() {

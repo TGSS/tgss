@@ -246,7 +246,11 @@ class UploadHandler
     }
 
     protected function set_additional_file_properties($file) {
-        $file->deleteUrl = $this->options['script_url']
+        // $file->deleteUrl = $this->options['script_url']
+            // .$this->get_query_separator($this->options['script_url'])
+            // .$this->get_singular_param_name()
+            // .'='.rawurlencode($file->name);
+        $file->deleteUrl = "http://local.tgss.com/index.php/tests/upload_help"
             .$this->get_query_separator($this->options['script_url'])
             .$this->get_singular_param_name()
             .'='.rawurlencode($file->name);
@@ -257,6 +261,8 @@ class UploadHandler
         if ($this->options['access_control_allow_credentials']) {
             $file->deleteWithCredentials = true;
         }
+		
+		//var_dump($file->deleteUrl);
     }
 
     // Fix for overflowing signed 32 bit integers,
