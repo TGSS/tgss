@@ -250,7 +250,8 @@ class UploadHandler
             // .$this->get_query_separator($this->options['script_url'])
             // .$this->get_singular_param_name()
             // .'='.rawurlencode($file->name);
-        $file->deleteUrl = "http://local.tgss.com/index.php/tests/upload_help"
+        $base = base_url();
+        $file->deleteUrl = site_url('tests/upload_help')
             .$this->get_query_separator($this->options['script_url'])
             .$this->get_singular_param_name()
             .'='.rawurlencode($file->name);

@@ -1,4 +1,5 @@
 <base href="<?php echo base_url(); ?>">
+<script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>
 <link rel="stylesheet" href="/css/fileupload/bootstrap.min.css">
 <link rel="stylesheet" href="/css/fileupload/style.css">
 <link rel="stylesheet" href="/css/fileupload/blueimp-gallery.min.css">
