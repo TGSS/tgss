@@ -7,6 +7,7 @@ class Payments extends CI_Controller {
         $this->load->library('Paypal_api');
         $this->load->library('Tgss_security');
         $this->load->library('Money_component');
+        $this->load->library('order_component');
         $this->load->model('payments_model');
     }
 
@@ -15,6 +16,7 @@ class Payments extends CI_Controller {
         $total = $this->input->post('total');
         $order_id = $this->input->post('order_id');
 
+        
         //Currency Conversion
         $totalUSD = $total / 1000; //Convert "Myanmar Kyats" to "USD"
         $totalUSD = $this->money_component->formatMoney($totalUSD);
@@ -22,7 +24,9 @@ class Payments extends CI_Controller {
         $currency = "USD";
         $paymentDescription = "Total $" . $totalUSD . " USD";
 
-        $result = $this->paypal_api->makePayPalPayment($totalUSD, $currency, $paymentDescription);
+        $orderSummary=$this->order_component->getItemListForPaypal($order_id);
+                
+        $result = $this->paypal_api->makePayPalPayment($totalUSD, $currency, $paymentDescription,$orderSummary);
 
         $userPaymentInfo = array(
             'order_id' => $order_id,
