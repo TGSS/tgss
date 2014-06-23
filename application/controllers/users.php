@@ -21,7 +21,7 @@ class Users extends CI_Controller {
                     $user = array('user_id' => $results->user_id, 'username' => $results->username, 'role' => $results->role);
                     $this->session->set_userdata('user', $user);    //Add user data to user_session array
                     $this->session->set_flashdata('success_message', 'Login Success');
-                    redirect('/');    //redirect to home page
+                    redirect('/tgss');    //redirect to home page
                 }
             } else {
                 $this->session->set_flashdata('error_message', 'Login Fail!! Please Try Again');
