@@ -15,7 +15,7 @@
 |
 */
 
-$config['base_url']	= 'http://tgss.invento-dev.com/';
+$config['base_url']	= ENV_BASE_URL;
 
 /*
 |--------------------------------------------------------------------------
