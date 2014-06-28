@@ -14,7 +14,7 @@ define('ENV_PAYPAL_SECRET','EKwQ5BCDFIoPadUBZG03BFOFXDrYDESrUm17hudmSXQ67yCHUl43
 //*****************************************************************************************************************************************************
 //"Web Config"
 
-define('ENV_BASE_URL', 'http://local.tgss.com/');
+define('ENV_BASE_URL', 'http://local.tgss.com');
 
 define('ENV_DB_USERNAME','root');
 define('ENV_DB_PASSWORD','');

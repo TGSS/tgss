@@ -24,6 +24,17 @@ class Tests extends CI_Controller {
 		$this->load->view('test/upload');
 	}
 	
+	public function upload_1()
+	{
+		$this->load->view('test/upload_1');
+	}
+	
+	public function upload_data()
+	{
+		//$this->load->view('test/upload');
+		echo "FORM UPLOADED";
+	}
+	
 	public function upload_help()
 	{
 		include_once 'upload/index.php';
