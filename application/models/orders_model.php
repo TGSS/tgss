@@ -5,6 +5,7 @@ class Orders_model extends CI_Model {
     function __construct() {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->library('payment_component');
         $this->load->database();
     }
 
@@ -239,6 +240,17 @@ class Orders_model extends CI_Model {
         
         $query = $this->db->query($sql);
         return $query->result_array();
+    }
+    
+    public function updatePaymentStatus($order_id){        
+        $paymentData=$this->payment_component->get_payment_status($order_id);
+        
+        $this->db->where('order_id',  $order_id);
+        return $this->db->update('orders', array(
+                                            'payment_status' => $paymentData['paymentStatus'],
+                                            'payment_status_text' => $paymentData['paymentStatusText'],
+                                        )
+                                    );
     }
 }
 

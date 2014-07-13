@@ -5,21 +5,32 @@
     <table id="payment_summary" class="table table-striped">
         <tbody>
             <tr>
-                <td class="label-column">Order ID</td>         
-                <td><?php echo $userPaymentInfo['order_id']; ?></td>         
+                <td class="label-column">Order Ref No</td>         
+                <td><?php echo $userPaymentInfo['order_ref_no']; ?></td>         
             </tr>            
             <tr>
                 <td class="label-column">Payment ID</td>         
                 <td><?php echo $userPaymentInfo['paymentID']; ?></td>         
             </tr>            
-
             <tr>
                 <td class="label-column">Total (Myanmar Kyats)</td>         
-                <td><?php echo $userPaymentInfo['totalMyanmar']; ?></td>         
+                <td><?php echo $userPaymentInfo['total']; ?></td>         
             </tr>
             <tr>
                 <td class="label-column">Total (USD)</td>         
-                <td><?php echo $userPaymentInfo['total']; ?></td>         
+                <td><?php echo $userPaymentInfo['totalUSD']; ?></td>         
+            </tr>
+            <tr>
+                <td class="label-column">Payment Description</td>         
+                <td><?php echo $userPaymentInfo['installmentDesc']; ?></td>         
+            </tr>            
+            <tr>
+                <td class="label-column">Installment Amount (Myanmar Kyats)</td>         
+                <td><?php echo $userPaymentInfo['installmentAmount']; ?></td>         
+            </tr>
+            <tr>
+                <td class="label-column">Installment Amount (USD)</td>         
+                <td><?php echo $userPaymentInfo['installmentAmountUSD']; ?></td>         
             </tr>
         </tbody>
     </table>

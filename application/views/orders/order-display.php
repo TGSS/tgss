@@ -135,6 +135,7 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Total</th>
+                        <th>Payment Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -146,6 +147,7 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Total</th>
+                        <th>Payment Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>        

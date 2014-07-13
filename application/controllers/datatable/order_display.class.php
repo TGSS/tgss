@@ -56,6 +56,11 @@ class SSP {
                     $order_id=$data[$i][$columns[$j]['db']];
                     $custom_text='<a class="btn btn-primary" href="' . base_url() . 'orderdetails/' . $order_id . '"><i class="fa fa-ellipsis-h"></i></button>';
                     $row[$column['dt']]=$custom_text;
+                }else if ($column['db']=='payment_status_text'){
+                    //Cutting "Payment Status Text"
+                    $paymentStatusText=$data[$i][$columns[$j]['db']];
+                    $temp=  explode("(",$paymentStatusText);
+                    $row[$column['dt']]=$temp[0];
                 }else {
                     $row[$column['dt']] = $data[$i][$columns[$j]['db']];
                 }

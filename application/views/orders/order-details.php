@@ -28,19 +28,18 @@
             </form>
 
             <div class="clearfix" style="margin-bottom:5px;"></div>
-            <?php
-            //If Payment is not completed yet, we display the "Make Payment" button
-            if ($paymentData['paymentStatus'] != 2) {
-            ?>
+            
+            <?php if ($paymentData['paymentStatus']!=2 && $paymentData['paymentStatus']!=-1) { ?>
                 <form class="form-horizontal" role="form" action="make-payment" method="post"> 
+                    <input type="hidden" id="installment_no" name="installment_no" value="<?php echo $paymentData['installment_no']; ?>" />
+                    <input type="hidden" id="installmentAmount" name="installmentAmount" value="<?php echo $paymentData['installmentAmount']; ?>" />
                     <input type="hidden" id="order_id" name="order_id" value="<?php echo $order_id; ?>" />
+                    <input type="hidden" id="order_ref_no" name="order_ref_no" value="<?php echo $orders['order_ref_no']; ?>" />
                     <input type="hidden" id="total" name="total" value="<?php echo $orders['total']; ?>" />
-                    <button type="submit" class="btn btn-primary btn-block" id="btn-make-payment">Make Payment</button> 
+                    <button type="submit" class="btn btn-primary btn-block" id="btn-make-payment"><?php echo $paymentData['paymentButtonText']; ?></button> 
                 </form>
             <?php } ?>
         </div>
-
-
 
         <?php $this->load->view("templates/why-choose-tgss"); ?>
 
