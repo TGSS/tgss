@@ -18,6 +18,7 @@
 
             <?php
                 //echo "<pre>"; print_r($cart);
+                var_dump($cart);
             ?>
 
             <table width="100%" style="margin-top: 20px;" class="table table-striped">
@@ -68,20 +69,23 @@
 			                </tr>
             			</thead>
             			<tbody>
-            				<tr>
-	            				<?php foreach ($cart_data as $cart_data_index => $cart_datas) { 
-	            					$table .= "<td>" . $cart_datas['quantity'] . "</td>";
-		                            $table .= "<td>";
-		                            //$table .= foreach($cart_datas['card_data'] as $cart_desc){$cart_desc;};
-		                            foreach($cart_datas['card_data'] as $key=>$val){ 
-		                                $table .= $val . "<br>";
-		                            };
-		                            $table .= "</td>";
-		                            $table .= "<td style='text-align: center;'><a href='index.php/cards/cart_delete/$cart_datas[card_id]'>Delete</a></td>";
-		                            $table .= "<td>" . $cart_datas['total'] . "</td>";	
-									
-	            				}echo $table; ?>
-            				</tr>
+            				
+	        				<?php foreach ($cart_data as $cart_data_index => $cart_datas) { 
+	        					var_dump($cart_datas);
+	        					$table .= "<tr>";
+	        					$table .= "<td>" . $cart_datas['quantity'] . "</td>";
+	                            $table .= "<td>";
+	                            //$table .= foreach($cart_datas['card_data'] as $cart_desc){$cart_desc;};
+	                            foreach($cart_datas['card_data'] as $key=>$val){ 
+	                                $table .= $val . "<br>";
+	                            };
+	                            $table .= "</td>";
+	                            $table .= "<td style='text-align: center;'><a href='index.php/cards/cart_delete/$cart_datas[card_id]'>Delete</a></td>";
+	                            $table .= "<td>" . $cart_datas['total'] . "</td>";	
+	                            $table .= "</tr>";
+								
+	        				}echo $table; ?>
+            				
             			</tbody>
             		</table>
             	</div>
