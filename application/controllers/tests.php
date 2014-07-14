@@ -16,7 +16,7 @@ class Tests extends CI_Controller {
     }
 
     public function test02() {
-        $this->order_component->getItemListForPaypal(18);
+        $this->order_component->getItemListForPaypal(18);  
     }
 	
 	public function upload()

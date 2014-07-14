@@ -68,7 +68,6 @@ class Users_model extends CI_Model {
             'mobileno' => $this->input->post('mobileno'),
         );
 
-
         $this->db->where('user_id',  $this->input->post('user_id'));
         return $this->db->update('profiles', $profileData);
     }

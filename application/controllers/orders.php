@@ -9,7 +9,7 @@ class Orders extends CI_Controller {
         $this->load->library('datetime_component');
         $this->load->library('user_component');
         $this->load->library('order_component');
-        $this->load->model('orders_model');
+        $this->load->library('payment_component');
         $this->load->model('orderdetails_model');
         $this->load->model('payments_model');
     }
@@ -58,21 +58,66 @@ class Orders extends CI_Controller {
         $data['timezone_offset'] = $user_timezone_offset;
 
         $this->load->view('template', $data);
-    }    
+    }
 
     public function details($order_id) {
         $data['order_id'] = $order_id;
 
         $order_data = $this->order_component->get_complete_order_data($order_id);
-        $paymentData=$this->payments_model->get_payment_status($order_id);    
+        $paymentData = $this->payment_component->get_payment_status($order_id);
 
-        $data['orders'] = $order_data['orders'];
         $data['billing_addresses'] = $order_data['billing_addresses'];
         $data['delivery_addresses'] = $order_data['delivery_addresses'];
         $data['orderdetails'] = $order_data['orderdetails'];
-        $data['paymentData']=$paymentData;   
+        //*********************************************************************************************************************************
+        //Construction Payment Data
+        $total = (float) $order_data['orders']['total'];
+        $firstInstallment = $total / 2;
+        $secondInstallment = $total - $firstInstallment;        
+                
+        //Formatting
+        $totalDisplay=$this->money_component->formatMoney($total);
+        $firstInstallmentDisplay=$this->money_component->formatMoney($firstInstallment);
+        $secondInstallmentDisplay=$this->money_component->formatMoney($secondInstallment);
+        
+        //Rounding
+        $total=  round($total,2);
+        $firstInstallment=  round($firstInstallment,2);
+        $secondInstallment=  round($secondInstallment,2);
+        
+        $installment_no = 0;
+        $paymentButtonText = "";
+        $installmentAmount=0;
+        
+        //If Payment is not completed yet, or not in "Error" status we display the "Make Payment" button
+        if ($paymentData['paymentStatus'] != 2 && $paymentData['paymentStatus'] != -1) {
 
-        $data['template'] = "orders/order-details";                                       
+            if ($paymentData['paymentStatus'] == 0) {
+                //first installment
+                $installment_no = 1;
+                $paymentButtonText = "Make first Installment (" . $firstInstallmentDisplay . " of " . $totalDisplay . ")";
+                $installmentAmount=$firstInstallment;
+            } else if ($paymentData['paymentStatus'] == 1) {
+                //second installment
+                $installment_no = 2;
+                $paymentButtonText = "Make second Installment (" . $secondInstallmentDisplay  . " of " . $totalDisplay . ")";
+                $installmentAmount=$secondInstallment;
+            }
+        }
+
+        $paymentData['installment_no'] = $installment_no;
+        $paymentData['paymentButtonText'] = $paymentButtonText;
+        $paymentData['firstInstallmentDisplay'] = $firstInstallmentDisplay;
+        $paymentData['secondInstallmentDisplay'] = $secondInstallmentDisplay;
+        $paymentData['installmentAmount'] = $installmentAmount;
+
+        $order_data['orders']['total'] =$total;
+        $order_data['orders']['totalDisplay'] =$totalDisplay;
+
+        $data['orders'] = $order_data['orders'];
+        $data['paymentData'] = $paymentData;
+        //*********************************************************************************************************************************
+        $data['template'] = "orders/order-details";
         $this->load->view('template', $data);
     }
 
@@ -107,7 +152,8 @@ class Orders extends CI_Controller {
                     return number_format($d);
                 }
             ),
-            array('db' => 'order_id', 'dt' => 6),
+            array('db' => 'payment_status_text', 'dt' => 6),
+            array('db' => 'order_id', 'dt' => 7),
         );
 
         // SQL server connection information
@@ -124,25 +170,25 @@ class Orders extends CI_Controller {
          * server-side, there is no need to edit below this line.
          */
 
-        $timzone_offset=(float)$_POST['timezone_offset'];
-        $timezone_offset_in_second=$this->datetime_component->timezone_offset_to_seconds($timzone_offset);
+        $timzone_offset = (float) $_POST['timezone_offset'];
+        $timezone_offset_in_second = $this->datetime_component->timezone_offset_to_seconds($timzone_offset);
 
         if (isset($_POST['datefilter'])) {
-            $from_date=$_POST['from_date'];
+            $from_date = $_POST['from_date'];
             $from_date.=" 00:00:00";
-            $from_date_TS=$this->datetime_component->get_gmt_ts($from_date);
+            $from_date_TS = $this->datetime_component->get_gmt_ts($from_date);
             $from_date_TS-=$timezone_offset_in_second;
-            
-            $to_date=$_POST['to_date'];
+
+            $to_date = $_POST['to_date'];
             $to_date.=" 23:59:59";
-            $to_date_TS=$this->datetime_component->get_gmt_ts($to_date);
+            $to_date_TS = $this->datetime_component->get_gmt_ts($to_date);
             $to_date_TS-=$timezone_offset_in_second;
-            
-            $_POST['from_date_TS']=$from_date_TS;
-            $_POST['to_date_TS']=$to_date_TS;
+
+            $_POST['from_date_TS'] = $from_date_TS;
+            $_POST['to_date_TS'] = $to_date_TS;
         }
-        
-        
+
+
         echo json_encode(
                 SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
         );
@@ -176,7 +222,8 @@ class Orders extends CI_Controller {
                     return number_format($d);
                 }
             ),
-            array('db' => 'order_id', 'dt' => 3),
+            array('db' => 'payment_status_text', 'dt' => 3),
+            array('db' => 'order_id', 'dt' => 4),
         );
 
         // SQL server connection information
@@ -192,24 +239,24 @@ class Orders extends CI_Controller {
          * If you just want to use the basic configuration for DataTables with PHP
          * server-side, there is no need to edit below this line.
          */
-        $timzone_offset=(float)$_POST['timezone_offset'];
-        $timezone_offset_in_second=$this->datetime_component->timezone_offset_to_seconds($timzone_offset);
+        $timzone_offset = (float) $_POST['timezone_offset'];
+        $timezone_offset_in_second = $this->datetime_component->timezone_offset_to_seconds($timzone_offset);
 
         if (isset($_POST['datefilter'])) {
-            $from_date=$_POST['from_date'];
+            $from_date = $_POST['from_date'];
             $from_date.=" 00:00:00";
-            $from_date_TS=$this->datetime_component->get_gmt_ts($from_date);
+            $from_date_TS = $this->datetime_component->get_gmt_ts($from_date);
             $from_date_TS-=$timezone_offset_in_second;
-            
-            $to_date=$_POST['to_date'];
+
+            $to_date = $_POST['to_date'];
             $to_date.=" 23:59:59";
-            $to_date_TS=$this->datetime_component->get_gmt_ts($to_date);
+            $to_date_TS = $this->datetime_component->get_gmt_ts($to_date);
             $to_date_TS-=$timezone_offset_in_second;
-            
-            $_POST['from_date_TS']=$from_date_TS;
-            $_POST['to_date_TS']=$to_date_TS;
+
+            $_POST['from_date_TS'] = $from_date_TS;
+            $_POST['to_date_TS'] = $to_date_TS;
         }
-        
+
         echo json_encode(
                 SSP::simple($_POST, $sql_details, $table, $primaryKey, $columns)
         );

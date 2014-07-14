@@ -1,4 +1,5 @@
 <?php
+
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -20,19 +21,19 @@ use PayPal\Api\ItemList;
 use PayPal\Api\Item;
 
 class Order_component {
-    
+
     var $CI;
 
     public function __construct() {
         $this->CI = & get_instance();
-        
+
         $this->CI->load->library('datetime_component');
         $this->CI->load->library('user_component');
-        $this->CI->load->library('money_component');
+        //$this->CI->load->library('money_component');
         $this->CI->load->model('orders_model');
         $this->CI->load->model('orderdetails_model');
     }
-    
+
     /**
      * 
      * Function to return "order" and "order details" data
@@ -75,51 +76,69 @@ class Order_component {
             'delivery_addresses' => $delivery_addresses,
             'orderdetails' => $orderdetails
         );
-        
+
         return $result;
     }
-    
+
     /**
      * 
      * Function to return array formatted to used for order summary in "Paypal"
      */
-    public function getItemListForPaypal($order_id){
-        $orderData=$this->get_complete_order_data($order_id);
-        
-        $itemList=new ItemList();
-        $itemArr=array();
-        
-        foreach ($orderData['orderdetails']  as $key1=>$cards){
-            
-            //$itemName=$key1;
-            
-            foreach ($cards['data'] as $key2=>$value){
-                //var_dump($value);exit();
-                $item=new Item();
-                
-                $itemName=$cards['title'] . " - " . $value['color'] . " (" . $value['quantity'] . " cards)";
-                //$item->setQuantity($value['quantity']);
-                $item->setPrice($value['total']);
-                //$item->setQuantity($value['quantity']);
-                $item->setQuantity(1);
-                $item->setName($itemName);
-                //$item->setPrice(10);
-                $total=$value['total'];
-                //Currency Conversion
-                $totalUSD = $total / 1000; //Convert "Myanmar Kyats" to "USD"
-                $totalUSD = $this->CI->money_component->formatMoney($totalUSD);
-        
-                $item->setPrice($totalUSD);
-                $item->setCurrency("USD");
-                
-                $itemArr[]=$item;
-            }
-        }
-                
+//    public function getItemListForPaypal($order_id) {
+//        $orderData = $this->get_complete_order_data($order_id);
+//
+//        $itemList = new ItemList();
+//        $itemArr = array();
+//
+//        foreach ($orderData['orderdetails'] as $key1 => $cards) {
+//
+//            //$itemName=$key1;
+//
+//            foreach ($cards['data'] as $key2 => $value) {
+//                //var_dump($value);exit();
+//                $item = new Item();
+//
+//                $itemName = $cards['title'] . " - " . $value['color'] . " (" . $value['quantity'] . " cards)";
+//                //$item->setQuantity($value['quantity']);
+//                $item->setPrice($value['total']);
+//                //$item->setQuantity($value['quantity']);
+//                $item->setQuantity(1);
+//                $item->setName($itemName);
+//                //$item->setPrice(10);
+//                $total = $value['total'];
+//                //Currency Conversion
+//                $totalUSD = $total / 1000; //Convert "Myanmar Kyats" to "USD"
+//                $totalUSD = $this->CI->money_component->formatMoney($totalUSD);
+//
+//                $item->setPrice($totalUSD);
+//                $item->setCurrency("USD");
+//
+//                $itemArr[] = $item;
+//            }
+//        }
+//
+//        $itemList->setItems($itemArr);
+//
+//        return $itemList;
+//    }
+
+    public function getInstallmentItemForPaypal($installmentAmount,$installmentDesc) {
+
+        $itemList = new ItemList();
+        $itemArr = array();
+        $item = new Item();
+
+        $item->setQuantity(1);
+        $item->setName($installmentDesc);
+
+        $item->setPrice($installmentAmount);
+        $item->setCurrency("USD");
+
+        $itemArr[] = $item;
+
         $itemList->setItems($itemArr);
-        
-        return $itemList;        
+
+        return $itemList;
     }
-    
 
 }

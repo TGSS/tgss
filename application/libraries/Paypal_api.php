@@ -81,7 +81,7 @@ class Paypal_api {
         $transaction->setAmount($amount);
 
         if ($orderSummary!=null){
-            //$transaction->setItemList($orderSummary);
+            $transaction->setItemList($orderSummary);
         }               
 
         $redirectUrls = new RedirectUrls();
@@ -94,6 +94,10 @@ class Paypal_api {
         $payment->setRedirect_urls($redirectUrls);
         $payment->setTransactions(array($transaction));
 
+//        print_r("<pre>");
+//        print_r($payment);
+//        print_r("<pre>");
+//        exit();
         $apiContext = $this->getApiContext();
         $paymentData = $payment->create($apiContext);
 

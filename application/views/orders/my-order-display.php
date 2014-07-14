@@ -129,6 +129,7 @@
                         <th>Order Ref No</th>
                         <th>Date</th>
                         <th>Total</th>
+                        <th>Payment Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -137,6 +138,7 @@
                         <th>Order Ref No</th>
                         <th>Date</th>
                         <th>Total</th>
+                        <th>Payment Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>        
