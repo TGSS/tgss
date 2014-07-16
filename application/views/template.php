@@ -72,7 +72,7 @@
                         {
                     ?>
                             <div class="login_login">
-                                <a href="<?php echo base_url('users'); ?>">
+                                <a href="<?php echo site_url('users'); ?>">
                                     <img src="<?php echo base_url(); ?>/images/login.png" />
                                 </a>
                             </div>
