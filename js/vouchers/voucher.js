@@ -3,8 +3,6 @@ $(document).ready(function(){
         width: "250px"
     });
     
-    $('#voucher_type_id').val("VOT_000001");
-    
     get_voucher_type_data();    
     
     $('#voucher_type_id').change(function(){

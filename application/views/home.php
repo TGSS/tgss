@@ -68,12 +68,12 @@
 									<ul id="all_product_1">
 										<li><a href="Labels/Stickers">Labels/Stickers</a></li>
 										<ul id="all_product_2">
-											<li><a href="<?php echo base_url();?>vouchers/index">Vouchers</a></li>
+											<li><a href="<?php echo base_url();?>vouchers/select">Vouchers</a></li>
 											<li><a href="Carbonless Vouchers">Carbonless Vouchers</a></li>
 										</ul>
 										<li><a href="Packaging Boxes">Packaging Boxes</a></li>
 										<ul id="all_product_2">
-											<li><a href="Table Calendars">Table Calendars</a></li>
+											<li><a href="<?php echo base_url();?>tablecalenders/select"">Table Calendars</a></li>
 											<li><a href="Wall Calendars">Wall Calendars</a></li>
 										</ul>
 									</ul>
