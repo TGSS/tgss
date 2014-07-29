@@ -19,6 +19,7 @@ class Cards extends CI_Controller {
         //$data['cart'] = $this->shoppingcart->get_shoppingcart();
         $data['cart'] = $this->session->userdata('shoppingcart');
         $data['template'] = "cards/show";
+		$data['total'] = $this->shoppingcart->get_total();
         $this->load->view('template', $data);
     }
 
@@ -100,7 +101,8 @@ class Cards extends CI_Controller {
     public function clear()
     {
         $this->shoppingcart->clear_shoppingcart();
-		redirect('tgss');
+		$this->session->set_flashdata('success_message', 'Success Clear Shopping Cart');
+		redirect('');
     }
 
     public function cart_delete($card_id)

@@ -39,7 +39,6 @@ class Shoppingcart {
 	
 	public function number_shoppingcart() {
 		$shoppingcart=$this->CI->session->userdata('shoppingcart');
-		//var_dump($shoppingcart);
         $num = 0;
 
 		if($shoppingcart) {

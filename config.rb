@@ -1,25 +1,58 @@
-# Require any additional compass plugins here.
+#
+# This file is only needed for Compass/Sass integration. If you are not using
+# Compass, you may safely ignore or delete this file.
+#
+# If you'd like to learn more about Sass and Compass, see the sass/_README.txt
+# file for more information.
+#
+# This config file is borrowed from Zen, so thanks JohnAlbin for your hard work
+# in bringing such fine tools to Drupal so us mere mortals may benefit.
+
+
+# Set the Environment Variable
+# Using :development enables the use of FireSass but will bloat the stylesheets
+# with debug code, be sure to change to :production when moving from development
+# to production servers.
+#environment = :development
 environment = :production
 
-# Set this to the root of your project when deployed:
-http_path = "/"
+
+# Location of the theme's resources.
+# Compass will overwrite the CSS files in the css_dir when set to watch.
 css_dir = "css"
 sass_dir = "sass"
-images_dir = "images"
-javascripts_dir = "js"
+images_dir = "css/images"
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
 
-# To enable relative paths to assets via compass helper functions. Uncomment:
-# relative_assets = true
+# Assuming this theme is in sites/*/themes/THEMENAME, you can add the partials
+# included with a module by uncommenting and modifying one of the lines below:
+#add_import_path "../../../default/modules/FOO"
+#add_import_path "../../../all/modules/FOO"
+#add_import_path "../../../../modules/FOO"
 
-# To disable debugging comments that display the original location of your selectors. Uncomment:
+################################################################################
+# You probably don't need to edit anything below this.
+
+
+# You can select your preferred output style here (can be overridden via the
+# command line)
+#output_style = :expanded or :nested or :compact or :compressed
+#output_style = (environment == :development) ? :expanded : :compact
+output_style = :nested
+
+
+# To enable relative paths to assets via compass helper functions. Since Drupal
+# themes can be installed in multiple locations, we don't need to worry about
+# the absolute path to the theme from server root.
+relative_assets = true
+
+# To disable debugging comments that display the original location of your
+# selectors. Uncomment:
 # line_comments = false
 
-
-# If you prefer the indented syntax, you might want to regenerate this
-# project again passing --syntax sass, or you can uncomment this:
-# preferred_syntax = :sass
-# and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
+# Pass options to sass.
+# - For development, we turn on the FireSass-compatible debug_info.
+# - For production, we force the CSS to be regenerated even though the source
+#   scss may not have changed, since we want the CSS to be compressed and have
+#   the debug info removed.
+sass_options = (environment == :development) ? {:debug_info => true} : {:always_update => true}
