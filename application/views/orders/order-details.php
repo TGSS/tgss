@@ -2,9 +2,24 @@
 
 <div id="body_wrapper_body_wrapper">
     <div class="body_wrapper_body_wrapper_top">
-        <div class="body_wrapper_body_wrapper_top_left"> 
 
-            <div class="tgss-product-heading">Order Details</div>
+            <div id="shopping_nav">
+				<div class="shopping_review shopping_nav_item">
+					<div class="content">
+						Step 1: <span class="title">Review Basket</span>
+					</div>
+				</div>
+				<div class="shopping_detail shopping_nav_item">
+					<div class="content">
+						Step 2: <span class="title">Your Details</span>
+					</div>
+				</div>
+				<div class="shopping_complete shopping_nav_item active">
+					<div class="content">
+						Step 4: <span class="title">Order Complete</span>
+					</div>
+				</div>
+			</div>
 
             <ul class="nav nav-pills">
                 <li class="active"><a href="#" id="contanct-info" class="pill-element">Order Info</a></li>
@@ -14,13 +29,13 @@
 
             <form class="form-horizontal" role="form" action="orders/print_order_detail_report/<?php echo $order_id; ?>" method="post">
                 <div id="contanct-info-wrapper">
-                    <?php $this->load->view("orders/order_details/order-details-display"); ?>
+                    <?php $this -> load -> view("orders/order_details/order-details-display"); ?>
                 </div>
                 <div id="billing-addresses-wrapper" style="display:none;">
-                    <?php $this->load->view("orders/order_details/billing-addresses-display"); ?>
+                    <?php $this -> load -> view("orders/order_details/billing-addresses-display"); ?>
                 </div>
                 <div id="delivery-addresses-wrapper" style="display:none;">
-                    <?php $this->load->view("orders/order_details/delivery-addresses-display"); ?>
+                    <?php $this -> load -> view("orders/order_details/delivery-addresses-display"); ?>
                 </div>      
 
                 <button type="submit" class="btn btn-info pull-left" id="btn-search" style="width:49%;">Print</button>                
@@ -39,13 +54,12 @@
                     <button type="submit" class="btn btn-primary btn-block" id="btn-make-payment"><?php echo $paymentData['paymentButtonText']; ?></button> 
                 </form>
             <?php } ?>
-        </div>
 
-        <?php $this->load->view("templates/why-choose-tgss"); ?>
+        
 
         <br/>
         <div class="table-wrapper clearfix">
-            <?php $this->load->view("orders/order-details-table"); ?>
+            <?php $this -> load -> view("orders/order-details-table"); ?>
         </div>
 
         <div id="clr"></div>

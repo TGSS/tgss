@@ -864,3 +864,77 @@ body {
   font-weight: 700;
   font-size: 22px;
   color: #006fd8 !important; }
+
+#order_billin_form {
+  text-align: center;
+  margin: 0;
+  padding: 0; }
+  #order_billin_form input[type='text'] {
+    width: 95%;
+    float: left; }
+  #order_billin_form #require_star {
+    overflow: hidden; }
+  #order_billin_form textarea {
+    width: 415px; }
+  #order_billin_form .chosen-container {
+    margin-right: 20px; }
+
+#require_star {
+  font-family: "Myriad Pro";
+  font-size: 14px;
+  font-weight: 400;
+  color: #434343; }
+  #require_star span {
+    color: #c30000; }
+
+.order_header {
+  height: 40px;
+  border-radius: 10px 10px 0 0;
+  padding-top: 3px;
+  font-family: "Britannic";
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff; }
+
+.order_form_body {
+  background: #fafafa;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+  .order_form_body span {
+    font-family: "Myriad Pro";
+    font-weight: 400;
+    font-size: 14px;
+    color: #959595;
+    display: block;
+    margin-bottom: 10px; }
+
+#billing_form {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px; }
+  #billing_form .order_header {
+    background: #f01562; }
+
+#delivery_form {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10px; }
+  #delivery_form .order_header {
+    background: #deb90a; }
+  #delivery_form .checkbox {
+    margin-bottom: 10px; }
+    #delivery_form .checkbox input[type="checkbox"] {
+      float: none; }
+  #delivery_form #delivery-form-wrapper {
+    display: none; }
+
+.order_proceed_to_payment {
+  margin: 0;
+  padding: 0; }
+  .order_proceed_to_payment button {
+    background: url("images/cart/proceed_to_payment.png") no-repeat;
+    width: 224px;
+    height: 36px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px; }

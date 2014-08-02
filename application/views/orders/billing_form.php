@@ -1,16 +1,18 @@
-<div class="tgss-product-heading">Billing</div> 
+<!-- <div class="tgss-product-heading">Billing</div>  -->
 
 <div class="form-group">
     <div class="col-sm-4 control-label">Billing First Name :</div>
     <div class="col-sm-7">
-        <input class="form-control" type="text" id="billing_firstname" name="billing_firstname" value="">   
+        <input class="form-control" type="text" id="billing_firstname" name="billing_firstname" value="">
+        <div id="require_star"><span>*</span></div>   
     </div>
 </div>
 
 <div class="form-group">
     <div class="col-sm-4 control-label">Billing Last Name :</div>
     <div class="col-sm-7">
-        <input class="form-control" type="text" id="billing_lastname" name="billing_lastname" value="">   
+        <input class="form-control" type="text" id="billing_lastname" name="billing_lastname" value="">
+        <div id="require_star"><span>*</span></div>
     </div>
 </div>
 
@@ -18,6 +20,7 @@
     <div class="col-sm-4 control-label">Email :</div>
     <div class="col-sm-7">
         <input class="form-control" type="text" id="billing_email" name="billing_email" value="">   
+        <div id="require_star"><span>*</span></div>
     </div>
 </div>
 
@@ -38,7 +41,8 @@
 <div class="form-group">
     <div class="col-sm-4 control-label">City :</div>
     <div class="col-sm-7">
-        <input class="form-control" type="text" id="billing_city" name="billing_city" value="">   
+        <input class="form-control" type="text" id="billing_city" name="billing_city" value="">
+        <div id="require_star"><span>*</span></div>   
     </div>
 </div>
 
@@ -64,7 +68,8 @@
 <div class="form-group">
     <div class="col-sm-4 control-label">Phone No :</div>
     <div class="col-sm-7">
-        <input class="form-control" type="text" id="billing_phoneno" name="billing_phoneno" value="">   
+        <input class="form-control" type="text" id="billing_phoneno" name="billing_phoneno" value="">
+        <div id="require_star"><span>*</span></div>   
     </div>
 </div>
 

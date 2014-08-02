@@ -13,10 +13,22 @@
 </style>
 <div id="body_wrapper_body_wrapper">
     <div id="shopping_nav">
-        <div class="shopping_review shopping_nav_item active"> <div class="content">Step 1: <span class="title">Review Basket</span></div></div>
-        <div class="shopping_detail shopping_nav_item"> <div class="content">Step 2: <span class="title">Your Details</span></div></div>
-        <div class="shopping_complete shopping_nav_item"> <div class="content">Step 4: <span class="title">Order Complete</span></div></div>
-    </div>
+		<div class="shopping_review shopping_nav_item active">
+			<div class="content">
+				Step 1: <span class="title">Review Basket</span>
+			</div>
+		</div>
+		<div class="shopping_detail shopping_nav_item">
+			<div class="content">
+				Step 2: <span class="title">Your Details</span>
+			</div>
+		</div>
+		<div class="shopping_complete shopping_nav_item">
+			<div class="content">
+				Step 4: <span class="title">Order Complete</span>
+			</div>
+		</div>
+	</div>
     <div class="shopping_continue">
         <a href=""></a>
     </div>
