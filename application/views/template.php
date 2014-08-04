@@ -25,6 +25,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.validate.min.js"></script>
         <script src="<?php echo base_url(); ?>js/chosen/chosen.jquery.min.js" type="text/javascript"></script>                                
         <script src="<?php echo base_url(); ?>js/chosen/chosen.proto.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/formatMoney.js"></script>
         <!-- echoing "base_url" from "PHP" to be used with "javascript" -->
         <script type="text/javascript">var base_url = '<?php echo base_url(); ?>'; </script>
 
