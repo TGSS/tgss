@@ -3,16 +3,14 @@
 <div class="form-group">
     <div class="col-sm-4 control-label">Delivery First Name :</div>
     <div class="col-sm-7">
-        <input class="form-control" type="text" id="delivery_firstname" name="delivery_firstname" value="">
-        <div id="require_star"><span>*</span></div>      
+        <input class="form-control" type="text" id="delivery_firstname" name="delivery_firstname" value="">     
     </div>
 </div>
 
 <div class="form-group">
     <div class="col-sm-4 control-label">Delivery Last Name :</div>
     <div class="col-sm-7">
-        <input class="form-control" type="text" id="delivery_lastname" name="delivery_lastname" value="">
-        <div id="require_star"><span>*</span></div>      
+        <input class="form-control" type="text" id="delivery_lastname" name="delivery_lastname" value="">    
     </div>
 </div>
 

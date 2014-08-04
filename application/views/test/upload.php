@@ -88,7 +88,7 @@
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Delete</span>
                 </button>
-                <input type="checkbox" name="delete" value="1" class="toggle">
+                <!--input type="checkbox" name="delete" value="1" class="toggle"-->
             {% } else { %}
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
@@ -98,11 +98,8 @@
         </td>
     </tr>
 {% } %}
-</script> 
-<?php
-    echo "Upload";
-?>
-<form id="fileupload" action="<?php echo site_url('tests/upload_data') ?>" method="POST" enctype="multipart/form-data">
+</script>
+<form id="fileupload" action="<?php echo site_url('tests/upload_datas') ?>" method="POST" enctype="multipart/form-data">
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
       <div class="col-lg-7"> 

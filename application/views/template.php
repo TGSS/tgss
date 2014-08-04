@@ -33,15 +33,14 @@
         
         <script type="text/javascript">
             $(document).ready(function(){
-                $("div#view_all_product_top").hide();
-                $("img#viewallproducts").click(function(){
-                    $("div#view_all_product_top").slideDown(1000);
-                });
-  
-                $("img#viewallproducts").click(function(){
-                    $("div#view_all_product_topa").hide(500);
-                });
-  
+                // $("img#viewallproducts").click(function(){
+                    // $("div#view_all_product_top").slideDown(1000);
+                // }, function(){
+                    // $("div#view_all_product_topa").hide(500);
+                // });
+  				$('body').on('click','img#viewallproducts', function() {
+  					$("div.view_all_product_top").toggleClass('click');
+  				});
             });
         </script>
     </head>
@@ -100,72 +99,16 @@
                                     <li><a href="<?php echo site_url(); ?>/tgss/faq">FAQ</a></li>
                                     <li><a href="#">CONTACT US</a></li>
                                 </ul>
-                                <!--img src="images/btn_viewallproducts.png" id="viewallproducts" /-->
+                                <img src="images/btn_viewallproducts.png" id="viewallproducts">
                             </div>
                         </div>
                         <div class="body_header_left_right"></div>
                     </div>
                     <div class="body_header_right"><a id="cart" href="<?php if($this->shoppingcart->number_shoppingcart() == 0) { echo ""; } else { echo site_url('shoppingcart'); } ?>" class="basket">( <?php echo $this->shoppingcart->number_shoppingcart(); ?> )Item</a></div>
-                    <!--div id="view_all_product_top">
-                        <ul id="all_product_1">
-                            <li><a href="Brochures">Brochures</a></li>
-                            <li><a href="Flyers">Flyers</a></li>
-                            <li><a href="Letterheads">Letterheads</a></li>
-                            <li><a href="Envelops">Envelops</a></li>
-                            <li><a href="Certificates">Certificates</a></li>
-                            <li><a href="Compliment Slips">Compliment Slips</a></li>
-                            <li><a href="Menus">Menus</a></li>
-                        </ul>
-                        <ul id="all_product_1">
-                            <li><a href="Labels/Stickers">Labels/Stickers</a></li>
-                            <li><a href="Packaging Boxes">Packaging Boxes</a></li>
-                            <li><a href="Tickets">Tickets</a></li>
-                            <li><a href="Posters">Posters</a></li>
-                            <li><a href="Magazines">Magazines</a></li>
-                            <li><a href="Accessory Printing">Accessory Printing</a></li>
-                            <li><a href="Vinyl Printing">Vinyl Printing</a></li>
-                        </ul>
-                        <ul id="all_product_1">
-                            <li><a href="Labels/Stickers">Labels/Stickers</a></li>
-                            <ul id="all_product_2">
-                                <li><a href="Vouchers">Vouchers</a></li>
-                                <li><a href="Carbonless Vouchers">Carbonless Vouchers</a></li>
-                            </ul>
-                            <li><a href="Packaging Boxes">Packaging Boxes</a></li>
-                            <ul id="all_product_2">
-                                <li><a href="Table Calendars">Table Calendars</a></li>
-                                <li><a href="Wall Calendars">Wall Calendars</a></li>
-                            </ul>
-                        </ul>
-                        <ul id="all_product_1">
-                            <li><a href="Company Profile">Company Profile</a></li>
-                            <ul id="all_product_2">
-                                <li><a href="Annual Books">Annual Books</a></li>
-                                <li><a href="Catalogue">Catalogue</a></li>
-                                <li><a href="Business Directries">Business Directries</a></li>
-                            </ul>
-                            <li><a href="Books">Books</a></li>
-                            <ul id="all_product_2">
-                                <li><a href="Exercise Book">Exercise Book</a></li>
-                                <li><a href="Text Book">Text Book</a></li>
-                                <li><a href="Diary Book">Diary Book</a></li>
-                            </ul>
-                        </ul>
-                        <ul id="all_product_1">
-                            <li><a href="Note Pads/ Desk Pads">Note Pads/ Desk Pads</a></li>
-                            <ul id="all_product_2">
-                                <li><a href="Greeting Cards">Greeting Cards</a></li>
-                                <li><a href="Post Cards">Post Cards</a></li>
-                                <li><a href="Invitation Cards">Invitation Cards</a></li>
-                                <ul id="all_product_3">
-                                    <li><a href="Wedding Cards">Wedding Cards</a></li>
-                                    <li><a href="Birthday Cards">Birthday Cards</a></li>
-                                    <li><a href="Opening CeremonyCards">Opening CeremonyCards</a></li>
-                                </ul>
-                            </ul>
-                        </ul>
+                    <div class="view_all_product_top">
+                    	<?php $this->load->view('products'); ?>
                         <div id="clr"></div>
-                    </div-->
+                    </div>
                 </div>
                 <div id="wrapper_body">
                     <?php
@@ -232,7 +175,7 @@
                 </div>
                 <div class="footer_body_line"></div>
                 <div class="footer_body_bottom">
-                    <div class="copyright">Copyright � 2013 - TGSS Online Printing Service. All Rights Reserved. </div>
+                    <div class="copyright">Copyright © 2013 - TGSS Online Printing Service. All Rights Reserved. </div>
                     <div class="footer_body_bottom_link"><a href="">Terms of use</a></div>
                     <div class="footer_body_bottom_link"><a href="">Privacy Policy</a></div>
                     <div class="fb"><a href="#">Join us on Facebook</a></div>

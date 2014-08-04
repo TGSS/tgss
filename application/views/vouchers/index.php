@@ -27,7 +27,7 @@ foreach ($voucher_types as $key=>$value){
     
     $count++;
 ?>   
-<a href="vouchers/select/<?php echo $value['type_id']; ?>" class="btn <?php echo $buttonType . " " . $buttonClass;?>"><?php echo $buttonText; ?></a>
+<a href="index.php/vouchers/select/<?php echo $value['type_id']; ?>" class="btn <?php echo $buttonType . " " . $buttonClass;?>"><?php echo $buttonText; ?></a>
 <?php
 }
 ?>
