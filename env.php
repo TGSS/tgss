@@ -14,12 +14,12 @@ define('ENV_PAYPAL_SECRET','EKwQ5BCDFIoPadUBZG03BFOFXDrYDESrUm17hudmSXQ67yCHUl43
 //*****************************************************************************************************************************************************
 //"Web Config"
 
-define('ENV_BASE_URL', 'http://local.tgss.com');
+define('ENV_BASE_URL', 'http://tgss.invento-dev.com');
 //define('ENV_BASE_URL', 'localhost/tgss/');
 
 
-define('ENV_DB_USERNAME','root');
-define('ENV_DB_PASSWORD','');
-define('ENV_DB_NAME','tgss');
+define('ENV_DB_USERNAME','inventod_tgss');
+define('ENV_DB_PASSWORD','$n0WL@YAdminPhP');
+define('ENV_DB_NAME','inventod_tgss');
 //*****************************************************************************************************************************************************
 ?>
