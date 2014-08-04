@@ -26,7 +26,7 @@ class Tablecalenders_model extends CI_Model {
                 "AND parent_type_id='" . $parent_type_id . "' " .
                 "AND no_of_pages=" . $no_of_pages . " " . 
                 "AND quantity=" . $quantity;
-        //print_r($sql);exit();
+        
         $query = $this->db->query($sql);
         return $query->result_array();
     }

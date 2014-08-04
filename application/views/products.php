@@ -62,7 +62,7 @@
 	<ul id="all_product_2">
 		<li>
 			<a href="<?php echo site_url(); ?>/tablecalenders/select"">Table Calendars</a></li>
-			<li><a href="Wall Calendars">Wall Calendars</a></li>
+			<li><a href="<?php echo site_url();?>/postercalenders/select">Wall Calendars</a></li>
 			</ul>
 			</ul>
 			<ul id="all_product_1">

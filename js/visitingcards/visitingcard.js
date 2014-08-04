@@ -34,13 +34,15 @@ function get_total_price(){
                 $('#card_id').val(result.data.card_id);
                 $('#price_display').html(result.data.price);
                 $('#total_display').html(result.data.total);
-                $('#price_hidden').val(result.data.price);
+                $('#price_hidden').val(result.data.price);               
+                $('#quantity_hidden').val(quantity);
                 $('#total_hidden').val(result.data.total);
             }else{
                 $('#card_id').val('');
                 $('#price_display').html(0);
                 $('#total_display').html(0);
                 $('#price_hidden').val(0);
+                $('#quantity_hidden').val(0);
                 $('#total_hidden').val(0);
             }
                 
