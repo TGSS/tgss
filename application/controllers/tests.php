@@ -39,38 +39,21 @@ class Tests extends CI_Controller {
 	{
 		include_once 'upload/index.php';
 	}
-	
-	public function upload_get()
-	{
-		// $file = $this->upload_help();
-		// print_r($file);
-		// $url = "http://local.tgss.com/index.php/tests/upload_help";
-		// $ch = curl_init();
-		// curl_setopt($ch, CURLOPT_POST, 1);
-		// curl_setopt($ch, CURLOPT_URL, $url);
-		// curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		// curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-		// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-		// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-		// curl_setopt($ch, CURLOPT_NOBODY, 0);
-// 		
-		// $result = curl_exec($ch);
-		// $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		// curl_close($ch);
-// 	
-		// // return array(
-				// // 'status' => $status,
-				// // 'result' => ($status == 200) ? json_decode($result): ''
-		// // );
-		// var_dump($result);
-	}
 
     public function test03()
     {
         echo phpinfo();
     }
-
+	
+	public function plupload()
+    {
+        $this->load->view('test/plupload');
+    }
+	
+	public function plupload_upload()
+	{
+		include_once 'plupload/upload.php';
+	}
 }
 
 ?>
